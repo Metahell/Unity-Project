@@ -23,4 +23,8 @@ public class ButtonBehavior : MonoBehaviour
     {
         EditorApplication.Exit(0);
     }
+    public void Choose()
+    {
+        SceneManager.LoadScene(3);
+    }
 }
