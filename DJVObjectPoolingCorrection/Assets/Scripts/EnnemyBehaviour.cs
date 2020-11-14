@@ -14,8 +14,8 @@ public class EnnemyBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3[] positionArray = new [] { new Vector3(1f,0f,0f), new Vector3(-1f,0f,0f),new Vector3(0f,1f,0f),new Vector3(0f,-1f,0f),new Vector3(0f,0f,1f),new Vector3(0f,0f,-1f) }
-        int direction = Random.range(0,6);
-        transform.
+        Vector3[] positionArray = new[] { new Vector3(1f, 0f, 0f), new Vector3(-1f, 0f, 0f), new Vector3(0f, 1f, 0f), new Vector3(0f, -1f, 0f), new Vector3(0f, 0f, 1f), new Vector3(0f, 0f, -1f) };
+        int direction = Random.Range(0,6);
+        /*transform.*/
     }
 }
