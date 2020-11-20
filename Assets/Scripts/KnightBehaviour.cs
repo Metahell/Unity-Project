@@ -33,6 +33,7 @@ public class KnightBehaviour : MonoBehaviour
         playerPosition = GameObject.FindGameObjectsWithTag("Player")[0].transform.position;
         if (Vector3.Distance(playerPosition,transform.position) < 2.5f)
         {
+            rigi.velocity = Vector3.zero;
             if (!animator.GetCurrentAnimatorStateInfo(1).IsTag("1"))
             { 
 
@@ -44,22 +45,22 @@ public class KnightBehaviour : MonoBehaviour
         {
             is_moving = true;
             mouvementVector = (transform.forward).normalized;
-            UpdateAnimator();
         }
+        UpdateAnimator();
         DoRotation();
     }
 
     private void FixedUpdate()
     {
-            if (!animator.GetCurrentAnimatorStateInfo(1).IsTag("1"))
+            if (!animator.GetCurrentAnimatorStateInfo(1).IsTag("1") && is_moving)
             {
             motionVector = new Vector3(mouvementVector.x * maxVelocity, rigi.velocity.y, mouvementVector.z * maxVelocity);
             float lerpSmooth = rigi.velocity.magnitude < motionVector.magnitude ? acceleration : decceleration;
             rigi.velocity = Vector3.Lerp(rigi.velocity, motionVector, lerpSmooth / 20);
 
+        }
             if (direction.magnitude > 0)
                 transform.forward = Vector3.Lerp(transform.forward, direction, .3f);
-        }
     }
 
     private void UpdateAnimator()
