@@ -471,12 +471,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 163670595}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &778335399 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 95492813676292648, guid: 9c65574a42bfe4246aa9f3165f406c90,
-    type: 3}
-  m_PrefabInstance: {fileID: 163670595}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &778335400 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4296187049228626, guid: 9c65574a42bfe4246aa9f3165f406c90,
@@ -513,24 +507,6 @@ CapsuleCollider:
   m_Height: 8.186577
   m_Direction: 1
   m_Center: {x: 0, y: 3.5932882, z: 0.16650517}
---- !u!114 &778335403
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 778335398}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51391d28bf0a04540a91a47588f46b58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 778335399}
-  mouvementVector: {x: 0, y: 0, z: 0}
-  maxVelocity: 2
-  acceleration: 5
-  decceleration: 10
-  is_moving: 0
 --- !u!1 &895700309
 GameObject:
   m_ObjectHideFlags: 0
