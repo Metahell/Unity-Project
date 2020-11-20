@@ -32,7 +32,6 @@ public class KnightBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        DoRotation();
         StartCoroutine("pause");
     }
 
@@ -94,8 +93,8 @@ public class KnightBehaviour : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (direction.magnitude > 0)
-            transform.forward = Vector3.Lerp(transform.forward, direction, .3f);
+        //Calculate velocity according to movementVector
+
     }
 
     private void UpdateAnimator()
@@ -103,15 +102,5 @@ public class KnightBehaviour : MonoBehaviour
         animator.SetFloat("velocityForward", Vector3.Dot(rigi.velocity, transform.forward));
         animator.SetFloat("velocityRight", Vector3.Dot(rigi.velocity, transform.right));
         animator.SetFloat("velocity", rigi.velocity.magnitude);
-    }
-
-    private void DoRotation()
-    {
-        Vector3 playerPosition = GameObject.FindGameObjectsWithTag("Player")[0].transform.position;
-        playerPosition.y = transform.position.y;
-        direction = playerPosition - transform.position;
-        direction.y = 0;
-        direction = direction.normalized;
-
     }
 }
