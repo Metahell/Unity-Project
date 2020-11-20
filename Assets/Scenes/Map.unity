@@ -526,9 +526,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 778335399}
-  targetDirection: {fileID: 1662245151}
   mouvementVector: {x: 0, y: 0, z: 0}
-  maxVelocity: 5
+  maxVelocity: 2
   acceleration: 5
   decceleration: 10
   is_moving: 0
