@@ -2188,7 +2188,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100136, guid: b6e26907cdc3d1c4e8d1f5073d741874, type: 3}
       propertyPath: m_Name
-      value: Mage (Not right model ?)
+      value: Mage
       objectReference: {fileID: 0}
     - target: {fileID: 400136, guid: b6e26907cdc3d1c4e8d1f5073d741874, type: 3}
       propertyPath: m_LocalPosition.x
