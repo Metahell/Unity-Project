@@ -33,7 +33,6 @@ public class KnightBehaviour : MonoBehaviour
     void Update()
     {
         playerPosition = GameObject.FindGameObjectsWithTag("Player")[0].transform.position;
-        Debug.Log(Vector3.Distance(playerPosition, transform.position));
         if (Vector3.Distance(playerPosition,transform.position) < 2.5f || animator.GetCurrentAnimatorStateInfo(1).IsTag("1"))
         {
             agent.enabled = false;
