@@ -75,6 +75,7 @@ GameObject:
   - component: {fileID: -1588762416945285336}
   - component: {fileID: -1075067739528147335}
   - component: {fileID: -6682577637206484010}
+  - component: {fileID: -2856208727269472111}
   m_Layer: 0
   m_Name: BlackKnight
   m_TagString: Enemy
@@ -187,6 +188,22 @@ CapsuleCollider:
   m_Height: 8.186577
   m_Direction: 1
   m_Center: {x: 0, y: 3.593288, z: 0.1665052}
+--- !u!114 &-2856208727269472111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1009502973115248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d07ce676d7afda4dabb3b0f7dd5e654, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 0
+  m_Area: 0
+  m_IgnoreFromBuild: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &1041993645612522
 GameObject:
   m_ObjectHideFlags: 0
