@@ -5,7 +5,7 @@ using UnityEngine;
 public class WaveManager : MonoBehaviour
 {
     private int LastWave = 0;
-    private int CurrentWave = 1;
+    private int CurrentWave = 3;
     [SerializeField]
     private List<GameObject> SpawnPoints = new List<GameObject>();
     [SerializeField]
@@ -13,7 +13,7 @@ public class WaveManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Spawn();
+        StartCoroutine("Spawn");
     }
 
     // Update is called once per frame
