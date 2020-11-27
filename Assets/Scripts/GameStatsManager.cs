@@ -6,11 +6,9 @@ public class GameStatsManager : MonoBehaviour
 {
     int WaveReached;
     int NbGames;
-
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -20,8 +18,8 @@ public class GameStatsManager : MonoBehaviour
     }
     private void SaveStats()
     {
-        PlayerPrefs.SetInt("SavedWave",WaveReached);
-        PlayerPrefs.SetInt("NbGames", NbGames);
+        PlayerPrefs.SetInt(string.Concat("SavedWave",ButtonBehavior.CharacterSelection),WaveReached);
+        PlayerPrefs.SetInt(string.Concat("SaveNbGame", ButtonBehavior.CharacterSelection), NbGames);
         PlayerPrefs.Save();
     }
 }

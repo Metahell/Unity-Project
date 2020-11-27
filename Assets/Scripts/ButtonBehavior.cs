@@ -12,6 +12,7 @@ public class ButtonBehavior : MonoBehaviour
     public void Play()
     {
         SceneManager.LoadScene(0);
+        PlayerPrefs.SetInt(string.Concat("NbGames", CharacterSelection), PlayerPrefs.GetInt(string.Concat("NbGames", CharacterSelection)) + 1);
     }
     public void Option()
     {
@@ -48,5 +49,17 @@ public class ButtonBehavior : MonoBehaviour
         {
             CharacterSelection = 3;
         }
+        if (EventSystem.current.currentSelectedGameObject.name == "Select Thief")
+        {
+            CharacterSelection = 4;
+        }
+    }
+    public void UpdateText() //Regarde le Personnage actuel et change les infos de la boîte de texte correspondante en concaténant et en cherchant le nom
+    {
+       string SaveString=GameObject.Find(string.Concat("Achievements", CharacterSelection)).GetComponent<Text>().text = " Highest Wave Reached : "+PlayerPrefs.GetString(string.Concat("WaveSaved",CharacterSelection),"0")
+            + "Games Played : "+PlayerPrefs.GetString(string.Concat("NbGames", CharacterSelection), "0")
+            + "(Medal)";
+        PlayerPrefs.SetString(string.Concat("Stats", CharacterSelection), SaveString);
+        PlayerPrefs.Save();
     }
 }
