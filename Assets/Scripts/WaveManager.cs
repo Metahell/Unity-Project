@@ -6,7 +6,7 @@ public class WaveManager : MonoBehaviour
 {
     private int WaveID = 1;
     private int LastWave = 0;
-    private int CurrentWave = 3;
+    private int CurrentWave = 1;
     [SerializeField]
     private List<GameObject> SpawnPoints = new List<GameObject>();
     [SerializeField]
