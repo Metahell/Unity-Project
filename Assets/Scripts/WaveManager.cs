@@ -38,7 +38,6 @@ public class WaveManager : MonoBehaviour
     }
     private IEnumerator Spawn()
     {
-        yield return new WaitForSeconds(1);
         for(int i = 0; i < CurrentWave; i++)
         {
             GameObject mob=Instantiate(EnnemyPool[(i%EnnemyPool.Count)]);

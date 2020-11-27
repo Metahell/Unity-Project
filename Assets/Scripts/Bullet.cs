@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour {
 
     private Rigidbody rigi;
     private Renderer renderer;
+    private HealthManager Health;
 
     [SerializeField]
     private float speed;
@@ -25,6 +26,10 @@ public class Bullet : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.CompareTag("Enemy"))
+        {
+            other.GetComponent<HealthManager>().LooseHealth(5);
+        }
         Remove();
     }
 
@@ -42,4 +47,5 @@ public class Bullet : MonoBehaviour {
     {
         
     }
+
 }

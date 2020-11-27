@@ -8,7 +8,7 @@ public class KnightBehaviour : MonoBehaviour
     [Header("Link")]
     private Rigidbody rigi;
     [SerializeField] private Animator animator;
-    [SerializeField] private Vector3 mouvementVector = Vector3.zero;
+    private Vector3 mouvementVector = Vector3.zero;
     private Vector3 motionVector = Vector3.zero;
     private Vector3 direction;
     [Header("Movement Parameters")]
@@ -21,30 +21,44 @@ public class KnightBehaviour : MonoBehaviour
     private Vector3 playerPosition;
     private bool is_moving = true;
     public NavMeshAgent agent;
+    private float _hitTime = 1;
+    private float _hitTimer = 0;
+    private bool _canHit = false;
+    public AnimationClip knightSlash2;
     // Start is called before the first frame update
     void Start()
     {
         rigi = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Confined;
+        _hitTime += knightSlash2.length;
     }
 
     // Update is called once per frame
     void Update()
     {
 
+        _hitTimer += Time.deltaTime;
+        if (_hitTimer > _hitTime)
+        {
+            _canHit = true;
+        }
         playerPosition = GameObject.FindGameObjectsWithTag("Player")[0].transform.position;
         if (Vector3.Distance(playerPosition,transform.position) < 2.5f || animator.GetCurrentAnimatorStateInfo(1).IsTag("1"))
         {
             agent.enabled = false;
             rigi.velocity = Vector3.zero;
-            if (!animator.GetCurrentAnimatorStateInfo(1).IsTag("1"))
+            rigi.mass = 10;
+            if (!animator.GetCurrentAnimatorStateInfo(1).IsTag("1") && _canHit)
             {
                 animator.SetTrigger("Attack");
+                _canHit = false;
+                _hitTimer = 0;
             }
             is_moving = false;
         }
         else
         {
+            rigi.mass = 1;
             agent.enabled = true;
             is_moving = true;
             agent.SetDestination(playerPosition);
