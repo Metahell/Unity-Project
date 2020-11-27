@@ -47,7 +47,7 @@ public class KnightBehaviour : MonoBehaviour
         {
             agent.enabled = false;
             rigi.velocity = Vector3.zero;
-            rigi.mass = 10;
+            rigi.isKinematic = true;
             if (!animator.GetCurrentAnimatorStateInfo(1).IsTag("1") && _canHit)
             {
                 animator.SetTrigger("Attack");
@@ -58,7 +58,7 @@ public class KnightBehaviour : MonoBehaviour
         }
         else
         {
-            rigi.mass = 1;
+            rigi.isKinematic = false;
             agent.enabled = true;
             is_moving = true;
             agent.SetDestination(playerPosition);
