@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class ButtonBehavior : MonoBehaviour
 {
-    public static int CharacterSelection; /*0=Knight, 1=Archer, 2=Mage,3=Druid*/
+    public static int CharacterSelection; /*0=Knight, 1=Archer, 2=Mage,3=Druid,4=Thief*/
     public void Play()
     {
         SceneManager.LoadScene(0);
