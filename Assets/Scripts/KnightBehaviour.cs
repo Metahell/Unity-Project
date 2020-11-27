@@ -20,7 +20,6 @@ public class KnightBehaviour : MonoBehaviour
     private float decceleration;
     private Vector3 playerPosition;
     private bool is_moving = true;
-    Vector3[] positionArray = new[] { Vector3.left, Vector3.right, Vector3.forward, Vector3.back };
     public NavMeshAgent agent;
     // Start is called before the first frame update
     void Start()
@@ -32,14 +31,14 @@ public class KnightBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         playerPosition = GameObject.FindGameObjectsWithTag("Player")[0].transform.position;
         if (Vector3.Distance(playerPosition,transform.position) < 2.5f || animator.GetCurrentAnimatorStateInfo(1).IsTag("1"))
         {
             agent.enabled = false;
             rigi.velocity = Vector3.zero;
             if (!animator.GetCurrentAnimatorStateInfo(1).IsTag("1"))
-            { 
-
+            {
                 animator.SetTrigger("Attack");
             }
             is_moving = false;
@@ -83,4 +82,14 @@ public class KnightBehaviour : MonoBehaviour
         direction = direction.normalized;
 
     }
+
+    private void Attack()
+    {
+        playerPosition = GameObject.FindGameObjectsWithTag("Player")[0].transform.position;
+        if (Vector3.Distance(playerPosition, transform.position) < 2.5f)
+        {
+            Debug.Log("Touché");
+        }
+    }
+
 }
