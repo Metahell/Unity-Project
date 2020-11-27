@@ -83,7 +83,7 @@ public class KnightBehaviour : MonoBehaviour
 
     }
 
-    private void Attack()
+    private void Hit()
     {
         playerPosition = GameObject.FindGameObjectsWithTag("Player")[0].transform.position;
         if (Vector3.Distance(playerPosition, transform.position) < 2.5f)
