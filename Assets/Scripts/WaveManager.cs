@@ -47,10 +47,16 @@ public class WaveManager : MonoBehaviour
         }
         NewWave();
         WaveID++;
+        PlayerPrefs.SetInt(string.Concat("WaveSaved", ButtonBehavior.CharacterSelection),WaveID);
+        Debug.Log(""+PlayerPrefs.GetInt(string.Concat("WaveSaved", ButtonBehavior.CharacterSelection)));
     }
     private int CheckEnemyCount()
     {
         return GameObject.FindGameObjectsWithTag("Enemy").Length;
+
+    }
+    private void Lose()
+    {
 
     }
     private void Win()

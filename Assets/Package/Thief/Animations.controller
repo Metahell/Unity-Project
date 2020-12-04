@@ -36,19 +36,19 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
-  - m_Name: velocityX
+    m_Controller: {fileID: 9100000}
+  - m_Name: velocityForward
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
-  - m_Name: velocityY
+    m_Controller: {fileID: 9100000}
+  - m_Name: velocityRight
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -106,7 +106,7 @@ BlendTree:
     m_DirectBlendParameter: Blend
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: -203655887218126122, guid: 748d60f5c62208d4bba2a1cad552019e,
+    m_Motion: {fileID: -203655887218126122, guid: e56ca3119264a6143b1fb04a4206b02b,
       type: 3}
     m_Threshold: 0.25
     m_Position: {x: 1, y: 0}
@@ -115,16 +115,15 @@ BlendTree:
     m_DirectBlendParameter: Blend
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: -203655887218126122, guid: e56ca3119264a6143b1fb04a4206b02b,
-      type: 3}
+    m_Motion: {fileID: 7400000, guid: 061c07a0648c2424abb3b8c53ea59c53, type: 3}
     m_Threshold: 0.5
     m_Position: {x: -1, y: 0}
     m_TimeScale: 1
-    m_CycleOffset: 0.5
+    m_CycleOffset: 0
     m_DirectBlendParameter: Blend
-    m_Mirror: 1
+    m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: -203655887218126122, guid: de3e23f739561a0498e274babee8d2e0,
+    m_Motion: {fileID: -203655887218126122, guid: 748d60f5c62208d4bba2a1cad552019e,
       type: 3}
     m_Threshold: 0.75
     m_Position: {x: 0, y: -1}
@@ -133,7 +132,7 @@ BlendTree:
     m_DirectBlendParameter: Blend
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: -203655887218126122, guid: 7da40686e407c5d439dbee91a5ae1bd6,
+    m_Motion: {fileID: -203655887218126122, guid: 76bb15aa2a114b8469dba6d9771c4f82,
       type: 3}
     m_Threshold: 1
     m_Position: {x: 0, y: 1}
@@ -141,8 +140,8 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: Blend
     m_Mirror: 0
-  m_BlendParameter: velocityX
-  m_BlendParameterY: velocityY
+  m_BlendParameter: velocityForward
+  m_BlendParameterY: velocityRight
   m_MinThreshold: 0
   m_MaxThreshold: 1
   m_UseAutomaticThresholds: 1

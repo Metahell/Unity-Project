@@ -9,10 +9,16 @@ using UnityEngine.UI;
 public class ButtonBehavior : MonoBehaviour
 {
     public static int CharacterSelection; /*0=Knight, 1=Archer, 2=Mage,3=Druid,4=Thief*/
+    private void Start()
+    {
+        UpdateText();
+        SetText();
+    }
     public void Play()
     {
         SceneManager.LoadScene(0);
         PlayerPrefs.SetInt(string.Concat("NbGames", CharacterSelection), PlayerPrefs.GetInt(string.Concat("NbGames", CharacterSelection)) + 1);
+        Debug.Log("" + PlayerPrefs.GetInt(string.Concat("NbGames", CharacterSelection)));
     }
     public void Option()
     {
@@ -56,10 +62,19 @@ public class ButtonBehavior : MonoBehaviour
     }
     public void UpdateText() //Regarde le Personnage actuel et change les infos de la boîte de texte correspondante en concaténant et en cherchant le nom
     {
-       string SaveString=GameObject.Find(string.Concat("Achievements", CharacterSelection)).GetComponent<Text>().text = " Highest Wave Reached : "+PlayerPrefs.GetString(string.Concat("WaveSaved",CharacterSelection),"0")
-            + "Games Played : "+PlayerPrefs.GetString(string.Concat("NbGames", CharacterSelection), "0")
-            + "(Medal)";
-        PlayerPrefs.SetString(string.Concat("Stats", CharacterSelection), SaveString);
-        PlayerPrefs.Save();
+        for (int i = 0; i< 5; i++) {
+            string SaveString = GameObject.Find(string.Concat("Achievements", i)).GetComponent<Text>().text = " Highest Wave Reached : " + PlayerPrefs.GetInt(string.Concat("WaveSaved", i), 0)+"\n"
+                 + "Games Played : " + PlayerPrefs.GetInt(string.Concat("NbGames", i),0)+"\n"
+                 + "(Medal)";
+            PlayerPrefs.SetString(string.Concat("Stats", i), SaveString);
+            PlayerPrefs.Save();
+        }
+    }
+    public void SetText()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            string SaveString = GameObject.Find(string.Concat("Achievements", i)).GetComponent<Text>().text = PlayerPrefs.GetString(string.Concat("Stats", i));
+        }
     }
 }

@@ -18,8 +18,7 @@ public class GameStatsManager : MonoBehaviour
     }
     private void SaveStats()
     {
-        PlayerPrefs.SetInt(string.Concat("SavedWave",ButtonBehavior.CharacterSelection),WaveReached);
-        PlayerPrefs.SetInt(string.Concat("SaveNbGame", ButtonBehavior.CharacterSelection), NbGames);
+        PlayerPrefs.SetInt(string.Concat("WaveSaved",ButtonBehavior.CharacterSelection),WaveReached);
         PlayerPrefs.Save();
     }
 }
