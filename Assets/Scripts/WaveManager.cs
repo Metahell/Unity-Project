@@ -1,12 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WaveManager : MonoBehaviour
 {
     private int WaveID = 1;
     private int LastWave = 1;
     private int CurrentWave = 1;
+    [SerializeField]
+    private GameObject EndgameCanvas;
+    [SerializeField]
+    private Text EndGameText;
     [SerializeField]
     private List<GameObject> SpawnPoints = new List<GameObject>();
     [SerializeField]
@@ -57,6 +62,8 @@ public class WaveManager : MonoBehaviour
     }
     private void Lose()
     {
+        EndgameCanvas.SetActive(true);
+        EndGameText.text = "GAME OVER";
 
     }
     private void Win()
