@@ -11,8 +11,12 @@ public class ButtonBehavior : MonoBehaviour
     public static int CharacterSelection; /*0=Knight, 1=Archer, 2=Mage,3=Druid,4=Thief*/
     private void Start()
     {
-        UpdateText();
-        SetText();
+        if (SceneManager.GetActiveScene().name=="CharacterSelection")
+        {
+            UpdateText();
+            SetText();
+        }
+        
     }
     public void Play()
     {
