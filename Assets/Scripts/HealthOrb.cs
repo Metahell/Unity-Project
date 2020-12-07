@@ -12,14 +12,15 @@ public class HealthOrb : MonoBehaviour
     private GameObject healthOrb;
     [SerializeField]
     private Slider slider;
-    [SerializeField]
-    private float facteurOrb;
+    private float facteurOrb=1.33f;
     // Start is called before the first frame update
     void Start()
     {
         slider.maxValue = hpmax;
         currentHp = hpmax;
+
         UpdateOrb();
+
     }
 
     // Update is called once per frame
@@ -28,7 +29,7 @@ public class HealthOrb : MonoBehaviour
         
         if (Input.GetKey(KeyCode.Space))
         {
-            Damage(100);
+            Damage(15);
         }
     }
 
