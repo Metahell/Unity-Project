@@ -33,7 +33,7 @@ public class TextUpdateBehavior : MonoBehaviour
     {
 
     }
-
+    
     public void SetText()
     {
         for (int i = 0; i < 5; i++)
