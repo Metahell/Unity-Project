@@ -4022,6 +4022,7 @@ MonoBehaviour:
   hpmax: 100
   healthOrb: {fileID: 1755762212}
   slider: {fileID: 886502268}
+  facteurOrb: 1.33
 --- !u!114 &985281815 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114457192515976260, guid: baef9eef5665ddc418a67f27927c283a,
@@ -6373,7 +6374,7 @@ PrefabInstance:
     - target: {fileID: 8381275776978986664, guid: 710f734bf95f92349b27230f6fb74d96,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.38
+      value: 1.102
       objectReference: {fileID: 0}
     - target: {fileID: 8381275776978986664, guid: 710f734bf95f92349b27230f6fb74d96,
         type: 3}
@@ -6424,6 +6425,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Thief prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 9222761850859487316, guid: 710f734bf95f92349b27230f6fb74d96,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 116
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 710f734bf95f92349b27230f6fb74d96, type: 3}
@@ -7880,6 +7886,11 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 1322938656}
+    - target: {fileID: 114718902315699534, guid: baef9eef5665ddc418a67f27927c283a,
+        type: 3}
+      propertyPath: bulletNumber
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: baef9eef5665ddc418a67f27927c283a, type: 3}
 --- !u!1001 &2012092645

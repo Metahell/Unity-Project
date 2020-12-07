@@ -26,6 +26,7 @@ public class KnightBehaviour : MonoBehaviour
     private bool _canHit = false;
     public AnimationClip knightSlash2;
     private NavMeshModifier navMeshModifier;
+    private HealthOrb HealthOrb;
     // Start is called before the first frame update
     void Start()
     {
@@ -103,7 +104,8 @@ public class KnightBehaviour : MonoBehaviour
         playerPosition = GameObject.FindGameObjectsWithTag("Player")[0].transform.position;
         if (Vector3.Distance(playerPosition, transform.position) < 2.5f)
         {
-            Debug.Log("Touché");
+            //Debug.Log("Touché");
+            GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<HealthOrb>().Damage(5);
         }
     }
 
