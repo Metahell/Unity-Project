@@ -8,6 +8,7 @@ public class HealthOrb : MonoBehaviour
     [SerializeField]
     private int hpmax=100;
     private int currentHp;
+    private bool end = false;
     [SerializeField]
     private GameObject healthOrb;
     [SerializeField]
@@ -32,7 +33,11 @@ public class HealthOrb : MonoBehaviour
         }
         if (currentHp <= 0)
         {
-            WaveManager.Lose();
+            if (!end)
+            {
+                end= true;
+                WaveManager.Lose();
+            }
         }
     }
 

@@ -8,6 +8,7 @@ public class WaveManager : MonoBehaviour
     private int WaveID = 1;
     private int LastWave = 1;
     private int CurrentWave = 1;
+    private bool end=false;
     [SerializeField]
     private GameObject EndgameCanvas;
     [SerializeField]
@@ -16,6 +17,8 @@ public class WaveManager : MonoBehaviour
     private Text EndGameText;
     [SerializeField]
     private Text WaveNumber;
+    [SerializeField]
+    private TimeManager tm;
     [SerializeField]
     private List<GameObject> SpawnPoints = new List<GameObject>();
     [SerializeField]
@@ -33,7 +36,11 @@ public class WaveManager : MonoBehaviour
         {
             if (WaveID == 11)
             {
-                Win();
+                if (!end)
+                {
+                    end = true;
+                    Win();
+                }
             }
             else
             {
@@ -70,14 +77,14 @@ public class WaveManager : MonoBehaviour
     {
         controller.enabled = false;
         EndgameCanvas.SetActive(true);
-        EndGameText.text = "GAME OVER";
+        EndGameText.text = "GAME OVER\n TIME :"+tm.EndTime();
 
     }
     private void Win()
     {
         controller.enabled = false;
         EndgameCanvas.SetActive(true);
-        EndGameText.text = "YOU WON";
+        EndGameText.text = "YOU WON\n TIME :" +tm.EndTime();
         PlayerPrefs.SetInt(string.Concat("Medal", ButtonBehavior.CharacterSelection), 1);
         PlayerPrefs.Save();
     }
