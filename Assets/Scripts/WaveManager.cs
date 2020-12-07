@@ -47,7 +47,6 @@ public class WaveManager : MonoBehaviour
         int NewWave = CurrentWave + LastWave;
         LastWave = CurrentWave;
         CurrentWave = NewWave;
-        Debug.Log(""+LastWave);
     }
     private IEnumerator Spawn()
     {
@@ -61,7 +60,6 @@ public class WaveManager : MonoBehaviour
         NewWave();
         WaveID++;
         PlayerPrefs.SetInt(string.Concat("WaveSaved", ButtonBehavior.CharacterSelection),WaveID);
-        Debug.Log(""+PlayerPrefs.GetInt(string.Concat("WaveSaved", ButtonBehavior.CharacterSelection)));
     }
     private int CheckEnemyCount()
     {
