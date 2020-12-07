@@ -2567,7 +2567,7 @@ MonoBehaviour:
   controller: {fileID: 985281815}
   EndGameText: {fileID: 1709537592}
   WaveNumber: {fileID: 220011891}
-  tm: {fileID: 0}
+  tm: {fileID: 1693415709}
   SpawnPoints:
   - {fileID: 923260031}
   - {fileID: 225248291}
@@ -6189,7 +6189,7 @@ GameObject:
   - component: {fileID: 1574761645}
   - component: {fileID: 1574761646}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: EndGameButtons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6862,8 +6862,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TextTime: {fileID: 135700981}
-  end: 0
-  endtime: 0
 --- !u!4 &1698007725 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4716839242499140, guid: baef9eef5665ddc418a67f27927c283a,
@@ -7035,8 +7033,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 321.33417, y: 81.28003}
+  m_AnchoredPosition: {x: 22, y: 29}
+  m_SizeDelta: {x: 438.99762, y: 134.94705}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1709537592
 MonoBehaviour:
