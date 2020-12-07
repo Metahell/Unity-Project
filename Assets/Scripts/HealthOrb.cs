@@ -12,6 +12,9 @@ public class HealthOrb : MonoBehaviour
     private GameObject healthOrb;
     [SerializeField]
     private Slider slider;
+    private WaveManager WaveManager;
+    [SerializeField]
+    private Camera cam;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +30,10 @@ public class HealthOrb : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             Damage(15);
+        }
+        if (currentHp <= 0)
+        {
+            cam.GetComponent<WaveManager>().Lose();
         }
     }
 

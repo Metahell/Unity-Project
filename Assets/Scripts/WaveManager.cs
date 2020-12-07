@@ -29,14 +29,17 @@ public class WaveManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (WaveID == 11)
-        {
-            Win();
-        }
         if (CheckEnemyCount() == 0)
         {
-            WaveNumber.text = "Wave " + WaveID;
-            StartCoroutine("Spawn");
+            if (WaveID == 11)
+            {
+                Win();
+            }
+            else
+            {
+                WaveNumber.text = "Wave " + WaveID;
+                StartCoroutine("Spawn");
+            }
         }
     }
     private void NewWave()
@@ -65,7 +68,7 @@ public class WaveManager : MonoBehaviour
         return GameObject.FindGameObjectsWithTag("Enemy").Length;
 
     }
-    private void Lose()
+    public void Lose()
     {
         controller.enabled = false;
         EndgameCanvas.SetActive(true);
