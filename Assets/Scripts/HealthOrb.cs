@@ -12,8 +12,6 @@ public class HealthOrb : MonoBehaviour
     private GameObject healthOrb;
     [SerializeField]
     private Slider slider;
-    [SerializeField]
-    private float facteurOrb;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,11 +34,9 @@ public class HealthOrb : MonoBehaviour
     {
         currentHp -= dmg;
         slider.value = currentHp;
-        Debug.Log(currentHp);
     }
     public void UpdateOrb()
     {
-        healthOrb.transform.position = new Vector3(healthOrb.transform.position.x,-(slider.maxValue-slider.value)*facteurOrb+78.37385f,healthOrb.transform.position.z);
-        Debug.Log("update y:"+healthOrb.transform.position.y);
+        healthOrb.transform.position = new Vector3(healthOrb.transform.position.x,-(slider.maxValue-slider.value)*1.33f+78.37385f,healthOrb.transform.position.z);
     }
 }
