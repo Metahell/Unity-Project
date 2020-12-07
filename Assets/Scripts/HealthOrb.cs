@@ -25,8 +25,13 @@ public class HealthOrb : MonoBehaviour
         slider.value = currentHp;
         if (Input.GetKey(KeyCode.Space))
         {
-            currentHp -= 1;
+            Damage(1);
         }
+    }
+
+    private void Damage(int dmg)
+    {
+        currentHp -= dmg;
     }
     public void UpdateOrb()
     {

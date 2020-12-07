@@ -11,11 +11,7 @@ public class ButtonBehavior : MonoBehaviour
     public static int CharacterSelection; /*0=Knight, 1=Archer, 2=Mage,3=Druid,4=Thief*/
     private void Start()
     {
-        if (SceneManager.GetActiveScene().name=="CharacterSelection")
-        {
-            UpdateText();
-            SetText();
-        }
+        
         
     }
     public void Play()
@@ -62,23 +58,6 @@ public class ButtonBehavior : MonoBehaviour
         if (EventSystem.current.currentSelectedGameObject.name == "Select Thief")
         {
             CharacterSelection = 4;
-        }
-    }
-    public void UpdateText() //Regarde le Personnage actuel et change les infos de la boîte de texte correspondante en concaténant et en cherchant le nom
-    {
-        for (int i = 0; i< 5; i++) {
-            string SaveString = GameObject.Find(string.Concat("Achievements", i)).GetComponent<Text>().text = " Highest Wave Reached : " + PlayerPrefs.GetInt(string.Concat("WaveSaved", i), 0)+"\n"
-                 + "Games Played : " + PlayerPrefs.GetInt(string.Concat("NbGames", i),0)+"\n"
-                 + "(Medal)";
-            PlayerPrefs.SetString(string.Concat("Stats", i), SaveString);
-            PlayerPrefs.Save();
-        }
-    }
-    public void SetText()
-    {
-        for (int i = 0; i < 5; i++)
-        {
-            string SaveString = GameObject.Find(string.Concat("Achievements", i)).GetComponent<Text>().text = PlayerPrefs.GetString(string.Concat("Stats", i));
         }
     }
 }

@@ -11,7 +11,11 @@ public class WaveManager : MonoBehaviour
     [SerializeField]
     private GameObject EndgameCanvas;
     [SerializeField]
+    private PlayerController controller;
+    [SerializeField]
     private Text EndGameText;
+    [SerializeField]
+    private Text WaveNumber;
     [SerializeField]
     private List<GameObject> SpawnPoints = new List<GameObject>();
     [SerializeField]
@@ -25,13 +29,14 @@ public class WaveManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (CheckEnemyCount() == 0)
-        {
-            StartCoroutine("Spawn");
-        }
         if (WaveID == 11)
         {
             Win();
+        }
+        if (CheckEnemyCount() == 0)
+        {
+            WaveNumber.text = "Wave " + WaveID;
+            StartCoroutine("Spawn");
         }
     }
     private void NewWave()
@@ -62,13 +67,18 @@ public class WaveManager : MonoBehaviour
     }
     private void Lose()
     {
+        controller.enabled = false;
         EndgameCanvas.SetActive(true);
         EndGameText.text = "GAME OVER";
 
     }
     private void Win()
     {
-        //Affiche texte, renvoie au menu, update stats de l'écran de sélection des personnages
+        controller.enabled = false;
+        EndgameCanvas.SetActive(true);
+        EndGameText.text = "YOU WON";
+        PlayerPrefs.SetInt(string.Concat("Medal", ButtonBehavior.CharacterSelection), 1);
+        PlayerPrefs.Save();
     }
 }
                                       
