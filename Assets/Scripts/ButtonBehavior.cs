@@ -5,20 +5,29 @@ using UnityEngine.SceneManagement;
 using UnityEditor;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-
+using UnityEngine.Internal;
 public class ButtonBehavior : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject Eyes;
     public static int CharacterSelection; /*0=Knight, 1=Archer, 2=Mage,3=Druid,4=Thief*/
     private void Start()
     {
-        
+
         
     }
     public void Play()
     {
-        SceneManager.LoadScene(0);
-        PlayerPrefs.SetInt(string.Concat("NbGames", CharacterSelection), PlayerPrefs.GetInt(string.Concat("NbGames", CharacterSelection)) + 1);
-        Debug.Log("" + PlayerPrefs.GetInt(string.Concat("NbGames", CharacterSelection)));
+        if (SceneManager.GetActiveScene().name == "Menu")
+        {
+            StartCoroutine("LightEyes");
+        }
+        else
+        {
+            SceneManager.LoadScene(0);
+            PlayerPrefs.SetInt(string.Concat("NbGames", CharacterSelection), PlayerPrefs.GetInt(string.Concat("NbGames", CharacterSelection)) + 1);
+            Debug.Log("" + PlayerPrefs.GetInt(string.Concat("NbGames", CharacterSelection)));
+        }
     }
     public void Option()
     {
@@ -59,6 +68,24 @@ public class ButtonBehavior : MonoBehaviour
         if (EventSystem.current.currentSelectedGameObject.name == "Select Thief")
         {
             CharacterSelection = 4;
+        }
+    }
+    public IEnumerator LightEyes()
+    {
+        if (SceneManager.GetActiveScene().name == "Menu")
+        {
+            Eyes.SetActive(true);
+            GameObject Door = GameObject.Find("CastleDoor");
+            float t;
+            float nbFrame = 2 / Time.deltaTime;
+            for (int i = 1; i < nbFrame + 1; i++)
+            {
+                t = i / nbFrame;
+                Door.transform.position = Vector3.Lerp(Door.transform.position, Door.transform.position -new Vector3(0,0.5f,0), t);
+                yield return new WaitForEndOfFrame();
+            }
+            yield return new WaitForSeconds(2);
+            var op =SceneManager.LoadSceneAsync(0);
         }
     }
 }
