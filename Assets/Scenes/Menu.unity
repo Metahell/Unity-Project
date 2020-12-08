@@ -7213,7 +7213,7 @@ Transform:
   - {fileID: 1272881736}
   - {fileID: 491528147}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2061525327
 GameObject:
@@ -7266,7 +7266,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 49e3040e8afd13d41abf817b1d2dc734, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7355,7 +7355,7 @@ PrefabInstance:
     - target: {fileID: 7679078872616098370, guid: 871b48044e1e1514792100b86b440920,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7679078872616098370, guid: 871b48044e1e1514792100b86b440920,
         type: 3}
