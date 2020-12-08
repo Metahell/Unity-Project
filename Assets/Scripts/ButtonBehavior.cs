@@ -31,7 +31,8 @@ public class ButtonBehavior : MonoBehaviour
     }
     public void Leave()
     {
-        EditorApplication.Exit(0);
+        Application.Quit();
+        Debug.Log("Game is exiting");
     }
     public void Choose()
     {
