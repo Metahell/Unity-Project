@@ -32,8 +32,9 @@ public class CharacterSpawn : MonoBehaviour
             default:target = Characters[0];break;
 
         }
-        target.GetComponent<PlayerController>().enabled = false;
         GameObject res = Instantiate(target, SpawnPoint.transform.position, SpawnPoint.transform.rotation);
-        res.transform.localScale *= 2;
+        res.GetComponent<PlayerController>().enabled = false;
+        res.GetComponent<HealthOrb>().enabled = false;
+        res.transform.localScale *= 5;
     }
 }
