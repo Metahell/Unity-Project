@@ -7,7 +7,7 @@ public class Bullet : MonoBehaviour {
 
     private Rigidbody rigi;
     private Renderer renderer;
-    private HealthManager Health;
+    private KnightBehaviour Health;
 
     [SerializeField]
     private float speed;
@@ -28,7 +28,7 @@ public class Bullet : MonoBehaviour {
     {
         if (other.CompareTag("Enemy"))
         {
-            other.GetComponent<HealthManager>().LooseHealth(5);
+            other.GetComponent<KnightBehaviour>().LooseHealth(5);
         }
         Remove();
     }
