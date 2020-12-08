@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 mouvementVector = Vector3.zero;
     private Vector3 motionVector = Vector3.zero;
     private Vector3 direction;
-
+    private HealthOrb HealthOrb;
     private bool isDead;
 
     void Start()
@@ -34,9 +34,9 @@ public class PlayerController : MonoBehaviour
         mouvementVector = (Vector3.forward * Input.GetAxisRaw("Vertical") + Vector3.right * Input.GetAxisRaw("Horizontal")).normalized;
         DoRotation();
         UpdateAnimator();
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(gameObject.GetComponent<HealthOrb>().getHealth() <= 0)
         {
-            isDead = !isDead;
+            isDead = true;
         }
     }
 

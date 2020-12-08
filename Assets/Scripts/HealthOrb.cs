@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class HealthOrb : MonoBehaviour
 {
     [SerializeField]
-    private int hpmax=100;
+    private int hpmax;
     private int currentHp;
     private bool end = false;
     [SerializeField]
@@ -26,7 +26,6 @@ public class HealthOrb : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         if (Input.GetKey(KeyCode.Space))
         {
             Damage(15);
@@ -49,7 +48,11 @@ public class HealthOrb : MonoBehaviour
     }
     public void UpdateOrb()
     {
-        healthOrb.transform.position = new Vector3(healthOrb.transform.position.x,-(slider.maxValue-slider.value)*1.33f+78.37385f,healthOrb.transform.position.z);
-        Debug.Log("update y:"+healthOrb.transform.position.y);
+        healthOrb.transform.position = new Vector3(healthOrb.transform.position.x,-(slider.maxValue-slider.value)*133f/slider.maxValue+78.37385f,healthOrb.transform.position.z);
+    }
+
+    public int getHealth()
+    {
+        return currentHp;
     }
 }

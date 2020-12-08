@@ -1090,6 +1090,8 @@ GameObject:
   - component: {fileID: 4194317841142339000}
   - component: {fileID: 3375013387198967490}
   - component: {fileID: 1949369959816395538}
+  - component: {fileID: 5390170862140131394}
+  - component: {fileID: 6803904057024868213}
   m_Layer: 0
   m_Name: Knight
   m_TagString: Untagged
@@ -1180,6 +1182,35 @@ CapsuleCollider:
   m_Height: 7.2993307
   m_Direction: 1
   m_Center: {x: 0.64577895, y: 3.7099662, z: 0}
+--- !u!114 &5390170862140131394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1474278901674418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a371bece872136642b29b17e6f201b9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hpmax: 50
+  healthOrb: {fileID: 0}
+  slider: {fileID: 0}
+  WaveManager: {fileID: 0}
+--- !u!114 &6803904057024868213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1474278901674418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 275d49739892a68488c481ab570daa37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 95612345198436402}
 --- !u!1 &1495132924634462
 GameObject:
   m_ObjectHideFlags: 0
@@ -2181,6 +2212,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4532236570655790}
   - component: {fileID: 137529669504682874}
+  - component: {fileID: 7381520166616562396}
   m_Layer: 0
   m_Name: Cube.002
   m_TagString: Untagged
@@ -2308,6 +2340,25 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.21151578, y: -0.20022857, z: 0.6272923}
     m_Extent: {x: 1.8252698, y: 4.0271196, z: 2.1622882}
   m_DirtyAABB: 0
+--- !u!95 &7381520166616562396
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901795093952060}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: eae9a9753709abc448cc77390378f002, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1925042811676338
 GameObject:
   m_ObjectHideFlags: 0

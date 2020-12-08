@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour {
 
-    [SerializeField]
     private Transform player;
 
     private Vector3 offset;
 
 	// Use this for initialization
 	void Start () {
+		player = GameObject.FindGameObjectsWithTag("Player")[0].transform;
         offset = transform.position - player.position;
 	}
 	
