@@ -1,12 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WaveManager : MonoBehaviour
 {
     private int WaveID = 1;
     private int LastWave = 1;
     private int CurrentWave = 1;
+    private bool end=false;
+    [SerializeField]
+    private GameObject EndgameCanvas;
+    [SerializeField]
+    private PlayerController controller;
+    [SerializeField]
+    private Text EndGameText;
+    [SerializeField]
+    private Text WaveNumber;
+    [SerializeField]
+    private TimeManager tm;
     [SerializeField]
     private List<GameObject> SpawnPoints = new List<GameObject>();
     [SerializeField]
@@ -22,11 +34,19 @@ public class WaveManager : MonoBehaviour
     {
         if (CheckEnemyCount() == 0)
         {
-            StartCoroutine("Spawn");
-        }
-        if (WaveID == 11)
-        {
-            Win();
+            if (WaveID == 11)
+            {
+                if (!end)
+                {
+                    end = true;
+                    Win();
+                }
+            }
+            else
+            {
+                WaveNumber.text = "Wave " + WaveID;
+                StartCoroutine("Spawn");
+            }
         }
     }
     private void NewWave()
@@ -34,7 +54,6 @@ public class WaveManager : MonoBehaviour
         int NewWave = CurrentWave + LastWave;
         LastWave = CurrentWave;
         CurrentWave = NewWave;
-        Debug.Log(""+LastWave);
     }
     private IEnumerator Spawn()
     {
@@ -47,15 +66,27 @@ public class WaveManager : MonoBehaviour
         }
         NewWave();
         WaveID++;
+        PlayerPrefs.SetInt(string.Concat("WaveSaved", ButtonBehavior.CharacterSelection),WaveID);
     }
     private int CheckEnemyCount()
     {
         return GameObject.FindGameObjectsWithTag("Enemy").Length;
 
     }
+    public void Lose()
+    {
+        controller.enabled = false;
+        EndgameCanvas.SetActive(true);
+        EndGameText.text = "GAME OVER\n TIME :"+tm.EndTime();
+
+    }
     private void Win()
     {
-        //Affiche texte, renvoie au menu, update stats de l'écran de sélection des personnages
+        controller.enabled = false;
+        EndgameCanvas.SetActive(true);
+        EndGameText.text = "YOU WON\n TIME :" +tm.EndTime();
+        PlayerPrefs.SetInt(string.Concat("Medal", ButtonBehavior.CharacterSelection), 1);
+        PlayerPrefs.Save();
     }
 }
                                       

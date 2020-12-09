@@ -1090,6 +1090,8 @@ GameObject:
   - component: {fileID: 4194317841142339000}
   - component: {fileID: 3375013387198967490}
   - component: {fileID: 1949369959816395538}
+  - component: {fileID: 5390170862140131394}
+  - component: {fileID: 6803904057024868213}
   m_Layer: 0
   m_Name: Knight
   m_TagString: Untagged
@@ -1156,7 +1158,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1474278901674418}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0daa7e0a3eee4c947a546cf8d0a0023e, type: 3}
   m_Name: 
@@ -1180,6 +1182,35 @@ CapsuleCollider:
   m_Height: 7.2993307
   m_Direction: 1
   m_Center: {x: 0.64577895, y: 3.7099662, z: 0}
+--- !u!114 &5390170862140131394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1474278901674418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a371bece872136642b29b17e6f201b9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hpmax: 50
+  healthOrb: {fileID: 0}
+  slider: {fileID: 0}
+  WaveManager: {fileID: 0}
+--- !u!114 &6803904057024868213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1474278901674418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 275d49739892a68488c481ab570daa37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 95612345198436402}
 --- !u!1 &1495132924634462
 GameObject:
   m_ObjectHideFlags: 0

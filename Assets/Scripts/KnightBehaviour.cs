@@ -25,7 +25,8 @@ public class KnightBehaviour : MonoBehaviour
     private float _hitTimer = 0;
     private bool _canHit = false;
     public AnimationClip knightSlash2;
-    private NavMeshModifier navMeshModifier;
+    [SerializeField]
+    private int health;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,7 +38,10 @@ public class KnightBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
         _hitTimer += Time.deltaTime;
         if (_hitTimer > _hitTime)
         {
@@ -103,8 +107,36 @@ public class KnightBehaviour : MonoBehaviour
         playerPosition = GameObject.FindGameObjectsWithTag("Player")[0].transform.position;
         if (Vector3.Distance(playerPosition, transform.position) < 2.5f)
         {
-            Debug.Log("Touché");
+            //Debug.Log("Touché");
+            GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<HealthOrb>().Damage(5);
         }
+    }
+
+    public void LooseHealth(int healthLoss)
+    {
+        health -= healthLoss;
+        StartCoroutine("Red");
+    }
+
+    IEnumerator Red()
+    {
+
+
+        Transform cube = gameObject.transform.Find("Cube.002");
+        Material[] materials = cube.GetComponent<Renderer>().materials;
+        Color color0 = materials[0].color;
+        Color color1 = materials[1].color;
+        Color color2 = materials[2].color;
+        Color color3 = materials[3].color;
+        materials[0].color = Color.red;
+        materials[1].color = Color.red;
+        materials[2].color = Color.red;
+        materials[3].color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        materials[0].color = color0;
+        materials[1].color = color1;
+        materials[2].color = color2;
+        materials[3].color = color3;
     }
 
 }

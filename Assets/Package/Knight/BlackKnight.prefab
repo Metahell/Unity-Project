@@ -118,7 +118,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4296187049228626}
   - component: {fileID: -1933083587386544627}
-  - component: {fileID: 9137628534388414361}
   - component: {fileID: 95492813676292648}
   - component: {fileID: -1588762416945285336}
   - component: {fileID: -1075067739528147335}
@@ -166,18 +165,6 @@ MonoBehaviour:
   decceleration: 10
   agent: {fileID: -1588762416945285336}
   knightSlash2: {fileID: 7400000, guid: 6908e42f0eeb8f04a9b93bf478de1fa3, type: 2}
---- !u!114 &9137628534388414361
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1009502973115248}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c12b04eb7a9c104e90511b5ef401b2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   health: 10
 --- !u!95 &95492813676292648
 Animator:
