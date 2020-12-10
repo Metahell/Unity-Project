@@ -11,7 +11,6 @@ public class WaveManager : MonoBehaviour
     private bool end=false;
     [SerializeField]
     private GameObject EndgameCanvas;
-    [SerializeField]
     private PlayerController controller;
     [SerializeField]
     private Text EndGameText;
@@ -26,6 +25,7 @@ public class WaveManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        controller = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerController>();
         StartCoroutine("Spawn");
     }
 
