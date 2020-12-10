@@ -18,7 +18,7 @@ public class TimeManager : MonoBehaviour
     {
         if(!end)
         {
-            TextTime.text = "TIME :" + Time.time.ToString("F1");
+            TextTime.text = "TIME :" + Time.time.ToString("F2");
         }
     }
     public string EndTime()

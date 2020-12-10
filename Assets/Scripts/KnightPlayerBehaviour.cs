@@ -19,7 +19,7 @@ public class KnightPlayerBehaviour : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && !animator.GetCurrentAnimatorStateInfo(1).IsTag("1"))
         {
-           animator.SetTrigger("1st Ability");
+            animator.SetTrigger("1st Ability");
         }
     }
 
