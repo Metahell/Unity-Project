@@ -2431,6 +2431,7 @@ PrefabInstance:
     - {fileID: 1949369959816395538, guid: 957fb60e14d1aa44e84a7af1a56ca1c0, type: 3}
     - {fileID: 4194317841142339000, guid: 957fb60e14d1aa44e84a7af1a56ca1c0, type: 3}
     - {fileID: 5390170862140131394, guid: 957fb60e14d1aa44e84a7af1a56ca1c0, type: 3}
+    - {fileID: 6803904057024868213, guid: 957fb60e14d1aa44e84a7af1a56ca1c0, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 957fb60e14d1aa44e84a7af1a56ca1c0, type: 3}
 --- !u!1 &1055453408
 GameObject:
@@ -4217,6 +4218,8 @@ PrefabInstance:
     - {fileID: 6981381849211542443, guid: 715d0c89da61c7c408786a0f2c18cd52, type: 3}
     - {fileID: 4351653088871865299, guid: 715d0c89da61c7c408786a0f2c18cd52, type: 3}
     - {fileID: 7306727605239621902, guid: 715d0c89da61c7c408786a0f2c18cd52, type: 3}
+    - {fileID: 4330262432237800835, guid: 715d0c89da61c7c408786a0f2c18cd52, type: 3}
+    - {fileID: 6912667958918366347, guid: 715d0c89da61c7c408786a0f2c18cd52, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 715d0c89da61c7c408786a0f2c18cd52, type: 3}
 --- !u!4 &1966205305 stripped
 Transform:
