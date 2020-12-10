@@ -20,7 +20,7 @@ public class Arrow : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rigi.velocity = transform.up * speed;
+        rigi.velocity = transform.forward * speed;
     }
 
     private void OnTriggerEnter(Collider other)
