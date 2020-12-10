@@ -36,7 +36,6 @@ public class KnightPlayerBehaviour : MonoBehaviour
             {
                 collider.gameObject.GetComponent<KnightBehaviour>().LooseHealth(5);
                 StartCoroutine(PushKnight(collider.gameObject));
-                collider.gameObject.GetComponent<Rigidbody>().AddForce(transform.forward*3000);
             }
         }
     }
@@ -45,6 +44,7 @@ public class KnightPlayerBehaviour : MonoBehaviour
     {
         knight.GetComponent<KnightBehaviour>().is_pushed = true;
         knight.GetComponent<Rigidbody>().isKinematic = false;
+        knight.GetComponent<Rigidbody>().AddForce(transform.forward*3000);
         yield return new WaitForSeconds(0.5f);
         if (knight != null)
         {
