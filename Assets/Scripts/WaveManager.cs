@@ -70,7 +70,7 @@ public class WaveManager : MonoBehaviour
     }
     private int CheckEnemyCount()
     {
-        return GameObject.FindGameObjectsWithTag("Enemy").Length;
+        return GameObject.FindGameObjectsWithTag("Enemy").Length + GameObject.FindGameObjectsWithTag("Archer").Length;
 
     }
     public void Lose()
