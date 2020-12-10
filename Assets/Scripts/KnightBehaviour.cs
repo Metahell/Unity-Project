@@ -19,7 +19,7 @@ public class KnightBehaviour : MonoBehaviour
     [SerializeField]
     private float decceleration;
     private Vector3 playerPosition;
-    private bool is_moving = true;
+    public bool is_moving = true;
     public NavMeshAgent agent;
     private float _hitTime = 1;
     private float _hitTimer = 0;

@@ -35,6 +35,11 @@ public class KnightPlayerBehaviour : MonoBehaviour
             if (collider.gameObject.CompareTag("Enemy"))
             {
                 collider.gameObject.GetComponent<KnightBehaviour>().LooseHealth(5);
+                collider.gameObject.GetComponent<KnightBehaviour>().is_moving = true;
+                collider.gameObject.GetComponent<Rigidbody>().isKinematic = false;
+                collider.gameObject.GetComponent<Rigidbody>().velocity = transform.forward * 10;
+                collider.gameObject.GetComponent<Rigidbody>().AddForce(transform.forward*10);
+                collider.gameObject.transform.position += transform.forward;
             }
         }
     }
