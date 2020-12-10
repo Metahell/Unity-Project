@@ -5,8 +5,8 @@ using UnityEngine.AI;
 
 public class ArcherBehaviour : MonoBehaviour
 {
-    [SerializedField]
-    private prefab arrow; 
+    [SerializeField]
+    private Arrow arrow; 
     [Header("Link")]
     private Rigidbody rigi;
 

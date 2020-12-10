@@ -7,7 +7,7 @@ public class Arrow : MonoBehaviour
 {
     private Rigidbody rigi;
     private Renderer renderer;
-    private HealthManager Health;
+    private KnightBehaviour Health;
 
     [SerializeField]
     private float speed;
@@ -16,7 +16,6 @@ public class Arrow : MonoBehaviour
     {
         rigi = GetComponent<Rigidbody>();
         renderer = GetComponent<Renderer>();
-        renderer.material.color = Random.ColorHSV();
     }
 
     private void FixedUpdate()
@@ -28,24 +27,14 @@ public class Arrow : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            other.GetComponent<HealthManager>().LooseHealth(5);
+            other.GetComponent<KnightBehaviour>().LooseHealth(5);
         }
         Remove();
     }
 
     public void Remove()
     {
-        BulletFactory.GetInstance().RemoveBullet(this);
-    }
-
-    private void OnEnable()
-    {
-        renderer.material.color = Random.ColorHSV();
-    }
-
-    private void OnDisable()
-    {
-
+        Factory.GetInstance().RemoveArrow(this);
     }
 
 }
