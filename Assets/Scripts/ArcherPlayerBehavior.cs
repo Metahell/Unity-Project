@@ -13,10 +13,9 @@ public class ArcherPlayerBehavior : MonoBehaviour
     private float shootAngle;
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)/* && !animator.GetCurrentAnimatorStateInfo(1).IsTag("1")*/)
+        if (Input.GetMouseButtonDown(0)&& !animator.GetCurrentAnimatorStateInfo(1).IsTag("1"))
         {
             animator.SetTrigger("1st Ability");
-            Ability1();
         }
     }
 

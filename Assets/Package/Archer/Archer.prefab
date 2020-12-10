@@ -1743,6 +1743,7 @@ GameObject:
   - component: {fileID: 4351653088871865299}
   - component: {fileID: 6981381849211542443}
   - component: {fileID: 6912667958918366347}
+  - component: {fileID: 4330262432237800835}
   m_Layer: 0
   m_Name: Archer
   m_TagString: Untagged
@@ -1849,6 +1850,22 @@ MonoBehaviour:
   spawnPoint: {fileID: 0}
   animator: {fileID: 95308412625735534}
   shootAngle: 0
+--- !u!114 &4330262432237800835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1699323559678470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a371bece872136642b29b17e6f201b9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hpmax: 100
+  healthOrb: {fileID: 0}
+  slider: {fileID: 0}
+  WaveManager: {fileID: 0}
 --- !u!1 &1703701882624204
 GameObject:
   m_ObjectHideFlags: 0
