@@ -45,7 +45,6 @@ public class ArcherBehaviour : MonoBehaviour
     {
         rigi = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Confined;
-        _fireTimer -= archershot.length;
     }
 
     // Update is called once per frame
@@ -56,8 +55,9 @@ public class ArcherBehaviour : MonoBehaviour
             _canShoot = true;
 
         playerPosition = GameObject.FindGameObjectsWithTag("Player")[0].transform.position;
+        float distanceToPlayer = Vector3.Distance(playerPosition, transform.position);
 
-        if (Vector3.Distance(playerPosition, transform.position) < 5f || animator.GetCurrentAnimatorStateInfo(1).IsTag("1") || canShoot() )
+        if ( ( (distanceToPlayer < 15f && distanceToPlayer > 6f)|| animator.GetCurrentAnimatorStateInfo(1).IsTag("1") ) && canShoot() )
         {
             agent.enabled = false;
             rigi.velocity = Vector3.zero;
@@ -77,7 +77,10 @@ public class ArcherBehaviour : MonoBehaviour
             rigi.isKinematic = false;
             agent.enabled = true;
             is_moving = true;
-            agent.SetDestination(playerPosition);
+            if (distanceToPlayer > 15f)
+                agent.SetDestination(playerPosition);
+            if (distanceToPlayer < 6f)
+                agent.SetDestination(transform.position +(transform.position - playerPosition).normalized);
             mouvementVector = (transform.forward).normalized;
         }
         UpdateAnimator();
@@ -99,8 +102,8 @@ public class ArcherBehaviour : MonoBehaviour
 
     private void UpdateAnimator()
     {
-        animator.SetFloat("velocityForward", Vector3.Dot(rigi.velocity, transform.forward));
-        animator.SetFloat("velocityRight", Vector3.Dot(rigi.velocity, transform.right));
+        animator.SetFloat("velocityForward", 15* Vector3.Dot(rigi.velocity, transform.forward));
+        animator.SetFloat("velocityRight", 15* Vector3.Dot(rigi.velocity, transform.right));
         animator.SetFloat("velocity", rigi.velocity.magnitude);
     }
 
@@ -148,6 +151,6 @@ public class ArcherBehaviour : MonoBehaviour
     private bool canShoot()
     {
         //test via RayCast in direction of player if obstacle then return true else false
-        return _canShoot;
+        return true;
     }
 }
