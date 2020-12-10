@@ -1742,12 +1742,9 @@ GameObject:
   - component: {fileID: 7306727605239621902}
   - component: {fileID: 4351653088871865299}
   - component: {fileID: 6981381849211542443}
-<<<<<<< Updated upstream
-=======
   - component: {fileID: 6912667958918366347}
   - component: {fileID: 4330262432237800835}
   - component: {fileID: 1983119504927379382}
->>>>>>> Stashed changes
   m_Layer: 0
   m_Name: Archer
   m_TagString: Untagged
@@ -1838,8 +1835,6 @@ MonoBehaviour:
   acceleration: 5
   decceleration: 10
   targetDirection: {fileID: 3055393994836151143}
-<<<<<<< Updated upstream
-=======
 --- !u!114 &6912667958918366347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1887,7 +1882,6 @@ MonoBehaviour:
   m_Area: 0
   m_IgnoreFromBuild: 1
   m_AffectedAgents: ffffffff
->>>>>>> Stashed changes
 --- !u!1 &1703701882624204
 GameObject:
   m_ObjectHideFlags: 0
