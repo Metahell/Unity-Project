@@ -29,6 +29,14 @@ public class Arrow : MonoBehaviour
         {
             other.GetComponent<KnightBehaviour>().LooseHealth(5);
         }
+        else if (other.CompareTag("Archer"))
+        {
+            other.GetComponent<ArcherBehaviour>().LooseHealth(5);
+        }
+        if (other.CompareTag("Player"))
+        {
+            GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<HealthOrb>().Damage(5);
+        }
         Remove();
     }
 

@@ -37,6 +37,10 @@ public class KnightPlayerBehaviour : MonoBehaviour
                 collider.gameObject.GetComponent<KnightBehaviour>().LooseHealth(5);
                 StartCoroutine(PushKnight(collider.gameObject));
             }
+            else if (collider.gameObject.CompareTag("Archer"))
+            {
+                collider.gameObject.GetComponent<ArcherBehaviour>().LooseHealth(5);
+            }
         }
     }
 

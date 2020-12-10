@@ -12,8 +12,7 @@ public class ArcherBehaviour : MonoBehaviour
 
     [SerializeField] 
     private Animator animator;
-
-    [SerializeField] 
+ 
     private Vector3 mouvementVector = Vector3.zero;
     private Vector3 motionVector = Vector3.zero;
     private Vector3 direction;
@@ -29,31 +28,53 @@ public class ArcherBehaviour : MonoBehaviour
     private bool is_moving = true;
     public NavMeshAgent agent;
 
+    [SerializeField]
+    private float _attackSpeed = 0.5f;
+    private float _fireTimer = 0;
+    private bool _canShoot = false;
+    public AnimationClip archershot;
+
+    [SerializeField]
+    private Transform spawnPoint;
+
+    [SerializeField]
+    private int health;
+
     // Start is called before the first frame update
     void Start()
     {
         rigi = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Confined;
+        _fireTimer -= archershot.length;
     }
 
     // Update is called once per frame
     void Update()
     {
+        _fireTimer += Time.deltaTime;
+        if (_fireTimer > (1/_attackSpeed) )
+            _canShoot = true;
+
         playerPosition = GameObject.FindGameObjectsWithTag("Player")[0].transform.position;
 
-        if (Vector3.Distance(playerPosition, transform.position) < 20f || animator.GetCurrentAnimatorStateInfo(1).IsTag("1") || canShoot() )
+        if (Vector3.Distance(playerPosition, transform.position) < 5f || animator.GetCurrentAnimatorStateInfo(1).IsTag("1") || canShoot() )
         {
             agent.enabled = false;
             rigi.velocity = Vector3.zero;
-            if (!animator.GetCurrentAnimatorStateInfo(1).IsTag("1"))
+            rigi.isKinematic = true;
+
+            if (!animator.GetCurrentAnimatorStateInfo(1).IsTag("1") && _canShoot)
             {
                 animator.SetTrigger("Shoot");
-                
+                Shoot();
+                _canShoot = false;
+                _fireTimer = 0;
             }
             is_moving = false;
         }
         else
         {
+            rigi.isKinematic = false;
             agent.enabled = true;
             is_moving = true;
             agent.SetDestination(playerPosition);
@@ -92,10 +113,41 @@ public class ArcherBehaviour : MonoBehaviour
 
     }
 
+    public void LooseHealth(int healthLoss)
+    {
+        health -= healthLoss;
+        StartCoroutine("Red");
+    }
 
+    IEnumerator Red()
+    {
+        Transform cube = gameObject.transform.Find("Cube.003");
+        Material[] materials = cube.GetComponent<Renderer>().materials;
+        Color color0 = materials[0].color;
+        Color color1 = materials[1].color;
+        Color color2 = materials[2].color;
+        materials[0].color = Color.red;
+        materials[1].color = Color.red;
+        materials[2].color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        materials[0].color = color0;
+        materials[1].color = color1;
+        materials[2].color = color2;
+
+        if (health <= 0)              //if no hp then dies => despawn
+            Destroy(gameObject);
+    }
+
+    private void Shoot()
+    {
+        Vector3 direction = transform.forward;
+        GameObject arrow = Factory.GetInstance().GetArrow();
+        arrow.transform.position = spawnPoint.position;
+        arrow.transform.forward = direction;
+    }
     private bool canShoot()
     {
         //test via RayCast in direction of player if obstacle then return true else false
-        return true;
+        return _canShoot;
     }
 }
