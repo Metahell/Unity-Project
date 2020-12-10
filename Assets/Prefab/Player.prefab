@@ -2029,6 +2029,8 @@ GameObject:
   - component: {fileID: 114457192515976260}
   - component: {fileID: 114718902315699534}
   - component: {fileID: 136727570800951346}
+  - component: {fileID: 1562552280700798537}
+  - component: {fileID: 5515203748630062886}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2116,6 +2118,38 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1562552280700798537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1731779771780530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a371bece872136642b29b17e6f201b9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hpmax: 100
+  healthOrb: {fileID: 0}
+  slider: {fileID: 0}
+  WaveManager: {fileID: 0}
+--- !u!114 &5515203748630062886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1731779771780530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d07ce676d7afda4dabb3b0f7dd5e654, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 0
+  m_Area: 0
+  m_IgnoreFromBuild: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &1755723400781622
 GameObject:
   m_ObjectHideFlags: 0
