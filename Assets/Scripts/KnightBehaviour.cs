@@ -27,9 +27,11 @@ public class KnightBehaviour : MonoBehaviour
     public AnimationClip knightSlash2;
     [SerializeField]
     private int health;
+    public bool is_pushed;
     // Start is called before the first frame update
     void Start()
     {
+        is_pushed = false;
         rigi = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Confined;
         _hitTime += knightSlash2.length;
@@ -52,7 +54,10 @@ public class KnightBehaviour : MonoBehaviour
         {
             agent.enabled = false;
             rigi.velocity = Vector3.zero;
-            rigi.isKinematic = true;
+            if (!is_pushed)
+            {
+                rigi.isKinematic = true;
+            }
             if (!animator.GetCurrentAnimatorStateInfo(1).IsTag("1") && _canHit)
             {
                 animator.SetTrigger("Attack");

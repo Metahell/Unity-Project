@@ -35,12 +35,20 @@ public class KnightPlayerBehaviour : MonoBehaviour
             if (collider.gameObject.CompareTag("Enemy"))
             {
                 collider.gameObject.GetComponent<KnightBehaviour>().LooseHealth(5);
-                collider.gameObject.GetComponent<KnightBehaviour>().is_moving = true;
-                collider.gameObject.GetComponent<Rigidbody>().isKinematic = false;
-                collider.gameObject.GetComponent<Rigidbody>().velocity = transform.forward * 10;
-                collider.gameObject.GetComponent<Rigidbody>().AddForce(transform.forward*10);
-                collider.gameObject.transform.position += transform.forward;
+                StartCoroutine(PushKnight(collider.gameObject));
+                collider.gameObject.GetComponent<Rigidbody>().AddForce(transform.forward*3000);
             }
+        }
+    }
+
+    IEnumerator PushKnight(GameObject knight)
+    {
+        knight.GetComponent<KnightBehaviour>().is_pushed = true;
+        knight.GetComponent<Rigidbody>().isKinematic = false;
+        yield return new WaitForSeconds(0.5f);
+        if (knight != null)
+        {
+            knight.GetComponent<KnightBehaviour>().is_pushed = false;
         }
     }
 }
