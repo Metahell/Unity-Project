@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1615655021477826008}
   - component: {fileID: 1615655021477826009}
   - component: {fileID: 2842305608924911330}
+  - component: {fileID: -2409337320011281534}
   m_Layer: 0
   m_Name: Fireball
   m_TagString: Untagged
@@ -90,11 +91,11 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1615655021477826010}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.64222026
+  m_Center: {x: 0, y: 0.07099354, z: -0.07172783}
 --- !u!114 &2842305608924911330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,6 +109,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+--- !u!54 &-2409337320011281534
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615655021477826010}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1615655022744005225
 GameObject:
   m_ObjectHideFlags: 0
@@ -276,7 +293,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.68295836
+      scalar: 0.618252
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -768,7 +785,7 @@ ParticleSystem:
     serializedVersion: 6
     enabled: 1
     type: 4
-    angle: 12.320719
+    angle: 21.917711
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
@@ -4817,8 +4834,8 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2100000, guid: d2b7501d4c834fc49aeae31d4c937d66, type: 2}
+  - {fileID: 2100000, guid: d2b7501d4c834fc49aeae31d4c937d66, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

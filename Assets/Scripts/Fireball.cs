@@ -28,7 +28,10 @@ public class Fireball : MonoBehaviour
         {
             other.GetComponent<KnightBehaviour>().LooseHealth(5);
         }
-        Remove();
+        else
+        {
+            Remove();
+        }
     }
 
     public void Remove()

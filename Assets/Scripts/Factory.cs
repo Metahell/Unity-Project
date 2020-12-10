@@ -50,14 +50,15 @@ public class Factory : MonoBehaviour
     public GameObject GetFireball()
     {
         //On a déjà des balles disponibles
-        if (pool.Count > 0)
+        if (poolf.Count > 0)
         {
-            GameObject bulletObj = pool.Dequeue().gameObject;
+            GameObject bulletObj = poolf.Dequeue().gameObject;
             bulletObj.SetActive(true);
             return bulletObj;
         }
         else
         {
+            Debug.Log("fire");
             return Instantiate(FireballPrefab, transform).gameObject;
         }
     }
