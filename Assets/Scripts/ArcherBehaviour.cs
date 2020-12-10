@@ -25,6 +25,7 @@ public class ArcherBehaviour : MonoBehaviour
     [SerializeField]
     private float decceleration;
     private Vector3 playerPosition;
+    float distanceToPlayer;
     private bool is_moving = true;
     public NavMeshAgent agent;
 
@@ -32,7 +33,7 @@ public class ArcherBehaviour : MonoBehaviour
     private float _attackSpeed = 0.5f;
     private float _fireTimer = 0;
     private bool _canShoot = false;
-    public AnimationClip archershot;
+    private bool _visionClear = true;
 
     [SerializeField]
     private Transform spawnPoint;
@@ -57,7 +58,7 @@ public class ArcherBehaviour : MonoBehaviour
         playerPosition = GameObject.FindGameObjectsWithTag("Player")[0].transform.position;
         float distanceToPlayer = Vector3.Distance(playerPosition, transform.position);
 
-        if ( ( (distanceToPlayer < 15f && distanceToPlayer > 6f)|| animator.GetCurrentAnimatorStateInfo(1).IsTag("1") ) && canShoot() )
+        if ( ( (distanceToPlayer < 20f && distanceToPlayer > 6f)|| animator.GetCurrentAnimatorStateInfo(1).IsTag("1") ) && _visionClear )
         {
             agent.enabled = false;
             rigi.velocity = Vector3.zero;
@@ -65,7 +66,7 @@ public class ArcherBehaviour : MonoBehaviour
 
             if (!animator.GetCurrentAnimatorStateInfo(1).IsTag("1") && _canShoot)
             {
-                animator.SetTrigger("Shoot");
+                animator.SetTrigger("1st Ability");
                 Shoot();
                 _canShoot = false;
                 _fireTimer = 0;
@@ -77,14 +78,23 @@ public class ArcherBehaviour : MonoBehaviour
             rigi.isKinematic = false;
             agent.enabled = true;
             is_moving = true;
-            if (distanceToPlayer > 15f)
+            if (!_visionClear)
+            {
                 agent.SetDestination(playerPosition);
-            if (distanceToPlayer < 6f)
-                agent.SetDestination(transform.position +(transform.position - playerPosition).normalized);
+            }
+            else
+            {
+                if (distanceToPlayer > 20f)
+                    agent.SetDestination(playerPosition);
+                if (distanceToPlayer < 6f)
+                    agent.SetDestination(transform.position + (transform.position - playerPosition).normalized);
+            }
             mouvementVector = (transform.forward).normalized;
         }
         UpdateAnimator();
         DoRotation();
+
+        //Debug.Log(_visionClear.ToString() +"  "+ distanceToPlayer.ToString());
     }
 
     private void FixedUpdate()
@@ -98,6 +108,8 @@ public class ArcherBehaviour : MonoBehaviour
         }
         if (direction.magnitude > 0)
             transform.forward = Vector3.Lerp(transform.forward, direction, .3f);
+
+        _visionClear = canShoot();
     }
 
     private void UpdateAnimator()
@@ -150,7 +162,9 @@ public class ArcherBehaviour : MonoBehaviour
     }
     private bool canShoot()
     {
-        //test via RayCast in direction of player if obstacle then return true else false
-        return true;
+        RaycastHit hit;
+        Vector3 origin = transform.position + new Vector3(0, 2, 0);
+        Vector3 dest = playerPosition + new Vector3(0, 2, 0);
+        return !Physics.Raycast(origin,dest-origin, out hit, 40f, LayerMask.GetMask("Obstacle"));
     }
 }

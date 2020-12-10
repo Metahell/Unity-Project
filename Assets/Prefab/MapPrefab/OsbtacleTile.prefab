@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8950683606500160109}
   - component: {fileID: 3661028937389179412}
   - component: {fileID: 2939211505950276580}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 2192350176162551164}
   - component: {fileID: 9070866754075911034}
   - component: {fileID: -1518183109082422420}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: OsbtacleTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}

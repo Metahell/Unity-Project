@@ -2452,10 +2452,20 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 0.05
       objectReference: {fileID: 0}
+    - target: {fileID: 2439394834625551647, guid: 07c001adacb3b414eaa6026a74f833f7,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 4932004614652204307, guid: 07c001adacb3b414eaa6026a74f833f7,
         type: 3}
       propertyPath: m_Name
       value: OsbtacleTile (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4932004614652204307, guid: 07c001adacb3b414eaa6026a74f833f7,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07c001adacb3b414eaa6026a74f833f7, type: 3}
@@ -3262,7 +3272,6 @@ MonoBehaviour:
   decceleration: 10
   agent: {fileID: 710648765}
   _attackSpeed: 0.3
-  archershot: {fileID: 7400000, guid: a799a0e581b4d0941be0a22b1a358835, type: 2}
   spawnPoint: {fileID: 241993628}
   health: 5
 --- !u!95 &710648763 stripped
@@ -6359,10 +6368,20 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 0.05
       objectReference: {fileID: 0}
+    - target: {fileID: 2439394834625551647, guid: 07c001adacb3b414eaa6026a74f833f7,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 4932004614652204307, guid: 07c001adacb3b414eaa6026a74f833f7,
         type: 3}
       propertyPath: m_Name
       value: OsbtacleTile (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4932004614652204307, guid: 07c001adacb3b414eaa6026a74f833f7,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07c001adacb3b414eaa6026a74f833f7, type: 3}
@@ -9580,10 +9599,20 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 0.05
       objectReference: {fileID: 0}
+    - target: {fileID: 2439394834625551647, guid: 07c001adacb3b414eaa6026a74f833f7,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 4932004614652204307, guid: 07c001adacb3b414eaa6026a74f833f7,
         type: 3}
       propertyPath: m_Name
       value: OsbtacleTile
+      objectReference: {fileID: 0}
+    - target: {fileID: 4932004614652204307, guid: 07c001adacb3b414eaa6026a74f833f7,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07c001adacb3b414eaa6026a74f833f7, type: 3}
