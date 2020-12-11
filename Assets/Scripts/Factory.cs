@@ -58,7 +58,6 @@ public class Factory : MonoBehaviour
         }
         else
         {
-            Debug.Log("fire");
             return Instantiate(FireballPrefab, transform).gameObject;
         }
     }

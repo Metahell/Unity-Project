@@ -25,6 +25,5 @@ public class ArcherPlayerBehavior : MonoBehaviour
         GameObject arrow = Factory.GetInstance().GetArrow();
         arrow.transform.position = spawnPoint.position;
         arrow.transform.forward = direction;
-
     }
 }
