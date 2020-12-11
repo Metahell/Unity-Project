@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour
         if(gameObject.GetComponent<HealthOrb>().getHealth() <= 0)
         {
             isDead = true;
+            UpdateAnimator();
         }
     }
 

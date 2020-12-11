@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3106,6 +3106,11 @@ PrefabInstance:
       propertyPath: healthOrb
       value: 
       objectReference: {fileID: 1755762212}
+    - target: {fileID: 4330262432237800835, guid: 715d0c89da61c7c408786a0f2c18cd52,
+        type: 3}
+      propertyPath: hpmax
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6912667958918366347, guid: 715d0c89da61c7c408786a0f2c18cd52,
         type: 3}
       propertyPath: spawnPoint
