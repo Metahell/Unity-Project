@@ -42,40 +42,43 @@ public class KnightBehaviour : MonoBehaviour
     {
         if (health <= 0)
         {
-            Destroy(gameObject);
-        }
-        _hitTimer += Time.deltaTime;
-        if (_hitTimer > _hitTime)
-        {
-            _canHit = true;
-        }
-        playerPosition = GameObject.FindGameObjectsWithTag("Player")[0].transform.position;
-        if (Vector3.Distance(playerPosition,transform.position) < 2.5f || animator.GetCurrentAnimatorStateInfo(1).IsTag("1"))
-        {
-            agent.enabled = false;
-            rigi.velocity = Vector3.zero;
-            if (!is_pushed)
-            {
-                rigi.isKinematic = true;
-            }
-            if (!animator.GetCurrentAnimatorStateInfo(1).IsTag("1") && _canHit)
-            {
-                animator.SetTrigger("Attack");
-                _canHit = false;
-                _hitTimer = 0;
-            }
-            is_moving = false;
+            StartCoroutine(Death());
         }
         else
         {
-            rigi.isKinematic = false;
-            agent.enabled = true;
-            is_moving = true;
-            agent.SetDestination(playerPosition);
-            mouvementVector = (transform.forward).normalized;
+            _hitTimer += Time.deltaTime;
+            if (_hitTimer > _hitTime)
+            {
+                _canHit = true;
+            }
+            playerPosition = GameObject.FindGameObjectsWithTag("Player")[0].transform.position;
+            if (Vector3.Distance(playerPosition, transform.position) < 2.5f || animator.GetCurrentAnimatorStateInfo(1).IsTag("1"))
+            {
+                agent.enabled = false;
+                rigi.velocity = Vector3.zero;
+                if (!is_pushed)
+                {
+                    rigi.isKinematic = true;
+                }
+                if (!animator.GetCurrentAnimatorStateInfo(1).IsTag("1") && _canHit)
+                {
+                    animator.SetTrigger("Attack");
+                    _canHit = false;
+                    _hitTimer = 0;
+                }
+                is_moving = false;
+            }
+            else
+            {
+                rigi.isKinematic = false;
+                agent.enabled = true;
+                is_moving = true;
+                agent.SetDestination(playerPosition);
+                mouvementVector = (transform.forward).normalized;
+            }
+            UpdateAnimator();
+            DoRotation();
         }
-        UpdateAnimator();
-        DoRotation();
     }
 
     private void FixedUpdate()
@@ -142,6 +145,16 @@ public class KnightBehaviour : MonoBehaviour
         materials[1].color = color1;
         materials[2].color = color2;
         materials[3].color = color3;
+    }
+
+    IEnumerator Death()
+    {
+        animator.SetBool("IsDead", true);
+        agent.enabled = false;
+        gameObject.GetComponent<Collider>().enabled = false;
+        UpdateAnimator();
+        yield return new WaitForSeconds(2f);
+        Destroy(gameObject);
     }
 
 }
