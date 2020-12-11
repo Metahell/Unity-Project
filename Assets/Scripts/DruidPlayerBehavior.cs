@@ -27,7 +27,11 @@ public class DruidPlayerBehavior : MonoBehaviour
 
     public void Ability1()
     {
-      
+        Vector3 direction = transform.forward;
+        GameObject axe = Factory.GetInstance().GetAxe();
+        axe.transform.position = spawnPoint.position;
+        axe.GetComponent<Axe>().setDirection(transform.forward);
+        axe.transform.right = direction;
 
     }
     public void Ability2()
