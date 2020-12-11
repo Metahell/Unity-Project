@@ -151,6 +151,7 @@ public class KnightBehaviour : MonoBehaviour
     {
         animator.SetBool("IsDead", true);
         agent.enabled = false;
+        rigi.isKinematic = true;
         gameObject.GetComponent<Collider>().enabled = false;
         UpdateAnimator();
         yield return new WaitForSeconds(2f);

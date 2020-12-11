@@ -41,9 +41,11 @@ public class ArcherBehaviour : MonoBehaviour
     [SerializeField]
     private int health;
 
+    public bool is_pushed;
     // Start is called before the first frame update
     void Start()
     {
+        is_pushed = false;
         rigi = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Confined;
     }
@@ -68,7 +70,10 @@ public class ArcherBehaviour : MonoBehaviour
             {
                 agent.enabled = false;
                 rigi.velocity = Vector3.zero;
-                rigi.isKinematic = true;
+                if (!is_pushed)
+                {
+                    rigi.isKinematic = true;
+                }
 
                 if (!animator.GetCurrentAnimatorStateInfo(1).IsTag("1") && _canShoot)
                 {
@@ -177,6 +182,7 @@ public class ArcherBehaviour : MonoBehaviour
     {
         animator.SetBool("IsDead", true);
         agent.enabled = false;
+        rigi.isKinematic = true;
         gameObject.GetComponent<Collider>().enabled = false;
         UpdateAnimator();
         yield return new WaitForSeconds(2f);
