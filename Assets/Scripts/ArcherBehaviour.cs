@@ -51,48 +51,55 @@ public class ArcherBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _fireTimer += Time.deltaTime;
-        if (_fireTimer > (1/_attackSpeed) )
-            _canShoot = true;
-
-        playerPosition = GameObject.FindGameObjectsWithTag("Player")[0].transform.position;
-        float distanceToPlayer = Vector3.Distance(playerPosition, transform.position);
-
-        if ( ( (distanceToPlayer < 20f && distanceToPlayer > 6f)|| animator.GetCurrentAnimatorStateInfo(1).IsTag("1") ) && _visionClear )
+        if (health <= 0)
         {
-            agent.enabled = false;
-            rigi.velocity = Vector3.zero;
-            rigi.isKinematic = true;
-
-            if (!animator.GetCurrentAnimatorStateInfo(1).IsTag("1") && _canShoot)
-            {
-                animator.SetTrigger("1st Ability");
-                Shoot();
-                _canShoot = false;
-                _fireTimer = 0;
-            }
-            is_moving = false;
+            StartCoroutine(Death());
         }
         else
         {
-            rigi.isKinematic = false;
-            agent.enabled = true;
-            is_moving = true;
-            if (!_visionClear)
+            _fireTimer += Time.deltaTime;
+            if (_fireTimer > (1 / _attackSpeed))
+                _canShoot = true;
+
+            playerPosition = GameObject.FindGameObjectsWithTag("Player")[0].transform.position;
+            float distanceToPlayer = Vector3.Distance(playerPosition, transform.position);
+
+            if (((distanceToPlayer < 20f && distanceToPlayer > 6f) || animator.GetCurrentAnimatorStateInfo(1).IsTag("1")) && _visionClear)
             {
-                agent.SetDestination(playerPosition);
+                agent.enabled = false;
+                rigi.velocity = Vector3.zero;
+                rigi.isKinematic = true;
+
+                if (!animator.GetCurrentAnimatorStateInfo(1).IsTag("1") && _canShoot)
+                {
+                    animator.SetTrigger("1st Ability");
+                    Shoot();
+                    _canShoot = false;
+                    _fireTimer = 0;
+                }
+                is_moving = false;
             }
             else
             {
-                if (distanceToPlayer > 20f)
+                rigi.isKinematic = false;
+                agent.enabled = true;
+                is_moving = true;
+                if (!_visionClear)
+                {
                     agent.SetDestination(playerPosition);
-                if (distanceToPlayer < 6f)
-                    agent.SetDestination(transform.position + (transform.position - playerPosition).normalized);
+                }
+                else
+                {
+                    if (distanceToPlayer > 20f)
+                        agent.SetDestination(playerPosition);
+                    if (distanceToPlayer < 6f)
+                        agent.SetDestination(transform.position + (transform.position - playerPosition).normalized);
+                }
+                mouvementVector = (transform.forward).normalized;
             }
-            mouvementVector = (transform.forward).normalized;
+            UpdateAnimator();
+            DoRotation();
         }
-        UpdateAnimator();
-        DoRotation();
 
         //Debug.Log(_visionClear.ToString() +"  "+ distanceToPlayer.ToString());
     }
@@ -149,8 +156,6 @@ public class ArcherBehaviour : MonoBehaviour
         materials[1].color = color1;
         materials[2].color = color2;
 
-        if (health <= 0)              //if no hp then dies => despawn
-            Destroy(gameObject);
     }
 
     private void Shoot()
@@ -166,5 +171,15 @@ public class ArcherBehaviour : MonoBehaviour
         Vector3 origin = transform.position + new Vector3(0, 2, 0);
         Vector3 dest = playerPosition + new Vector3(0, 2, 0);
         return !Physics.Raycast(origin,dest-origin, out hit, 40f, LayerMask.GetMask("Obstacle"));
+    }
+
+    IEnumerator Death()
+    {
+        animator.SetBool("IsDead", true);
+        agent.enabled = false;
+        gameObject.GetComponent<Collider>().enabled = false;
+        UpdateAnimator();
+        yield return new WaitForSeconds(2f);
+        Destroy(gameObject);
     }
 }
