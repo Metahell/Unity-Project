@@ -75,7 +75,7 @@ public class WaveManager : MonoBehaviour
     }
     public void Lose()
     {
-        controller.enabled = false;
+        controller.Death();
         EndgameCanvas.SetActive(true);
         EndGameText.text = "GAME OVER\n TIME :"+tm.EndTime();
 

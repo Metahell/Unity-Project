@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        isDead = false;
         rigi = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Confined;
     }
@@ -33,23 +34,21 @@ public class PlayerController : MonoBehaviour
     {
         mouvementVector = (Vector3.forward * Input.GetAxisRaw("Vertical") + Vector3.right * Input.GetAxisRaw("Horizontal")).normalized;
         DoRotation();
-        UpdateAnimator();
-        if(gameObject.GetComponent<HealthOrb>().getHealth() <= 0)
-        {
-            isDead = true;
             UpdateAnimator();
-        }
     }
 
 
     private void FixedUpdate()
-    {   
+    {
         //Calculate velocity according to movementVector
-        motionVector = new Vector3(mouvementVector.x * maxVelocity, rigi.velocity.y, mouvementVector.z * maxVelocity);
-        float lerpSmooth = rigi.velocity.magnitude < motionVector.magnitude ? acceleration : decceleration;
-        rigi.velocity = Vector3.Lerp(rigi.velocity, motionVector, lerpSmooth / 20);
-        if (direction.magnitude > 0)
-            transform.forward = Vector3.Lerp(transform.forward, direction, .3f);
+        if (!isDead)
+        {
+            motionVector = new Vector3(mouvementVector.x * maxVelocity, rigi.velocity.y, mouvementVector.z * maxVelocity);
+            float lerpSmooth = rigi.velocity.magnitude < motionVector.magnitude ? acceleration : decceleration;
+            rigi.velocity = Vector3.Lerp(rigi.velocity, motionVector, lerpSmooth / 20);
+            if (direction.magnitude > 0)
+                transform.forward = Vector3.Lerp(transform.forward, direction, .3f);
+        }
     }
 
     /// <summary>
@@ -85,5 +84,11 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("velocityRight", Vector3.Dot(rigi.velocity, transform.right));
         animator.SetFloat("velocity", rigi.velocity.magnitude);
         animator.SetBool("isDead", isDead);
+    }
+
+    public void Death()
+    {
+        isDead = true;
+        UpdateAnimator();
     }
 }
