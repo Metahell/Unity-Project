@@ -59,7 +59,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7679078873469016670}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -1.351289, y: 0.71, z: -11.26}
+  m_LocalPosition: {x: -1.37, y: 0.31, z: -11.26}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7679078872616098370}
@@ -201,7 +201,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.62181103
+      scalar: 2.7717857
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -317,7 +317,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 6
+      scalar: 5
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -582,7 +582,7 @@ ParticleSystem:
     startRotation:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 0.87266463
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -633,7 +633,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 2000
+    maxNumParticles: 4000
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -693,10 +693,10 @@ ParticleSystem:
     serializedVersion: 6
     enabled: 1
     type: 4
-    angle: 0
+    angle: 7.617231
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
-    radiusThickness: 0.97626704
+    radiusThickness: 1
     donutRadius: 0.2
     m_Position: {x: 0, y: 0.0000022576714, z: -0.13817403}
     m_Rotation: {x: -0.0003960332, y: 0, z: 0}
@@ -779,7 +779,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 1.4097261
+      value: 0.4235654
       mode: 0
       spread: 0
       speed:
@@ -838,7 +838,7 @@ ParticleSystem:
     arc:
       value: 360
       mode: 0
-      spread: 0
+      spread: 0.5
       speed:
         serializedVersion: 2
         minMaxState: 0
@@ -1200,8 +1200,8 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - serializedVersion: 3
-          time: 0
-          value: 0
+          time: 0.12205505
+          value: 0.89123535
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -1209,8 +1209,8 @@ ParticleSystem:
           inWeight: 0.33333334
           outWeight: 0.33333334
         - serializedVersion: 3
-          time: 1
-          value: 0
+          time: 0.8072815
+          value: -0.9824524
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -1253,8 +1253,8 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - serializedVersion: 3
-          time: 0
-          value: 0
+          time: 0.13704681
+          value: -0.7368469
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -1262,8 +1262,8 @@ ParticleSystem:
           inWeight: 0.33333334
           outWeight: 0.33333334
         - serializedVersion: 3
-          time: 1
-          value: 0
+          time: 0.97003174
+          value: 0.6666641
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -1315,8 +1315,8 @@ ParticleSystem:
           inWeight: 0.33333334
           outWeight: 0.33333334
         - serializedVersion: 3
-          time: 0.94647217
-          value: -1
+          time: 0.9786072
+          value: -0.22805786
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -1326,7 +1326,7 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    separateAxes: 0
+    separateAxes: 1
   ColorModule:
     enabled: 1
     gradient:
@@ -1338,30 +1338,30 @@ ParticleSystem:
         serializedVersion: 2
         key0: {r: 0.9622642, g: 0.68444395, b: 0.12255252, a: 0}
         key1: {r: 0.9339623, g: 0.54050976, b: 0.101326115, a: 1}
-        key2: {r: 0.9339623, g: 0.54050976, b: 0.101326115, a: 1}
+        key2: {r: 0.509434, g: 0.30037382, b: 0.021626905, a: 1}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
         ctime0: 16769
-        ctime1: 22552
-        ctime2: 23708
+        ctime1: 26985
+        ctime2: 34117
         ctime3: 0
         ctime4: 0
         ctime5: 0
         ctime6: 0
         ctime7: 0
         atime0: 0
-        atime1: 14842
-        atime2: 42598
+        atime1: 8288
+        atime2: 32960
         atime3: 65535
-        atime4: 0
+        atime4: 65535
         atime5: 0
         atime6: 0
         atime7: 0
         m_Mode: 0
-        m_NumColorKeys: 2
+        m_NumColorKeys: 3
         m_NumAlphaKeys: 4
       minGradient:
         serializedVersion: 2
