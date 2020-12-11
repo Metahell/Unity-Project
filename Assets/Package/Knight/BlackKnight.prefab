@@ -46,7 +46,7 @@ NavMeshObstacle:
   m_Carve: 1
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
-  m_TimeToStationary: 0.5
+  m_TimeToStationary: 0.1
 --- !u!1 &1000813853481284
 GameObject:
   m_ObjectHideFlags: 0
@@ -163,9 +163,11 @@ MonoBehaviour:
   maxVelocity: 3
   acceleration: 5
   decceleration: 10
+  is_moving: 1
   agent: {fileID: -1588762416945285336}
   knightSlash2: {fileID: 7400000, guid: 6908e42f0eeb8f04a9b93bf478de1fa3, type: 2}
   health: 10
+  is_pushed: 0
 --- !u!95 &95492813676292648
 Animator:
   serializedVersion: 3
