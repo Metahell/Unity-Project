@@ -904,6 +904,7 @@ MonoBehaviour:
   _attackSpeed: 0.3
   spawnPoint: {fileID: 7794333626623172843}
   health: 5
+  is_pushed: 0
 --- !u!195 &7794333626156877002
 NavMeshAgent:
   m_ObjectHideFlags: 0
