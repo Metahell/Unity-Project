@@ -7,6 +7,7 @@ public class Fireball : MonoBehaviour
     private Rigidbody rigi;
     private Renderer renderer;
     private KnightBehaviour Health;
+    private KnightBehaviour KnightBehaviour;
 
     [SerializeField]
     private float speed;
@@ -26,16 +27,37 @@ public class Fireball : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            other.GetComponent<KnightBehaviour>().LooseHealth(5);
+            Collider[] colliders = Physics.OverlapSphere(this.transform.position, 1.5f);
+            foreach (Collider collider in colliders)
+            {
+                if (collider.gameObject.CompareTag("Enemy"))
+                {
+                    collider.gameObject.GetComponent<KnightBehaviour>().LooseHealth(5);
+                    StartCoroutine(PushKnight(collider.gameObject));
+                }
+                else if (collider.gameObject.CompareTag("Archer"))
+                {
+                    collider.gameObject.GetComponent<ArcherBehaviour>().LooseHealth(5);
+                }
+            }
         }
-        else
-        {
-            Remove();
-        }
+          Remove();
     }
 
     public void Remove()
     {
         Factory.GetInstance().RemoveFireball(this);
+    }
+
+    IEnumerator PushKnight(GameObject knight)
+    {
+        knight.GetComponent<KnightBehaviour>().is_pushed = true;
+        knight.GetComponent<Rigidbody>().isKinematic = false;
+        knight.GetComponent<Rigidbody>().AddForce(transform.forward * 3000);
+        yield return new WaitForSeconds(0.5f);
+        if (knight != null)
+        {
+            knight.GetComponent<KnightBehaviour>().is_pushed = false;
+        }
     }
 }

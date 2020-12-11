@@ -26,10 +26,6 @@ public class HealthOrb : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Space))
-        {
-            Damage(15);
-        }
         if (currentHp <= 0)
         {
             if (!end)
