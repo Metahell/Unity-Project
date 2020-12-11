@@ -8,6 +8,7 @@ public class Arrow : MonoBehaviour
     private Rigidbody rigi;
     private Renderer renderer;
     private KnightBehaviour Health;
+    private bool enemyArrow = false;
 
     [SerializeField]
     private float speed;
@@ -25,24 +26,38 @@ public class Arrow : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy"))
+        if (enemyArrow)
         {
-            other.GetComponent<KnightBehaviour>().LooseHealth(5);
+            if (other.CompareTag("Player"))
+            {
+                GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<HealthOrb>().Damage(5);
+            }
+            if (other.CompareTag("Enemy") || other.CompareTag("Archer"))
+                return;
         }
-        else if (other.CompareTag("Archer"))
+        else
         {
-            other.GetComponent<ArcherBehaviour>().LooseHealth(5);
+            if (other.CompareTag("Enemy"))
+            {
+                other.GetComponent<KnightBehaviour>().LooseHealth(5);
+            }
+            else if (other.CompareTag("Archer"))
+            {
+                other.GetComponent<ArcherBehaviour>().LooseHealth(5);
+            }
         }
-        if (other.CompareTag("Player"))
-        {
-            GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<HealthOrb>().Damage(5);
-        }
+
         Remove();
     }
 
     public void Remove()
     {
         Factory.GetInstance().RemoveArrow(this);
+        enemyArrow = false;
     }
 
+    public void IsEnemyArrow()
+    {
+        enemyArrow = true;
+    }
 }
