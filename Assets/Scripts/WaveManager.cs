@@ -59,8 +59,8 @@ public class WaveManager : MonoBehaviour
     {
         for(int i = 0; i < CurrentWave; i++)
         {
-            GameObject mob=Instantiate(EnnemyPool[(i%EnnemyPool.Count)]);
-            mob.transform.position = SpawnPoints[i % SpawnPoints.Count].transform.position;
+            GameObject mob=Instantiate(EnnemyPool[Random.Range(0,EnnemyPool.Count)]);
+            mob.transform.position = SpawnPoints[Random.Range(0, SpawnPoints.Count)].transform.position; //i % SpawnPoints.Count
 
             yield return new WaitForSeconds(1);
         }
@@ -71,7 +71,6 @@ public class WaveManager : MonoBehaviour
     private int CheckEnemyCount()
     {
         return GameObject.FindGameObjectsWithTag("Enemy").Length + GameObject.FindGameObjectsWithTag("Archer").Length;
-
     }
     public void Lose()
     {
