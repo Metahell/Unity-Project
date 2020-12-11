@@ -7,11 +7,12 @@ public class KnightPlayerBehaviour : MonoBehaviour
     [SerializeField]
     private Animator animator;
     private KnightBehaviour KnightBehaviour;
+    public bool is_jumping;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        is_jumping = false;
     }
 
     // Update is called once per frame
@@ -56,13 +57,17 @@ public class KnightPlayerBehaviour : MonoBehaviour
 
     IEnumerator Jump()
     {
-        Vector3 position = transform.position;
-        Vector3 goal = transform.position + 2 * transform.forward;
-        for (float i = 0; i < 1; i+=0.01f)
+        is_jumping = true;
+        /**Vector3 position = transform.position;
+        Vector3 goal = transform.position + 10 * transform.forward;
+        for (float i = 0; i < 1; i+=Time.deltaTime)
         {
             transform.position = Vector3.Lerp(position, goal, i);
-            yield return new WaitForSeconds(0.005f);
-        }
+            yield return null;
+        }**/
+        gameObject.GetComponent<Rigidbody>().velocity = transform.forward * 10 + transform.up * 10;
+        yield return new WaitForSeconds(2f);
+        is_jumping = false;
     }
 
     IEnumerator PushKnight(GameObject knight)

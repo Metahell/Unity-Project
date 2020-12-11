@@ -22,9 +22,11 @@ public class PlayerController : MonoBehaviour
     private Vector3 direction;
     private HealthOrb HealthOrb;
     private bool isDead;
+    private bool is_jumping;
 
     void Start()
     {
+        is_jumping = false;
         isDead = false;
         rigi = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Confined;
@@ -32,16 +34,23 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        mouvementVector = (Vector3.forward * Input.GetAxisRaw("Vertical") + Vector3.right * Input.GetAxisRaw("Horizontal")).normalized;
-        DoRotation();
+        if (gameObject.GetComponent<KnightPlayerBehaviour>() != null)
+        {
+            is_jumping = gameObject.GetComponent<KnightPlayerBehaviour>().is_jumping;
+        }
+        if (!is_jumping)
+        {
+            mouvementVector = (Vector3.forward * Input.GetAxisRaw("Vertical") + Vector3.right * Input.GetAxisRaw("Horizontal")).normalized;
+            DoRotation();
             UpdateAnimator();
+        }
     }
 
 
     private void FixedUpdate()
     {
         //Calculate velocity according to movementVector
-        if (!isDead)
+        if (!isDead && !is_jumping)
         {
             motionVector = new Vector3(mouvementVector.x * maxVelocity, rigi.velocity.y, mouvementVector.z * maxVelocity);
             float lerpSmooth = rigi.velocity.magnitude < motionVector.magnitude ? acceleration : decceleration;
