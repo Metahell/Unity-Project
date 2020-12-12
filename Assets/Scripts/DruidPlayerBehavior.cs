@@ -44,10 +44,10 @@ public class DruidPlayerBehavior : MonoBehaviour
     public void Ability2()
     {
         Vector3 DruidPos = transform.position;
-        Vector3 Spawn = new Vector3(Random.Range(DruidPos.x - 4,DruidPos.x + 4), 0.5f, Random.Range(DruidPos.z - 4, DruidPos.z + 4));
+        Vector3 Spawn = new Vector3(Random.Range(DruidPos.x - 4,DruidPos.x + 4), 0.27f, Random.Range(DruidPos.z - 4, DruidPos.z + 4));
         while (!CheckSpawn(Spawn,radius))
         {
-            Spawn = new Vector3(Random.Range(DruidPos.x - 4, DruidPos.x + 4), 0.5f, Random.Range(DruidPos.z - 4, DruidPos.z + 4));
+            Spawn = new Vector3(Random.Range(DruidPos.x - 4, DruidPos.x + 4), 0.27f, Random.Range(DruidPos.z - 4, DruidPos.z + 4));
         }
         Instantiate(wolf, Spawn,transform.rotation);
     }

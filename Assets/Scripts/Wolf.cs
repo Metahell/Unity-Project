@@ -34,6 +34,7 @@ public class Wolf : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        agent.Warp(transform.position);
         is_pushed = false;
         rigi = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Confined;
