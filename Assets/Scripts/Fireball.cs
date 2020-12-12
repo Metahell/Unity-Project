@@ -25,8 +25,6 @@ public class Fireball : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy"))
-        {
             Collider[] colliders = Physics.OverlapSphere(this.transform.position, 1.5f);
             foreach (Collider collider in colliders)
             {
@@ -40,7 +38,6 @@ public class Fireball : MonoBehaviour
                     collider.gameObject.GetComponent<ArcherBehaviour>().LooseHealth(5);
                 }
             }
-        }
           Remove();
     }
 
@@ -53,7 +50,7 @@ public class Fireball : MonoBehaviour
     {
         knight.GetComponent<KnightBehaviour>().is_pushed = true;
         knight.GetComponent<Rigidbody>().isKinematic = false;
-        knight.GetComponent<Rigidbody>().AddForce(transform.forward * 3000);
+        knight.GetComponent<Rigidbody>().AddForce(transform.forward * 4000);
         yield return new WaitForSeconds(0.5f);
         if (knight != null)
         {
