@@ -293,7 +293,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.618252
+      scalar: 0.5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -785,7 +785,7 @@ ParticleSystem:
     serializedVersion: 6
     enabled: 1
     type: 4
-    angle: 21.917711
+    angle: 17.831244
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
@@ -990,7 +990,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 100
+      scalar: 50
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -1043,7 +1043,7 @@ ParticleSystem:
     rateOverDistance:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 50
+      scalar: 30
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -4004,7 +4004,7 @@ ParticleSystem:
   TrailModule:
     enabled: 1
     mode: 0
-    ratio: 0.5
+    ratio: 1
     lifetime:
       serializedVersion: 2
       minMaxState: 0
@@ -4074,7 +4074,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.9339623, g: 0.45515412, b: 0.057271298, a: 1}
+      maxColor: {r: 0.93333334, g: 0.0588235, b: 0.31024042, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4136,8 +4136,8 @@ ParticleSystem:
     widthOverTrail:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1
-      minScalar: 1
+      scalar: 2
+      minScalar: 0
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -4190,7 +4190,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 0.9757106, b: 0.9669811, a: 1}
+      maxColor: {r: 0.6037736, g: 0.25560698, b: 0.13955145, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}

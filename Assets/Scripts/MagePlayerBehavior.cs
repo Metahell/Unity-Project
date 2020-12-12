@@ -43,7 +43,7 @@ public class MagePlayerBehavior : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(castPoint, out hit, Mathf.Infinity))
         {
-            Vector3 spawn = new Vector3(hit.transform.position.x, 2.1f, hit.transform.position.z);
+            Vector3 spawn = new Vector3(hit.transform.position.x, 0.017f, hit.transform.position.z);
             Instantiate(wall,spawn,transform.rotation);
         }
     }
@@ -54,9 +54,10 @@ public class MagePlayerBehavior : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(castPoint, out hit, Mathf.Infinity) && hit.transform.tag == "Enemy")
         {
-            Transform temp = gameObject.transform;
-            gameObject.transform.position = hit.transform.position;
-            hit.transform.position = temp.position;
+            Debug.Log("" + hit);
+            Vector3 temp = hit.transform.position;
+            hit.collider.gameObject.transform.position = transform.position;
+            gameObject.transform.position = temp;
         }
         else
         {
