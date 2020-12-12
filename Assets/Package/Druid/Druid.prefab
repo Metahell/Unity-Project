@@ -152,6 +152,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 337181869711578466}
   animator: {fileID: 8784804548392439837}
+  wolf: {fileID: 0}
 --- !u!114 &4667352046290464540
 MonoBehaviour:
   m_ObjectHideFlags: 0

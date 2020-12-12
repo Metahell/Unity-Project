@@ -1085,6 +1085,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5037325580741678861, guid: 7edfd8f6c361575469f8a0b5205d3ad6,
+        type: 3}
+      propertyPath: wolf
+      value: 
+      objectReference: {fileID: 5781869905052291244, guid: 0b368f88ba7976149aea57e22704cc1a,
+        type: 3}
     - target: {fileID: 4667352046290464540, guid: 7edfd8f6c361575469f8a0b5205d3ad6,
         type: 3}
       propertyPath: healthOrb
@@ -1109,6 +1115,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Druid
+      objectReference: {fileID: 0}
+    - target: {fileID: 8784804548401930837, guid: 7edfd8f6c361575469f8a0b5205d3ad6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8784804548401970805, guid: 7edfd8f6c361575469f8a0b5205d3ad6,
         type: 3}
@@ -1257,7 +1268,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1001 &171778590
 PrefabInstance:
@@ -3048,7 +3059,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4060924673150684, guid: 715d0c89da61c7c408786a0f2c18cd52, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4060924673150684, guid: 715d0c89da61c7c408786a0f2c18cd52, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3077,7 +3088,7 @@ PrefabInstance:
     - target: {fileID: 95308412625735534, guid: 715d0c89da61c7c408786a0f2c18cd52,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2768429605954052701, guid: 715d0c89da61c7c408786a0f2c18cd52,
         type: 3}

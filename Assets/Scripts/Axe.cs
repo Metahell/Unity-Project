@@ -32,7 +32,7 @@ public class Axe : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy")|| other.CompareTag("Archer"))
         {
             Collider[] colliders = Physics.OverlapSphere(this.transform.position, 1.5f);
             foreach (Collider collider in colliders)
