@@ -9589,7 +9589,7 @@ PrefabInstance:
     - target: {fileID: 6818814826970729261, guid: 8861c10a477d76442a838719e59aadcf,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -17.18
+      value: -15.35
       objectReference: {fileID: 0}
     - target: {fileID: 6818814826970729261, guid: 8861c10a477d76442a838719e59aadcf,
         type: 3}
@@ -9635,6 +9635,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Golem
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528516233136545781, guid: 8861c10a477d76442a838719e59aadcf,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 84
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8861c10a477d76442a838719e59aadcf, type: 3}

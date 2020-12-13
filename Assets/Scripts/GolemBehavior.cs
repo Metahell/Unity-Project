@@ -13,6 +13,7 @@ public class GolemBehavior : MonoBehaviour
     private Vector3 direction;
     private Vector3 chargedirection;
     private bool charging = false;
+    private bool chargehit = false;
     [SerializeField]
     private int chargespeed;
     [Header("Movement Parameters")]
@@ -57,7 +58,7 @@ public class GolemBehavior : MonoBehaviour
         {
             if(health >= healthmax/2&&!charging)
             {
- Physics.IgnoreCollision(this.GetComponent<Collider>(), GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<Collider>(), false);
+                Physics.IgnoreCollision(this.GetComponent<Collider>(), GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<Collider>(), false);
                 _hitTimer += Time.deltaTime;
                 _chargeTimer += Time.deltaTime;
                 if (_hitTimer > _hitTime)
@@ -110,9 +111,10 @@ public class GolemBehavior : MonoBehaviour
                     agent.SetDestination(playerPosition);
                     mouvementVector = (transform.forward).normalized;
                 }
-                UpdateAnimator();
-                DoRotation();
             }
+            rigi.isKinematic = false;
+            UpdateAnimator();
+            DoRotation();
         }
     }
 
@@ -120,8 +122,7 @@ public class GolemBehavior : MonoBehaviour
     {
         if (charging)
         {
-            transform.LookAt(chargedirection);
-            rigi.AddRelativeForce(Vector3.forward * chargespeed, ForceMode.Force);
+            rigi.MovePosition(rigi.position + transform.forward *chargespeed/40);
         }
         else
         {
@@ -130,7 +131,6 @@ public class GolemBehavior : MonoBehaviour
                 motionVector = new Vector3(mouvementVector.x * maxVelocity, rigi.velocity.y, mouvementVector.z * maxVelocity);
                 float lerpSmooth = rigi.velocity.magnitude < motionVector.magnitude ? acceleration : decceleration;
                 rigi.velocity = Vector3.Lerp(rigi.velocity, motionVector, lerpSmooth / 20);
-
             }
 
             if (direction.magnitude > 0)
@@ -149,7 +149,10 @@ public class GolemBehavior : MonoBehaviour
     {
         if (charging)
         {
-            direction = chargedirection.normalized;
+            chargedirection.y = transform.position.y;
+            direction = chargedirection - transform.position;
+            direction.y = 0;
+            direction = direction.normalized;
         }
         else
         {
@@ -162,7 +165,7 @@ public class GolemBehavior : MonoBehaviour
 
     private void Hit()
     {
-        chargedirection = GameObject.FindGameObjectsWithTag("Player")[0].transform.position;
+        chargedirection = GameObject.FindGameObjectsWithTag("Player")[0].transform.position.normalized;
         if (Vector3.Distance(playerPosition, transform.position) < 5f)
         {
             //Debug.Log("Touché");
@@ -173,7 +176,9 @@ public class GolemBehavior : MonoBehaviour
     {
         chargedirection = GameObject.FindGameObjectsWithTag("Player")[0].transform.position;
         charging = true;
-        Debug.Log("charging"+charging);
+        chargehit = false;
+        Physics.IgnoreCollision(this.GetComponent<Collider>(), GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<Collider>(), false);
+        transform.LookAt(chargedirection);
     }
 
     public void LooseHealth(int healthLoss)
@@ -182,21 +187,25 @@ public class GolemBehavior : MonoBehaviour
         StartCoroutine("Red");
     }
     private void OnCollisionEnter(Collision collision)
-    {
-        GameObject player = GameObject.FindGameObjectsWithTag("Player")[0];
+    { 
+        if (collision.collider.gameObject.tag == "Enemy")
+        {
+            Physics.IgnoreCollision(collision.collider, this.GetComponent<Collider>(),true);
+        }
         if (collision.collider.CompareTag("Player"))
         {
-            player.GetComponent<HealthOrb>().Damage(20);
-            charging = false;
+            GameObject player = GameObject.FindGameObjectsWithTag("Player")[0];
+            if (!chargehit)
+            {
+                player.GetComponent<HealthOrb>().Damage(10);
+                chargehit = true;
+            }
+            Physics.IgnoreCollision(this.GetComponent<Collider>(), player.GetComponent<Collider>());
         }
-        if (collision.collider.CompareTag("Wall")||rigi.velocity==Vector3.zero)
+        if (collision.collider.CompareTag("Wall"))
         {
-            Debug.Log("aie");
             charging = false;
-
-            Debug.Log("charging" + charging);
         }
-        Physics.IgnoreCollision(this.GetComponent<Collider>(), player.GetComponent<Collider>(), true);
     }
     IEnumerator Red()
     {
