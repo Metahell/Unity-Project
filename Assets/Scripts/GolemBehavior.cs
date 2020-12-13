@@ -8,6 +8,7 @@ public class GolemBehavior : MonoBehaviour
     [Header("Link")]
     private Rigidbody rigi;
     [SerializeField] private Animator animator;
+    private int state = 1;
     private Vector3 mouvementVector = Vector3.zero;
     private Vector3 motionVector = Vector3.zero;
     private Vector3 direction;
@@ -15,7 +16,7 @@ public class GolemBehavior : MonoBehaviour
     private bool charging = false;
     private bool chargehit = false;
     [SerializeField]
-    private int chargespeed;
+    private float chargespeed;
     [Header("Movement Parameters")]
     [SerializeField]
     private float maxVelocity;
@@ -29,7 +30,7 @@ public class GolemBehavior : MonoBehaviour
     private float _hitTime = 1;
     private float _hitTimer = 0;
     private bool _canHit = false;
-    private float _chargeTime= 10;
+    private float _chargeTime= 20;
     private bool _canCharge = false;
     private float _chargeTimer = 10;
     public AnimationClip GolemSwipe;
@@ -117,7 +118,21 @@ public class GolemBehavior : MonoBehaviour
             DoRotation();
         }
     }
-
+    private void CheckLife()
+    {
+        if (health <= healthmax /2&&state==1)
+        {
+            chargespeed *= 1.5f;
+            _chargeTime /= 2;
+            state += 1;
+        }
+        else if(health <= healthmax / 4 && state == 2)
+        {
+            chargespeed *= 1.5f;
+            _chargeTime /= 2;
+            state += 1;
+        }
+    }
     private void FixedUpdate()
     {
         if (charging)
