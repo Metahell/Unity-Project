@@ -22,6 +22,8 @@ public class WaveManager : MonoBehaviour
     private List<GameObject> SpawnPoints = new List<GameObject>();
     [SerializeField]
     private List<GameObject> EnnemyPool= new List<GameObject>();
+    [SerializeField]
+    private GameObject Boss;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +36,12 @@ public class WaveManager : MonoBehaviour
     {
         if (CheckEnemyCount() == 0)
         {
+            if (WaveID == 10)
+            {
+                WaveNumber.text = "Wave " + WaveID;
+                StartCoroutine("Spawn");
+                StartCoroutine("SpawnBoss");
+            }
             if (WaveID == 11)
             {
                 if (!end)
@@ -67,6 +75,15 @@ public class WaveManager : MonoBehaviour
         NewWave();
         WaveID++;
         PlayerPrefs.SetInt(string.Concat("WaveSaved", ButtonBehavior.CharacterSelection),WaveID);
+    }
+    private IEnumerator SpawnBoss()
+    {
+        GameObject mob = Instantiate(Boss);
+        mob.transform.position = SpawnPoints[Random.Range(0, SpawnPoints.Count)].transform.position; //i % SpawnPoints.Count
+        yield return new WaitForSeconds(1);
+        NewWave();
+        WaveID++;
+        PlayerPrefs.SetInt(string.Concat("WaveSaved", ButtonBehavior.CharacterSelection), WaveID);
     }
     private int CheckEnemyCount()
     {

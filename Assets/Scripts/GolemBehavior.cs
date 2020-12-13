@@ -11,6 +11,10 @@ public class GolemBehavior : MonoBehaviour
     private Vector3 mouvementVector = Vector3.zero;
     private Vector3 motionVector = Vector3.zero;
     private Vector3 direction;
+    private Vector3 chargedirection;
+    private bool charging = false;
+    [SerializeField]
+    private int chargespeed;
     [Header("Movement Parameters")]
     [SerializeField]
     private float maxVelocity;
@@ -24,74 +28,114 @@ public class GolemBehavior : MonoBehaviour
     private float _hitTime = 1;
     private float _hitTimer = 0;
     private bool _canHit = false;
-    public AnimationClip knightSlash2;
+    private float _chargeTime= 10;
+    private bool _canCharge = false;
+    private float _chargeTimer = 10;
+    public AnimationClip GolemSwipe;
     [SerializeField]
+    private int healthmax;
     private int health;
     public bool is_pushed;
     // Start is called before the first frame update
     void Start()
     {
+        health = healthmax;
         is_pushed = false;
         rigi = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Confined;
-        _hitTime += knightSlash2.length;
+        _hitTime += GolemSwipe.length;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (health <= 0)
+        if (healthmax <= 0)
         {
             StartCoroutine(Death());
         }
         else
         {
-            _hitTimer += Time.deltaTime;
-            if (_hitTimer > _hitTime)
+            if(health >= healthmax/2&&!charging)
             {
-                _canHit = true;
-            }
-            playerPosition = GameObject.FindGameObjectsWithTag("Player")[0].transform.position;
-            if (Vector3.Distance(playerPosition, transform.position) < 5f || animator.GetCurrentAnimatorStateInfo(1).IsTag("1"))
-            {
-                agent.enabled = false;
-                rigi.velocity = Vector3.zero;
-                if (!is_pushed)
+ Physics.IgnoreCollision(this.GetComponent<Collider>(), GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<Collider>(), false);
+                _hitTimer += Time.deltaTime;
+                _chargeTimer += Time.deltaTime;
+                if (_hitTimer > _hitTime)
                 {
-                    rigi.isKinematic = true;
+                    _canHit = true;
                 }
-                if (!animator.GetCurrentAnimatorStateInfo(1).IsTag("1") && _canHit)
+                if (_chargeTimer > _chargeTime)
                 {
-                    animator.SetTrigger("Attack");
-                    _canHit = false;
-                    _hitTimer = 0;
+                    _canCharge = true;
                 }
-                is_moving = false;
+                playerPosition = GameObject.FindGameObjectsWithTag("Player")[0].transform.position;
+                if ((Vector3.Distance(playerPosition, transform.position) < 10f)&&_canCharge||animator.GetCurrentAnimatorStateInfo(1).IsTag("1")&&_canCharge)
+                {
+                    agent.enabled = false;
+                    rigi.velocity = Vector3.zero;
+                    if (!is_pushed)
+                    {
+                        rigi.isKinematic = true;
+                    }
+                    if (!animator.GetCurrentAnimatorStateInfo(1).IsTag("1") && _canCharge)
+                    {
+                        Debug.Log("Start");
+                        animator.SetTrigger("Attack2");
+                        _canCharge = false;
+                        _chargeTimer = 0;
+                    }
+                    is_moving = false;
+                }
+                if (Vector3.Distance(playerPosition, transform.position) < 5f || animator.GetCurrentAnimatorStateInfo(1).IsTag("1"))
+                {
+                    agent.enabled = false;
+                    rigi.velocity = Vector3.zero;
+                    if (!is_pushed)
+                    {
+                        rigi.isKinematic = true;
+                    }
+                    if (!animator.GetCurrentAnimatorStateInfo(1).IsTag("1") && _canHit)
+                    {
+                        animator.SetTrigger("Attack");
+                        _canHit = false;
+                        _hitTimer = 0;
+                    }
+                    is_moving = false;
+                }
+                else
+                {
+                    rigi.isKinematic = false;
+                    agent.enabled = true;
+                    is_moving = true;
+                    agent.SetDestination(playerPosition);
+                    mouvementVector = (transform.forward).normalized;
+                }
+                UpdateAnimator();
+                DoRotation();
             }
-            else
-            {
-                rigi.isKinematic = false;
-                agent.enabled = true;
-                is_moving = true;
-                agent.SetDestination(playerPosition);
-                mouvementVector = (transform.forward).normalized;
-            }
-            UpdateAnimator();
-            DoRotation();
         }
     }
 
     private void FixedUpdate()
     {
-        if (!animator.GetCurrentAnimatorStateInfo(1).IsTag("1") && is_moving)
+        if (charging)
         {
-            motionVector = new Vector3(mouvementVector.x * maxVelocity, rigi.velocity.y, mouvementVector.z * maxVelocity);
-            float lerpSmooth = rigi.velocity.magnitude < motionVector.magnitude ? acceleration : decceleration;
-            rigi.velocity = Vector3.Lerp(rigi.velocity, motionVector, lerpSmooth / 20);
-
+            transform.LookAt(chargedirection);
+            rigi.AddRelativeForce(Vector3.forward * chargespeed, ForceMode.Force);
         }
-        if (direction.magnitude > 0)
-            transform.forward = Vector3.Lerp(transform.forward, direction, .3f);
+        else
+        {
+            if (!animator.GetCurrentAnimatorStateInfo(1).IsTag("1") && is_moving)
+            {
+                motionVector = new Vector3(mouvementVector.x * maxVelocity, rigi.velocity.y, mouvementVector.z * maxVelocity);
+                float lerpSmooth = rigi.velocity.magnitude < motionVector.magnitude ? acceleration : decceleration;
+                rigi.velocity = Vector3.Lerp(rigi.velocity, motionVector, lerpSmooth / 20);
+
+            }
+
+            if (direction.magnitude > 0)
+                transform.forward = Vector3.Lerp(transform.forward, direction, .3f);
+        }
     }
 
     private void UpdateAnimator()
@@ -103,21 +147,33 @@ public class GolemBehavior : MonoBehaviour
 
     private void DoRotation()
     {
-        playerPosition.y = transform.position.y;
-        direction = playerPosition - transform.position;
-        direction.y = 0;
-        direction = direction.normalized;
-
+        if (charging)
+        {
+            direction = chargedirection.normalized;
+        }
+        else
+        {
+            playerPosition.y = transform.position.y;
+            direction = playerPosition - transform.position;
+            direction.y = 0;
+            direction = direction.normalized;
+        }
     }
 
     private void Hit()
     {
-        playerPosition = GameObject.FindGameObjectsWithTag("Player")[0].transform.position;
+        chargedirection = GameObject.FindGameObjectsWithTag("Player")[0].transform.position;
         if (Vector3.Distance(playerPosition, transform.position) < 5f)
         {
             //Debug.Log("Touché");
-            GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<HealthOrb>().Damage(5);
+            GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<HealthOrb>().Damage(10);
         }
+    }
+    private void Charge()
+    {
+        chargedirection = GameObject.FindGameObjectsWithTag("Player")[0].transform.position;
+        charging = true;
+        Debug.Log("charging"+charging);
     }
 
     public void LooseHealth(int healthLoss)
@@ -125,12 +181,28 @@ public class GolemBehavior : MonoBehaviour
         health -= healthLoss;
         StartCoroutine("Red");
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        GameObject player = GameObject.FindGameObjectsWithTag("Player")[0];
+        if (collision.collider.CompareTag("Player"))
+        {
+            player.GetComponent<HealthOrb>().Damage(20);
+            charging = false;
+        }
+        if (collision.collider.CompareTag("Wall")||rigi.velocity==Vector3.zero)
+        {
+            Debug.Log("aie");
+            charging = false;
 
+            Debug.Log("charging" + charging);
+        }
+        Physics.IgnoreCollision(this.GetComponent<Collider>(), player.GetComponent<Collider>(), true);
+    }
     IEnumerator Red()
     {
 
 
-        Transform cube = gameObject.transform.Find("Cube.002");
+        Transform cube = gameObject.transform.Find("Cube.001");
         Material[] materials = cube.GetComponent<Renderer>().materials;
         Color color0 = materials[0].color;
         Color color1 = materials[1].color;

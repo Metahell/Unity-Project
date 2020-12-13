@@ -325,13 +325,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 6818814826963739855}
+  chargespeed: 50
   maxVelocity: 5
   acceleration: 5
   decceleration: 10
   is_moving: 1
   agent: {fileID: -274789942208954486}
-  knightSlash2: {fileID: 0}
-  health: 100
+  GolemSwipe: {fileID: 7400000, guid: f7cb59cbeaed70c4a9468eb219656330, type: 2}
+  healthmax: 50
   is_pushed: 0
 --- !u!1 &6818814826971027215
 GameObject:
