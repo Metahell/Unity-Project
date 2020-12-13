@@ -78,8 +78,8 @@ public class WaveManager : MonoBehaviour
     }
     private IEnumerator SpawnBoss()
     {
-        GameObject mob = Instantiate(Boss);
-        mob.transform.position = SpawnPoints[Random.Range(0, SpawnPoints.Count)].transform.position; //i % SpawnPoints.Count
+        Boss.SetActive(true);
+        Boss.transform.position = SpawnPoints[Random.Range(0, SpawnPoints.Count)].transform.position; //i % SpawnPoints.Count
         yield return new WaitForSeconds(1);
         NewWave();
         WaveID++;

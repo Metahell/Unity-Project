@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class GolemBehavior : MonoBehaviour
 {
@@ -9,12 +10,16 @@ public class GolemBehavior : MonoBehaviour
     private Rigidbody rigi;
     [SerializeField] private Animator animator;
     private int state = 1;
+    [SerializeField]
+    private GameObject BossText;
     private Vector3 mouvementVector = Vector3.zero;
     private Vector3 motionVector = Vector3.zero;
     private Vector3 direction;
     private Vector3 chargedirection;
     private bool charging = false;
     private bool chargehit = false;
+    [SerializeField]
+    private Slider slider;
     [SerializeField]
     private float chargespeed;
     [Header("Movement Parameters")]
@@ -41,11 +46,17 @@ public class GolemBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        BossText.SetActive(true);
         health = healthmax;
         is_pushed = false;
         rigi = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Confined;
         _hitTime += GolemSwipe.length;
+    }
+    private void Awake()
+    {
+
+        BossText.SetActive(true);
     }
 
     // Update is called once per frame
@@ -199,13 +210,18 @@ public class GolemBehavior : MonoBehaviour
     public void LooseHealth(int healthLoss)
     {
         health -= healthLoss;
+        UpdateHealthbar();
         StartCoroutine("Red");
     }
     private void OnCollisionEnter(Collision collision)
     { 
-        if (collision.collider.gameObject.tag == "Enemy")
+        if (collision.collider.CompareTag("Archer"))
         {
             Physics.IgnoreCollision(collision.collider, this.GetComponent<Collider>(),true);
+        }
+        if (collision.collider.CompareTag("Enemy"))
+        {
+            Physics.IgnoreCollision(collision.collider, this.GetComponent<Collider>(), true);
         }
         if (collision.collider.CompareTag("Player"))
         {
@@ -229,18 +245,9 @@ public class GolemBehavior : MonoBehaviour
         Transform cube = gameObject.transform.Find("Cube.001");
         Material[] materials = cube.GetComponent<Renderer>().materials;
         Color color0 = materials[0].color;
-        Color color1 = materials[1].color;
-        Color color2 = materials[2].color;
-        Color color3 = materials[3].color;
         materials[0].color = Color.red;
-        materials[1].color = Color.red;
-        materials[2].color = Color.red;
-        materials[3].color = Color.red;
         yield return new WaitForSeconds(0.1f);
         materials[0].color = color0;
-        materials[1].color = color1;
-        materials[2].color = color2;
-        materials[3].color = color3;
     }
 
     IEnumerator Death()
@@ -252,6 +259,11 @@ public class GolemBehavior : MonoBehaviour
         UpdateAnimator();
         yield return new WaitForSeconds(2f);
         Destroy(gameObject);
+    }
+
+    private void UpdateHealthbar()
+    {
+        slider.value = (float)health / healthmax;
     }
 
 }

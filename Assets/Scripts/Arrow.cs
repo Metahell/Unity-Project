@@ -45,6 +45,10 @@ public class Arrow : MonoBehaviour
             {
                 other.GetComponent<ArcherBehaviour>().LooseHealth(5);
             }
+            else if (other.gameObject.CompareTag("Boss"))
+            {
+                other.gameObject.GetComponent<GolemBehavior>().LooseHealth(5);
+            }
         }
 
         Remove();

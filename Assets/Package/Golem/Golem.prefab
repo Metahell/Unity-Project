@@ -204,7 +204,7 @@ GameObject:
   - component: {fileID: 4099245505957589335}
   m_Layer: 0
   m_Name: Golem
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -325,6 +325,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 6818814826963739855}
+  BossText: {fileID: 0}
+  slider: {fileID: 0}
   chargespeed: 5
   maxVelocity: 5
   acceleration: 5
@@ -332,7 +334,7 @@ MonoBehaviour:
   is_moving: 1
   agent: {fileID: -274789942208954486}
   GolemSwipe: {fileID: 7400000, guid: f7cb59cbeaed70c4a9468eb219656330, type: 2}
-  healthmax: 50
+  healthmax: 100
   is_pushed: 0
 --- !u!1 &6818814826971027215
 GameObject:

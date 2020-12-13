@@ -28,15 +28,19 @@ public class Fireball : MonoBehaviour
             Collider[] colliders = Physics.OverlapSphere(this.transform.position, 1.5f);
             foreach (Collider collider in colliders)
             {
-                if (collider.gameObject.CompareTag("Enemy"))
-                {
-                    collider.gameObject.GetComponent<KnightBehaviour>().LooseHealth(5);
-                    StartCoroutine(PushKnight(collider.gameObject));
-                }
-                else if (collider.gameObject.CompareTag("Archer"))
-                {
-                    collider.gameObject.GetComponent<ArcherBehaviour>().LooseHealth(5);
-                }
+            if (collider.gameObject.CompareTag("Enemy"))
+            {
+                collider.gameObject.GetComponent<KnightBehaviour>().LooseHealth(5);
+                StartCoroutine(PushKnight(collider.gameObject));
+            }
+            else if (collider.gameObject.CompareTag("Archer"))
+            {
+                collider.gameObject.GetComponent<ArcherBehaviour>().LooseHealth(5);
+            }
+            else if (collider.gameObject.CompareTag("Boss"))
+            {
+                collider.gameObject.GetComponent<GolemBehavior>().LooseHealth(5);
+            }
             }
           Remove();
     }

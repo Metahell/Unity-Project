@@ -32,7 +32,7 @@ public class Axe : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy")|| other.CompareTag("Archer"))
+        if (other.CompareTag("Enemy")|| other.CompareTag("Archer")|| other.CompareTag("Boss"))
         {
             Collider[] colliders = Physics.OverlapSphere(this.transform.position, 1.5f);
             foreach (Collider collider in colliders)
@@ -44,6 +44,10 @@ public class Axe : MonoBehaviour
                 else if (collider.gameObject.CompareTag("Archer"))
                 {
                     collider.gameObject.GetComponent<ArcherBehaviour>().LooseHealth(5);
+                }
+                else if (collider.gameObject.CompareTag("Boss"))
+                {
+                    collider.gameObject.GetComponent<GolemBehavior>().LooseHealth(5);
                 }
             }
         }
