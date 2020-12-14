@@ -11,6 +11,10 @@ public class CharacterSpawn : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Characters[0].GetComponent<KnightPlayerBehaviour>().enabled = false;
+        Characters[1].GetComponent<ArcherPlayerBehavior>().enabled = false;
+        Characters[2].GetComponent<MagePlayerBehavior>().enabled = false;
+        Characters[3].GetComponent<DruidPlayerBehavior>().enabled = false;
         SpawnSelection(ButtonBehavior.CharacterSelection);
     }
 

@@ -68,7 +68,7 @@ public class GolemBehavior : MonoBehaviour
         }
         else
         {
-            if(health >= healthmax/2&&!charging)
+            if(health >=0&&!charging)
             {
                 Physics.IgnoreCollision(this.GetComponent<Collider>(), GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<Collider>(), false);
                 _hitTimer += Time.deltaTime;

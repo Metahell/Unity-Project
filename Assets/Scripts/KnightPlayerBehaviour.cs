@@ -8,7 +8,8 @@ public class KnightPlayerBehaviour : MonoBehaviour
     private Animator animator;
     private KnightBehaviour KnightBehaviour;
     public bool is_jumping;
-
+    [SerializeField]
+    private AudioSource slash;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +36,7 @@ public class KnightPlayerBehaviour : MonoBehaviour
         /**GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
         sphere.transform.position = attackCenter;
         sphere.transform.localScale = new Vector3(1.5f,1.5f,1.5f);**/
+        slash.Play();
         foreach (Collider collider in colliders)
         {
             if (collider.gameObject.CompareTag("Enemy"))
