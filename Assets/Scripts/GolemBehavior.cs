@@ -62,8 +62,9 @@ public class GolemBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (healthmax <= 0)
+        if (health <= 0)
         {
+            charging = false;
             StartCoroutine(Death());
         }
         else
