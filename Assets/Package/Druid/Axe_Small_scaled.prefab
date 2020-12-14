@@ -170,7 +170,7 @@ GameObject:
   - component: {fileID: 4958846582036608602}
   - component: {fileID: 4847364352367522069}
   - component: {fileID: 8784809799149129257}
-  - component: {fileID: 864210600266914682}
+  - component: {fileID: 3510017573264334901}
   m_Layer: 0
   m_Name: Axe_Small_scaled
   m_TagString: Untagged
@@ -239,7 +239,7 @@ CapsuleCollider:
   m_Height: 0.36222887
   m_Direction: 1
   m_Center: {x: -0.039300524, y: -0.009533644, z: 0}
---- !u!82 &864210600266914682
+--- !u!82 &3510017573264334901
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -249,11 +249,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 91f7883c78d926241b9d74981af52729, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 3460c547eeba1dc4fb4a2591e161298d, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

@@ -6727,11 +6727,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpawnPoint: {fileID: 1066264170}
   Characters:
-  - {fileID: 1474278901674418, guid: 957fb60e14d1aa44e84a7af1a56ca1c0, type: 3}
-  - {fileID: 1699323559678470, guid: 715d0c89da61c7c408786a0f2c18cd52, type: 3}
-  - {fileID: 2914083090199841258, guid: 5ffa83e7add6222478526c88afc7b5e7, type: 3}
-  - {fileID: 8784804548401930837, guid: 7edfd8f6c361575469f8a0b5205d3ad6, type: 3}
-  - {fileID: 9159078392146656274, guid: 710f734bf95f92349b27230f6fb74d96, type: 3}
+  - {fileID: 6562536491462219777, guid: 9e13a329891ca884e865339e7a3c2e75, type: 3}
+  - {fileID: 191779271760826470, guid: e4e0c13679a958e4da6201729d9d9b2d, type: 3}
+  - {fileID: 1663316345113000457, guid: 52b703857e83a00418efbdf2e2727b6e, type: 3}
+  - {fileID: 5187508188081556506, guid: bbe514628a9f6c9479f2798396dca29c, type: 3}
+  - {fileID: 7276310088194403702, guid: 46b9e3ef1c15c2d44803c1f60f7c2dc1, type: 3}
 --- !u!4 &1394205183
 Transform:
   m_ObjectHideFlags: 0

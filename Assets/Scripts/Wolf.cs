@@ -44,6 +44,10 @@ public class Wolf : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (transform.position.y <= -1)
+        {
+            transform.position = new Vector3(0f, 17f, 0f);
+        }
         FixQuaternion = Quaternion.Euler(FixRotation * Time.deltaTime);
         if (CurrentTarget == null)
         {
