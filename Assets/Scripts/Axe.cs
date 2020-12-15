@@ -13,12 +13,13 @@ public class Axe : MonoBehaviour
     private Vector3 rotateVelocity;
     [SerializeField]
     private float speed;
-    private float life_timer = 0;
+    private float life_timer;
     // Use this for initialization
     void Awake()
     {
         rigi = GetComponent<Rigidbody>();
         renderer = GetComponent<Renderer>();
+        life_timer = 0;
     }
     public void setDirection(Vector3 transf)
     {

@@ -1228,7 +1228,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!114 &2120831384669598570
 MonoBehaviour:
@@ -1248,7 +1248,7 @@ MonoBehaviour:
   decceleration: 10
   is_moving: 1
   agent: {fileID: -2932784020672230930}
-  swipe: {fileID: 0}
+  swipe: {fileID: 7400000, guid: 14c8b0e6e5003304d8870e282cdbff0c, type: 2}
   is_pushed: 0
 --- !u!95 &1040259559045033734
 Animator:
