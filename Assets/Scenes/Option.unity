@@ -2509,13 +2509,24 @@ MonoBehaviour:
   m_FillRect: {fileID: 1483124069}
   m_HandleRect: {fileID: 474186064}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1562631707}
+        m_MethodName: SetMasterLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1133524693
 GameObject:
   m_ObjectHideFlags: 0
@@ -3137,8 +3148,9 @@ GameObject:
   - component: {fileID: 1562631703}
   - component: {fileID: 1562631705}
   - component: {fileID: 1562631706}
+  - component: {fileID: 1562631707}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Buttons&Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3283,6 +3295,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1562631707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1562631702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d747438beff0d94897046b1a86ab8aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Mastermixer: {fileID: 24100000, guid: 1ce4f8a737361c44983cb15267461da3, type: 2}
+  parameterName: MasterVolume
+  MasterSlider: {fileID: 1119348763}
+  SoundSlider: {fileID: 2142766605}
+  MusicSlider: {fileID: 2088251905}
 --- !u!1 &1562638567
 GameObject:
   m_ObjectHideFlags: 0
@@ -4624,13 +4653,24 @@ MonoBehaviour:
   m_FillRect: {fileID: 96997897}
   m_HandleRect: {fileID: 725262450}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1562631707}
+        m_MethodName: SetMusicLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2122702662
 GameObject:
   m_ObjectHideFlags: 0
@@ -4749,10 +4789,21 @@ MonoBehaviour:
   m_FillRect: {fileID: 954625983}
   m_HandleRect: {fileID: 1370958187}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1562631707}
+        m_MethodName: SetSoundLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
