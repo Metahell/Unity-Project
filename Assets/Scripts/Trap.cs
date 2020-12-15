@@ -7,13 +7,18 @@ public class Trap : MonoBehaviour
     [SerializeField]
     private Animator animator;
     private KnightBehaviour KnightBehaviour;
+    [SerializeField]
+    private AudioSource TrapSound;
     private bool triggered = false;
     [SerializeField]
     void Start()
     {
         
     }
-
+    private void Awake()
+    {
+        
+    }
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.collider.CompareTag("Enemy")|| collision.collider.CompareTag("Archer"))
@@ -22,21 +27,22 @@ public class Trap : MonoBehaviour
             {
                 triggered = true;
                 animator.SetTrigger("Triggered");
-                if (collision.collider.CompareTag("Enemy"))
-                {
-                    collision.collider.GetComponent<KnightBehaviour>().LooseHealth(10);
-                }
-                else if (collision.collider.CompareTag("Archer"))
-                {
-                    collision.collider.GetComponent<ArcherBehaviour>().LooseHealth(10);
-                }
-                StartCoroutine(Disappear());
+                StartCoroutine(Disappear(collision.collider.gameObject));
             }
         }
     }
-    private IEnumerator Disappear()
+    private IEnumerator Disappear(GameObject trapped)
     {
-        Debug.Log("trap");
+        yield return new WaitForSeconds(0.4f);
+        TrapSound.Play();
+        if (trapped.CompareTag("Enemy"))
+        {
+            trapped.GetComponent<KnightBehaviour>().LooseHealth(10);
+        }
+        else if (trapped.CompareTag("Archer"))
+        {
+            trapped.GetComponent<ArcherBehaviour>().LooseHealth(10);
+        }
         yield return new WaitForSeconds(1);
         Factory.GetInstance().RemoveTrap(this);
     }

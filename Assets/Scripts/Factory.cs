@@ -93,22 +93,13 @@ public class Factory : MonoBehaviour
     }
     public void RemoveTrap(Trap t)
     {
-        t.gameObject.SetActive(false);
-        poolt.Enqueue(t);
+        Destroy(t.gameObject);
     }
 
     public GameObject GetTrap()
     {
-        //On a déjà des balles disponibles
-        if (poolt.Count > 0)
-        {
-            GameObject bulletObj = poolt.Dequeue().gameObject;
-            bulletObj.SetActive(true);
-            return bulletObj;
-        }
-        else
-        {
-            return Instantiate(TrapPrefab, transform).gameObject;
-        }
+        GameObject bulletObj = Instantiate(TrapPrefab, transform).gameObject;
+        poolt.Enqueue(bulletObj.GetComponent<Trap>());
+        return Instantiate(bulletObj, transform).gameObject;
     }
 }

@@ -9,6 +9,8 @@ public class MagePlayerBehavior : MonoBehaviour
     [SerializeField]
     private Animator animator;
     private KnightBehaviour KnightBehaviour;
+    [SerializeField]
+    private AudioSource Spell;
     private Transform pos;
     [SerializeField]
     private Wall wall;
@@ -64,9 +66,10 @@ public class MagePlayerBehavior : MonoBehaviour
         Vector3 mouse = Input.mousePosition;
         Ray castPoint = Camera.main.ScreenPointToRay(mouse);
         RaycastHit hit;
-        if (Physics.Raycast(castPoint, out hit, Mathf.Infinity) && hit.transform.tag == "Enemy")
+        if (Physics.Raycast(castPoint, out hit, Mathf.Infinity) && (hit.transform.tag == "Enemy"|| hit.transform.tag == "Archer"))
         {
             Debug.Log("" + hit);
+            Spell.Play();
             Vector3 temp = hit.transform.position;
             hit.collider.gameObject.transform.position = transform.position;
             gameObject.transform.position = temp;
