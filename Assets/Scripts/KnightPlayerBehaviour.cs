@@ -36,7 +36,7 @@ public class KnightPlayerBehaviour : MonoBehaviour
         if (Input.GetMouseButtonDown(1) && !animator.GetCurrentAnimatorStateInfo(1).IsTag("1") && _ability2Timer >= _ability2Time)
         {
             animator.SetTrigger("2nd Ability");
-            _ability2Timer = 0;
+            // le reset du timer est dans la fonction d'abilité au cas où la position de la souris n'est pas bonne
         }
         if (Input.GetKey(KeyCode.Space) && !animator.GetCurrentAnimatorStateInfo(1).IsTag("1") && _ability3Timer >= _ability3Time)
         {
