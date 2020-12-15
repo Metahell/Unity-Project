@@ -17,21 +17,38 @@ public class ArcherPlayerBehavior : MonoBehaviour
     private float _ability2Timer = 3;
     private float _ability3Time = 10;
     private float _ability3Timer = 10;
+    private float Boost=0;
+    private bool boosted=false;
     void Update()
     {
 
         _ability1Timer += Time.deltaTime;
         _ability2Timer += Time.deltaTime;
         _ability3Timer += Time.deltaTime;
+        if (Boost >= 0)
+        {
+            Boost -= Time.deltaTime;
+        }
+        if (Boost <= 0&&boosted)
+        {
+            _ability1Time *= 2;
+            this.GetComponent<PlayerController>().maxVelocity /= 2;
+            boosted = false;
+        }
         if (Input.GetMouseButtonDown(0) && !animator.GetCurrentAnimatorStateInfo(1).IsTag("1") && _ability1Timer >= _ability1Time)
         {
             animator.SetTrigger("1st Ability");
             _ability1Timer = 0;
         }
-        if (Input.GetMouseButtonDown(1) && !animator.GetCurrentAnimatorStateInfo(1).IsTag("1") && _ability2Timer >= _ability1Time)
+        if (Input.GetMouseButtonDown(1) && !animator.GetCurrentAnimatorStateInfo(1).IsTag("1") && _ability2Timer >= _ability2Time)
         {
             animator.SetTrigger("2nd Ability");
             _ability2Timer = 0;
+        }
+        if (Input.GetKey(KeyCode.Space) && !animator.GetCurrentAnimatorStateInfo(1).IsTag("1") && _ability3Timer >= _ability3Time)
+        {
+            animator.SetTrigger("3rd Ability");
+            _ability3Timer = 0;
         }
     }
 
@@ -53,5 +70,12 @@ public class ArcherPlayerBehavior : MonoBehaviour
             GameObject trap = Factory.GetInstance().GetTrap();
             trap.transform.position = spawn;
         }
+    }
+    public void Ability3()
+    {
+        _ability1Time /= 2;
+        Boost = 3;
+        this.GetComponent<PlayerController>().maxVelocity *= 2;
+        boosted=true;
     }
 }

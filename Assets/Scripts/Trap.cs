@@ -30,12 +30,13 @@ public class Trap : MonoBehaviour
                 {
                     collision.collider.GetComponent<ArcherBehaviour>().LooseHealth(10);
                 }
-                Disappear();
+                StartCoroutine(Disappear());
             }
         }
     }
     private IEnumerator Disappear()
     {
+        Debug.Log("trap");
         yield return new WaitForSeconds(1);
         Factory.GetInstance().RemoveTrap(this);
     }

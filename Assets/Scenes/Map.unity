@@ -4712,7 +4712,8 @@ MonoBehaviour:
     type: 3}
   FireballPrefab: {fileID: 2842305608924911330, guid: 7582ffefa09b44f46a6c054c282ffb3e,
     type: 3}
-  TrapPrefab: {fileID: 0}
+  TrapPrefab: {fileID: 3985054272927921285, guid: ef00e6a5eb83c594497bf1693c597628,
+    type: 3}
   AxePrefab: {fileID: 4958846582036608602, guid: db2f1851e219af34fb05f49368bf680e,
     type: 3}
 --- !u!1001 &1065156422
