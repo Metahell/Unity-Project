@@ -36,7 +36,7 @@ public class MagePlayerBehavior : MonoBehaviour
         if (Input.GetKey(KeyCode.Space) && !animator.GetCurrentAnimatorStateInfo(1).IsTag("1") && _ability3Timer >= _ability3Time)
         {
             animator.SetTrigger("3rd Ability");
-            _ability3Timer = 0;
+            // le reset du timer est dans la fonction d'abilité au cas où la position de la souris n'est pas bonnes
         }
     }
 
@@ -70,6 +70,7 @@ public class MagePlayerBehavior : MonoBehaviour
             Vector3 temp = hit.transform.position;
             hit.collider.gameObject.transform.position = transform.position;
             gameObject.transform.position = temp;
+            _ability3Timer = 0;
         }
         else
         {

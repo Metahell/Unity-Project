@@ -74,7 +74,14 @@ public class KnightPlayerBehaviour : MonoBehaviour
 
     public void Ability2()
     {
-        StartCoroutine(Jump());
+        Vector3 mouse = Input.mousePosition;
+        Ray castPoint = Camera.main.ScreenPointToRay(mouse);
+        RaycastHit hit;
+        if (Physics.Raycast(castPoint, out hit, Mathf.Infinity) && hit.transform.tag == "Floor")
+        {
+            StartCoroutine(Jump());
+            _ability2Timer = 0;
+        }
     }
 
     public void Ability3()
@@ -91,7 +98,7 @@ public class KnightPlayerBehaviour : MonoBehaviour
             if (attacktime > 0.5f)
             {
                 Vector3 attackCenter = transform.position;
-                Collider[] colliders = Physics.OverlapSphere(attackCenter, 2f);
+                Collider[] colliders = Physics.OverlapSphere(attackCenter, 3f);
                 foreach (Collider collider in colliders)
                 {
                     if (collider.gameObject.CompareTag("Enemy"))
