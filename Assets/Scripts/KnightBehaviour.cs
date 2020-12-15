@@ -22,7 +22,7 @@ public class KnightBehaviour : MonoBehaviour
     public bool is_moving = true;
     public NavMeshAgent agent;
     private float _hitTime = 1;
-    private float _hitTimer = 0;
+    private float _hitTimer = 1;
     private bool _canHit = false;
     public AnimationClip knightSlash2;
     [SerializeField]
@@ -35,6 +35,7 @@ public class KnightBehaviour : MonoBehaviour
         rigi = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Confined;
         _hitTime += knightSlash2.length;
+        _hitTimer = _hitTime;
     }
 
     // Update is called once per frame

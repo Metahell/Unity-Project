@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.574817, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6174,6 +6174,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlackKnight
       objectReference: {fileID: 0}
+    - target: {fileID: 4279437081518130, guid: 9c65574a42bfe4246aa9f3165f406c90, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.03419367
+      objectReference: {fileID: 0}
+    - target: {fileID: 4279437081518130, guid: 9c65574a42bfe4246aa9f3165f406c90, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7725336
+      objectReference: {fileID: 0}
     - target: {fileID: 4296187049228626, guid: 9c65574a42bfe4246aa9f3165f406c90, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.0057454
@@ -8821,7 +8829,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1474278901674418, guid: 957fb60e14d1aa44e84a7af1a56ca1c0, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4310073046122136, guid: 957fb60e14d1aa44e84a7af1a56ca1c0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8866,6 +8874,14 @@ PrefabInstance:
     - target: {fileID: 4310073046122136, guid: 957fb60e14d1aa44e84a7af1a56ca1c0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4773318276179848, guid: 957fb60e14d1aa44e84a7af1a56ca1c0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.03419367
+      objectReference: {fileID: 0}
+    - target: {fileID: 4773318276179848, guid: 957fb60e14d1aa44e84a7af1a56ca1c0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7725336
       objectReference: {fileID: 0}
     - target: {fileID: 4624505933397778340, guid: 957fb60e14d1aa44e84a7af1a56ca1c0,
         type: 3}
@@ -10251,6 +10267,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 6818814826971027213, guid: 8861c10a477d76442a838719e59aadcf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7528516233136545781, guid: 8861c10a477d76442a838719e59aadcf,
         type: 3}

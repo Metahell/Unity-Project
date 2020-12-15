@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Animator animator;
     [Header("Movement Parameters")]
     [SerializeField]
-    private float maxVelocity;
+    public float maxVelocity;
     [SerializeField]
     private float acceleration;
     [SerializeField]

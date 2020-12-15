@@ -39,15 +39,15 @@ public class Arrow : MonoBehaviour
         {
             if (other.CompareTag("Enemy"))
             {
-                other.GetComponent<KnightBehaviour>().LooseHealth(5);
+                other.GetComponent<KnightBehaviour>().LooseHealth(10);
             }
             else if (other.CompareTag("Archer"))
             {
-                other.GetComponent<ArcherBehaviour>().LooseHealth(5);
+                other.GetComponent<ArcherBehaviour>().LooseHealth(10);
             }
             else if (other.gameObject.CompareTag("Boss"))
             {
-                other.gameObject.GetComponent<GolemBehavior>().LooseHealth(5);
+                other.gameObject.GetComponent<GolemBehavior>().LooseHealth(10);
             }
         }
 
