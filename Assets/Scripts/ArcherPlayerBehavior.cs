@@ -28,6 +28,11 @@ public class ArcherPlayerBehavior : MonoBehaviour
             animator.SetTrigger("1st Ability");
             _ability1Timer = 0;
         }
+        if (Input.GetMouseButtonDown(1) && !animator.GetCurrentAnimatorStateInfo(1).IsTag("1") && _ability2Timer >= _ability1Time)
+        {
+            animator.SetTrigger("2nd Ability");
+            _ability2Timer = 0;
+        }
     }
 
     public void Ability1()
@@ -36,5 +41,17 @@ public class ArcherPlayerBehavior : MonoBehaviour
         GameObject arrow = Factory.GetInstance().GetArrow();
         arrow.transform.position = spawnPoint.position;
         arrow.transform.forward = direction;
+    }
+    public void Ability2()
+    {
+        Vector3 mouse = Input.mousePosition;
+        Ray castPoint = Camera.main.ScreenPointToRay(mouse);
+        RaycastHit hit;
+        if (Physics.Raycast(castPoint, out hit, Mathf.Infinity))
+        {
+            Vector3 spawn = new Vector3(hit.transform.position.x, 0.017f, hit.transform.position.z);
+            GameObject trap = Factory.GetInstance().GetTrap();
+            trap.transform.position = spawn;
+        }
     }
 }
