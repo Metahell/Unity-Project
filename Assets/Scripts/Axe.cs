@@ -13,6 +13,7 @@ public class Axe : MonoBehaviour
     private Vector3 rotateVelocity;
     [SerializeField]
     private float speed;
+    private float life_timer = 0;
     // Use this for initialization
     void Awake()
     {
@@ -28,6 +29,15 @@ public class Axe : MonoBehaviour
         rigi.velocity = direction * speed;
         Quaternion deltaRotation = Quaternion.Euler(rotateVelocity * Time.deltaTime);
         rigi.MoveRotation(rigi.rotation*deltaRotation);
+    }
+
+    private void Update()
+    {
+        life_timer += Time.deltaTime;
+        if (life_timer > 1f) // pour l'instant 1 secondes c'est pas trop impactant pour la map de test, faudra check ça avec les maps définitives
+        {
+            Remove();
+        }
     }
 
     private void OnTriggerEnter(Collider other)

@@ -28,8 +28,8 @@ public class Wolf : MonoBehaviour
     private Vector3 FixRotation = new Vector3(0,-180,0);
     public AnimationClip swipe;
     private GameObject CurrentTarget;
-    [SerializeField]
-    private int health;
+    private int health = 50;
+    private int hpMax = 50;
     public bool is_pushed;
     // Start is called before the first frame update
     void Start()
@@ -164,6 +164,7 @@ public class Wolf : MonoBehaviour
     public void LooseHealth(int healthLoss)
     {
         health -= healthLoss;
+        health = health > hpMax ? hpMax : health;
         StartCoroutine("Red");
     }
 

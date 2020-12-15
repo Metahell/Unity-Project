@@ -8,6 +8,9 @@ TagManager:
   - Archer
   - Wall
   - Boss
+  - Floor
+  - Undefined
+  - Wolf
   layers:
   - Default
   - TransparentFX

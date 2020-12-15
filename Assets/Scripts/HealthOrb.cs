@@ -39,6 +39,7 @@ public class HealthOrb : MonoBehaviour
     public void Damage(int dmg)
     {
         currentHp -= dmg;
+        currentHp = currentHp > hpmax ? hpmax : currentHp;
         slider.value = currentHp;
         Debug.Log(currentHp);
     }
