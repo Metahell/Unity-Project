@@ -39,7 +39,6 @@ public class Axe : MonoBehaviour
         {
             Remove();
         }
-        Debug.Log(life_timer);
     }
 
     private void OnTriggerEnter(Collider other)
