@@ -43,6 +43,10 @@ public class KnightBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (is_pushed)
+        {
+            is_moving = false;
+        }
         if (health <= 0)
         {
             StartCoroutine(Death());
