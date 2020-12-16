@@ -31,6 +31,13 @@ public class Trap : MonoBehaviour
             }
         }
     }
+
+    private void OntriggerEnter()
+    {
+
+
+    }
+
     private IEnumerator Disappear(GameObject trapped)
     {
         yield return new WaitForSeconds(0.4f);
