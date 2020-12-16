@@ -9,8 +9,7 @@ public class ThiefPlayerBehavior : MonoBehaviour
     private KnightBehaviour KnightBehaviour;
     [SerializeField]
     private ParticleSystem Smoke;
-    [SerializeField]
-    private static bool isInvisible = false;
+    public static bool isInvisible = false;
     private float invisibleCountdown = 0;
     [SerializeField]
     private GameObject Mat;
@@ -23,7 +22,7 @@ public class ThiefPlayerBehavior : MonoBehaviour
     private float _ability1Time = 1;
     private float _ability1Timer = 1;
     private float _ability2Time = 4;
-    private float _ability2Timer = 5;
+    private float _ability2Timer = 4;
     private float _ability3Time = 15;
     private float _ability3Timer = 5;
     // Start is called before the first frame update
@@ -50,6 +49,7 @@ public class ThiefPlayerBehavior : MonoBehaviour
             Material[] mats = Mat.GetComponent<SkinnedMeshRenderer>().materials;
             mats[0] = Default;
             Mat.GetComponent<SkinnedMeshRenderer>().materials = mats;
+            this.GetComponent<PlayerController>().maxVelocity /= 2;
         }
         if (Input.GetMouseButtonDown(0) && !animator.GetCurrentAnimatorStateInfo(1).IsTag("1") && _ability1Timer >= _ability1Time)
         {
@@ -122,10 +122,11 @@ public class ThiefPlayerBehavior : MonoBehaviour
     public void Ability2()
     {
         isInvisible=true;
-        invisibleCountdown = 1;
+        invisibleCountdown = 2;
         Material[] mats = Mat.GetComponent<SkinnedMeshRenderer>().materials;
         mats[0] = Invisible;
         Mat.GetComponent<SkinnedMeshRenderer>().materials = mats;
+        this.GetComponent<PlayerController>().maxVelocity *= 2;
         Smoke.Play();
     }
 }

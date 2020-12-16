@@ -71,14 +71,20 @@ public class KnightBehaviour : MonoBehaviour
             }
             else
             {
-                rigi.isKinematic = false;
-                agent.enabled = true;
-                is_moving = true;
-                agent.SetDestination(playerPosition);
-                mouvementVector = (transform.forward).normalized;
+                if (!ThiefPlayerBehavior.isInvisible)
+                {
+                    rigi.isKinematic = false;
+                    agent.enabled = true;
+                    is_moving = true;
+                    agent.SetDestination(playerPosition);
+                    mouvementVector = (transform.forward).normalized;
+                }
             }
-            UpdateAnimator();
-            DoRotation();
+            if (!ThiefPlayerBehavior.isInvisible)
+            {
+                UpdateAnimator();
+                DoRotation();
+            }
         }
     }
 
