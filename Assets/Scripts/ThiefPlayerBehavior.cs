@@ -9,6 +9,8 @@ public class ThiefPlayerBehavior : MonoBehaviour
     private KnightBehaviour KnightBehaviour;
     [SerializeField]
     private ParticleSystem Smoke;
+    [SerializeField]
+    private Transform spawnPoint;
     public static bool isInvisible = false;
     private float invisibleCountdown = 0;
     [SerializeField]
@@ -18,12 +20,14 @@ public class ThiefPlayerBehavior : MonoBehaviour
     [SerializeField]
     private Material Invisible;
     [SerializeField]
+    private Flacon flacon;
+    [SerializeField]
     private AudioSource slash;
     private float _ability1Time = 1;
     private float _ability1Timer = 1;
     private float _ability2Time = 4;
     private float _ability2Timer = 4;
-    private float _ability3Time = 15;
+    private float _ability3Time = 0;
     private float _ability3Timer = 5;
     // Start is called before the first frame update
     void Start()
@@ -126,5 +130,19 @@ public class ThiefPlayerBehavior : MonoBehaviour
         Mat.GetComponent<SkinnedMeshRenderer>().materials = mats;
         this.GetComponent<PlayerController>().maxVelocity *= 2;
         Smoke.Play();
+    }
+    public void Ability3()
+    {
+        Vector3 mouse = Input.mousePosition;
+        Ray castPoint = Camera.main.ScreenPointToRay(mouse);
+        RaycastHit hit;
+        if (Physics.Raycast(castPoint, out hit, Mathf.Infinity))
+        {
+            Vector3 direction = transform.forward;
+            GameObject flask = Instantiate(flacon, transform).gameObject;
+            flask.GetComponent<Flacon>().Target = hit.transform;
+            flask.transform.position = spawnPoint.position;
+            flask.transform.forward = direction;
+        }
     }
 }

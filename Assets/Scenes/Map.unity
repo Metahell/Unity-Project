@@ -6005,6 +6005,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1683114083}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1302606221 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7482797797181311129, guid: 710f734bf95f92349b27230f6fb74d96,
+    type: 3}
+  m_PrefabInstance: {fileID: 1641878726}
+  m_PrefabAsset: {fileID: 0}
 --- !u!95 &1322938656 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 95490315688113440, guid: baef9eef5665ddc418a67f27927c283a,
@@ -7635,6 +7641,17 @@ PrefabInstance:
       propertyPath: Invisible
       value: 
       objectReference: {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 5652456821996270526, guid: 710f734bf95f92349b27230f6fb74d96,
+        type: 3}
+      propertyPath: spawnPoint
+      value: 
+      objectReference: {fileID: 1302606221}
+    - target: {fileID: 5652456821996270526, guid: 710f734bf95f92349b27230f6fb74d96,
+        type: 3}
+      propertyPath: flacon
+      value: 
+      objectReference: {fileID: 2844245118928086832, guid: a51ce103b5344684e99514e92f0fab3f,
+        type: 3}
     - target: {fileID: 6004804561850870737, guid: 710f734bf95f92349b27230f6fb74d96,
         type: 3}
       propertyPath: m_LightProbeUsage
