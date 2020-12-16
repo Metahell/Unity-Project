@@ -1,9 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ArcherPlayerBehavior : MonoBehaviour
 {
+    [SerializeField]
+    private Image img1;
+    [SerializeField]
+    private Image img2;
+    [SerializeField]
+    private Image img3;
     [SerializeField]
     private Transform spawnPoint;
     [SerializeField]
@@ -25,6 +32,7 @@ public class ArcherPlayerBehavior : MonoBehaviour
         _ability1Timer += Time.deltaTime;
         _ability2Timer += Time.deltaTime;
         _ability3Timer += Time.deltaTime;
+        UpdateUI();
         if (Boost >= 0)
         {
             Boost -= Time.deltaTime;
@@ -77,5 +85,11 @@ public class ArcherPlayerBehavior : MonoBehaviour
         Boost = 3;
         this.GetComponent<PlayerController>().maxVelocity *= 2;
         boosted=true;
+    }
+    public void UpdateUI()
+    {
+        img1.fillAmount = _ability1Timer < _ability1Time ? _ability1Timer / _ability1Time :0;
+        img2.fillAmount = _ability2Timer < _ability2Time ? _ability2Timer / _ability2Time : 0;
+        img3.fillAmount = _ability3Timer < _ability3Time ? _ability3Timer / _ability3Time : 0;
     }
 }

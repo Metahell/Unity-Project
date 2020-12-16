@@ -1,9 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ThiefPlayerBehavior : MonoBehaviour
 {
+    [SerializeField]
+    private Image img1;
+    [SerializeField]
+    private Image img2;
+    [SerializeField]
+    private Image img3;
     [SerializeField]
     private Animator animator;
     private KnightBehaviour KnightBehaviour;
@@ -25,8 +32,8 @@ public class ThiefPlayerBehavior : MonoBehaviour
     private float _ability1Timer = 1;
     private float _ability2Time = 4;
     private float _ability2Timer = 4;
-    private float _ability3Time = 0;
-    private float _ability3Timer = 5;
+    private float _ability3Time = 15;
+    private float _ability3Timer = 15;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +46,7 @@ public class ThiefPlayerBehavior : MonoBehaviour
         _ability1Timer += Time.deltaTime;
         _ability2Timer += Time.deltaTime;
         _ability3Timer += Time.deltaTime;
+        UpdateUI();
         if (invisibleCountdown >= 0)
         { 
             invisibleCountdown -= Time.deltaTime;
@@ -85,7 +93,6 @@ public class ThiefPlayerBehavior : MonoBehaviour
         {
             if (collider.gameObject.CompareTag("Enemy"))
             {
-                Debug.Log(Mathf.Abs(Vector3.Angle(transform.forward, collider.gameObject.transform.forward) - 180) >= 90);
                 if (Mathf.Abs(Vector3.Angle(transform.forward, collider.gameObject.transform.forward) - 180) >= 90)
                 {
                     collider.gameObject.GetComponent<KnightBehaviour>().LooseHealth(dmg*2);
@@ -141,5 +148,11 @@ public class ThiefPlayerBehavior : MonoBehaviour
             flask.transform.position = spawnPoint.position;
             flask.transform.forward = direction;
         }
+    }
+    public void UpdateUI()
+    {
+        img1.fillAmount = _ability1Timer < _ability1Time ? _ability1Timer / _ability1Time : 0;
+        img2.fillAmount = _ability2Timer < _ability2Time ? _ability2Timer / _ability2Time : 0;
+        img3.fillAmount = _ability3Timer < _ability3Time ? _ability3Timer / _ability3Time : 0;
     }
 }

@@ -72,7 +72,7 @@ public class GolemBehavior : MonoBehaviour
         if (poisontimer > 0)
         {
             poisontimer -= Time.deltaTime;
-            if (poisonTick - poisontimer >= 1)
+            if (poisonTick - poisontimer >= 0)
             {
                 LooseHealth(2);
                 poisonTick -= 1;
