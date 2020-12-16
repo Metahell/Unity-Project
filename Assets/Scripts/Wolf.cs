@@ -34,7 +34,6 @@ public class Wolf : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        agent.Warp(transform.position);
         is_pushed = false;
         rigi = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Confined;
@@ -129,6 +128,7 @@ public class Wolf : MonoBehaviour
         direction = EnemyPosition - transform.position;
         direction.y = 0;
         direction = -direction.normalized;
+        
     }
     private void FindEnemy()
     {
@@ -153,11 +153,20 @@ public class Wolf : MonoBehaviour
     }
     private void Hit()
     {
-        EnemyPosition = GameObject.FindGameObjectsWithTag("Enemy")[0].transform.position;
-        if (Vector3.Distance(EnemyPosition, transform.position) < 2.5f)
+        if (Vector3.Distance(CurrentTarget.transform.position , transform.position) < 3.5f)
         {
-            //Debug.Log("Touché");
-            GameObject.FindGameObjectsWithTag("Enemy")[0].GetComponent<HealthOrb>().Damage(5);
+            if (CurrentTarget.CompareTag("Enemy"))
+            {
+                CurrentTarget.GetComponent<KnightBehaviour>().LooseHealth(5);
+            }
+            else if (CurrentTarget.CompareTag("Archer"))
+            {
+                CurrentTarget.GetComponent<ArcherBehaviour>().LooseHealth(5);
+            }
+            else if (CurrentTarget.CompareTag("Boss"))
+            {
+                CurrentTarget.GetComponent<GolemBehavior>().LooseHealth(5);
+            }
         }
     }
 
@@ -165,7 +174,7 @@ public class Wolf : MonoBehaviour
     {
         health -= healthLoss;
         health = health > hpMax ? hpMax : health;
-        StartCoroutine("Red");
+        //StartCoroutine("Red");
     }
 
     /*IEnumerator Red()
