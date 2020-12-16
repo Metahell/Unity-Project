@@ -156,7 +156,7 @@ public class KnightPlayerBehaviour : MonoBehaviour
         knightB.is_pushed = true;
         rigidKnight.isKinematic = false;
         rigidKnight.velocity = Vector3.zero;
-        rigidKnight.AddForce(transform.forward*force);
+        rigidKnight.AddForce(-knight.transform.forward*force);
         yield return new WaitForSeconds(0.5f);
         if (knight != null)
         {
