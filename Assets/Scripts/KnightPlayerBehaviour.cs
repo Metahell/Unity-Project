@@ -16,6 +16,8 @@ public class KnightPlayerBehaviour : MonoBehaviour
     private KnightBehaviour KnightBehaviour;
     public bool is_jumping;
     [SerializeField]
+    private GameObject StarParticle;
+    [SerializeField]
     private AudioSource slash;
     private float _ability1Time = 1;
     private float _ability1Timer = 1;
@@ -90,6 +92,7 @@ public class KnightPlayerBehaviour : MonoBehaviour
             StartCoroutine(Jump());
             _ability2Timer = 0;
         }
+
     }
 
     public void Ability3()
@@ -132,7 +135,6 @@ public class KnightPlayerBehaviour : MonoBehaviour
 
     IEnumerator Jump()
     {
-        is_jumping = true;
         /**Vector3 position = transform.position;
         Vector3 goal = transform.position + 10 * transform.forward;
         for (float i = 0; i < 1; i+=Time.deltaTime)
@@ -141,27 +143,9 @@ public class KnightPlayerBehaviour : MonoBehaviour
             yield return null;
         }**/
         gameObject.GetComponent<Rigidbody>().velocity = transform.forward * 10 + transform.up * 10;
-        yield return new WaitForSeconds(2f);
-        is_jumping = false; 
-        Vector3 attackCenter = transform.position;
-        Collider[] colliders = Physics.OverlapSphere(attackCenter, 2f);
-        foreach (Collider collider in colliders)
-        {
-            if (collider.gameObject.CompareTag("Enemy"))
-            {
-                collider.gameObject.GetComponent<KnightBehaviour>().LooseHealth(2);
-                StartCoroutine(PushKnight(collider.gameObject));
-            }
-            else if (collider.gameObject.CompareTag("Archer"))
-            {
-                collider.gameObject.GetComponent<ArcherBehaviour>().LooseHealth(2);
-                StartCoroutine(PushArcher(collider.gameObject));
-            }
-            else if (collider.gameObject.CompareTag("Boss"))
-            {
-                collider.gameObject.GetComponent<GolemBehavior>().LooseHealth(2);
-            }
-        }
+        yield return new WaitForSeconds(0.1f);
+        is_jumping = true;
+        
     }
 
     IEnumerator PushKnight(GameObject knight)
@@ -196,5 +180,33 @@ public class KnightPlayerBehaviour : MonoBehaviour
         img1.fillAmount = _ability1Timer < _ability1Time ? _ability1Timer / _ability1Time : 0;
         img2.fillAmount = _ability2Timer < _ability2Time ? _ability2Timer / _ability2Time : 0;
         img3.fillAmount = _ability3Timer < _ability3Time ? _ability3Timer / _ability3Time : 0;
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        is_jumping = false;
+        if ((collision.collider.CompareTag("Floor")|| collision.collider.CompareTag("Enemy")|| collision.collider.CompareTag("Archer")) && is_jumping)
+        {
+            Instantiate(StarParticle, transform.position,transform.rotation);
+            Vector3 attackCenter = transform.position;
+            Collider[] colliders = Physics.OverlapSphere(attackCenter, 4f);
+            foreach (Collider collider in colliders)
+            {
+                if (collider.gameObject.CompareTag("Enemy"))
+                {
+                    collider.gameObject.GetComponent<KnightBehaviour>().LooseHealth(2);
+                    StartCoroutine(PushKnight(collider.gameObject));
+                }
+                else if (collider.gameObject.CompareTag("Archer"))
+                {
+                    collider.gameObject.GetComponent<ArcherBehaviour>().LooseHealth(2);
+                    StartCoroutine(PushArcher(collider.gameObject));
+                }
+                else if (collider.gameObject.CompareTag("Boss"))
+                {
+                    collider.gameObject.GetComponent<GolemBehavior>().LooseHealth(2);
+                }
+
+            }
+        }
     }
 }
