@@ -2747,9 +2747,9 @@ AudioSource:
   m_GameObject: {fileID: 534789415}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -491914244274306682, guid: 1ce4f8a737361c44983cb15267461da3,
+  OutputAudioMixerGroup: {fileID: -4471930018928809265, guid: 1ce4f8a737361c44983cb15267461da3,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 16d2661f3a29311489c4dce7596d0de5, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 02c5471cc1452e0479a8236d06dc17c1, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.5
   m_Pitch: 1
@@ -3412,11 +3412,6 @@ PrefabInstance:
       propertyPath: healthOrb
       value: 
       objectReference: {fileID: 1755762212}
-    - target: {fileID: 4330262432237800835, guid: 715d0c89da61c7c408786a0f2c18cd52,
-        type: 3}
-      propertyPath: hpmax
-      value: 30
-      objectReference: {fileID: 0}
     - target: {fileID: 4351653088871865299, guid: 715d0c89da61c7c408786a0f2c18cd52,
         type: 3}
       propertyPath: m_Height
@@ -4946,6 +4941,7 @@ MonoBehaviour:
   healthOrb: {fileID: 1755762212}
   slider: {fileID: 886502268}
   WaveManager: {fileID: 534789416}
+  hurt: {fileID: 0}
 --- !u!1 &1010434274
 GameObject:
   m_ObjectHideFlags: 0
@@ -7458,11 +7454,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5394070413565419486, guid: 5ffa83e7add6222478526c88afc7b5e7,
         type: 3}
-      propertyPath: hpmax
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 5394070413565419486, guid: 5ffa83e7add6222478526c88afc7b5e7,
-        type: 3}
       propertyPath: healthOrb
       value: 
       objectReference: {fileID: 1755762212}
@@ -8138,6 +8129,11 @@ PrefabInstance:
       propertyPath: m_Avatar
       value: 
       objectReference: {fileID: 9000000, guid: e7bb87ed113476444a9687a0bef312ea, type: 3}
+    - target: {fileID: 3212468186863133136, guid: 710f734bf95f92349b27230f6fb74d96,
+        type: 3}
+      propertyPath: Mute
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4559606765704602516, guid: 710f734bf95f92349b27230f6fb74d96,
         type: 3}
       propertyPath: UVModule.tilesX
@@ -8163,46 +8159,6 @@ PrefabInstance:
       propertyPath: WaveManager
       value: 
       objectReference: {fileID: 534789416}
-    - target: {fileID: 5581121879863049614, guid: 710f734bf95f92349b27230f6fb74d96,
-        type: 3}
-      propertyPath: hpmax
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 5652456821996270526, guid: 710f734bf95f92349b27230f6fb74d96,
-        type: 3}
-      propertyPath: animator
-      value: 
-      objectReference: {fileID: 1641878732}
-    - target: {fileID: 5652456821996270526, guid: 710f734bf95f92349b27230f6fb74d96,
-        type: 3}
-      propertyPath: slash
-      value: 
-      objectReference: {fileID: 1641878728}
-    - target: {fileID: 5652456821996270526, guid: 710f734bf95f92349b27230f6fb74d96,
-        type: 3}
-      propertyPath: Smoke
-      value: 
-      objectReference: {fileID: 1641878737}
-    - target: {fileID: 5652456821996270526, guid: 710f734bf95f92349b27230f6fb74d96,
-        type: 3}
-      propertyPath: Mat
-      value: 
-      objectReference: {fileID: 1641878729}
-    - target: {fileID: 5652456821996270526, guid: 710f734bf95f92349b27230f6fb74d96,
-        type: 3}
-      propertyPath: Default
-      value: 
-      objectReference: {fileID: 2100000, guid: 8bc6328f205b96345a303cab22603183, type: 2}
-    - target: {fileID: 5652456821996270526, guid: 710f734bf95f92349b27230f6fb74d96,
-        type: 3}
-      propertyPath: Invisible
-      value: 
-      objectReference: {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
-    - target: {fileID: 5652456821996270526, guid: 710f734bf95f92349b27230f6fb74d96,
-        type: 3}
-      propertyPath: spawnPoint
-      value: 
-      objectReference: {fileID: 1680979482}
     - target: {fileID: 5652456821996270526, guid: 710f734bf95f92349b27230f6fb74d96,
         type: 3}
       propertyPath: flacon
@@ -8332,24 +8288,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1641878726}
   m_PrefabAsset: {fileID: 0}
---- !u!82 &1641878728 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 719424822165020979, guid: 710f734bf95f92349b27230f6fb74d96,
-    type: 3}
-  m_PrefabInstance: {fileID: 1641878726}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1641878729 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4222271017363933430, guid: 710f734bf95f92349b27230f6fb74d96,
-    type: 3}
-  m_PrefabInstance: {fileID: 1641878726}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1641878732 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 2499613505214676178, guid: 710f734bf95f92349b27230f6fb74d96,
-    type: 3}
-  m_PrefabInstance: {fileID: 1641878726}
-  m_PrefabAsset: {fileID: 0}
 --- !u!199 &1641878736
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -8414,12 +8352,6 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!198 &1641878737 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 4559606765704602516, guid: 710f734bf95f92349b27230f6fb74d96,
-    type: 3}
-  m_PrefabInstance: {fileID: 1641878726}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1655505089
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8494,12 +8426,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2014964060137175045, guid: c282e35a321319f4ebe614925603202e,
     type: 3}
   m_PrefabInstance: {fileID: 1655505089}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1680979482 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 382567235644637708, guid: 710f734bf95f92349b27230f6fb74d96,
-    type: 3}
-  m_PrefabInstance: {fileID: 1641878726}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1683114083
 PrefabInstance:
@@ -9696,22 +9622,11 @@ PrefabInstance:
       propertyPath: m_LocalRotation.w
       value: 0.7725336
       objectReference: {fileID: 0}
-    - target: {fileID: 4624505933397778340, guid: 957fb60e14d1aa44e84a7af1a56ca1c0,
-        type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 016d4932701b2fc458fe0372969c4848, type: 3}
-    - target: {fileID: 4624505933397778340, guid: 957fb60e14d1aa44e84a7af1a56ca1c0,
+    - target: {fileID: 1395603481529915644, guid: 957fb60e14d1aa44e84a7af1a56ca1c0,
         type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4624505933397778340, guid: 957fb60e14d1aa44e84a7af1a56ca1c0,
-        type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: -491914244274306682, guid: 1ce4f8a737361c44983cb15267461da3,
-        type: 2}
     - target: {fileID: 5390170862140131394, guid: 957fb60e14d1aa44e84a7af1a56ca1c0,
         type: 3}
       propertyPath: healthOrb
@@ -9744,11 +9659,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6803904057024868213, guid: 957fb60e14d1aa44e84a7af1a56ca1c0,
         type: 3}
-      propertyPath: slash
-      value: 
-      objectReference: {fileID: 1802669850}
-    - target: {fileID: 6803904057024868213, guid: 957fb60e14d1aa44e84a7af1a56ca1c0,
-        type: 3}
       propertyPath: img1
       value: 
       objectReference: {fileID: 1099166562}
@@ -9762,20 +9672,8 @@ PrefabInstance:
       propertyPath: img3
       value: 
       objectReference: {fileID: 794053510}
-    - target: {fileID: 6803904057024868213, guid: 957fb60e14d1aa44e84a7af1a56ca1c0,
-        type: 3}
-      propertyPath: StarParticle
-      value: 
-      objectReference: {fileID: 2197373529531430865, guid: 6387d78b79857c04fb806ce4c2e70ec9,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 957fb60e14d1aa44e84a7af1a56ca1c0, type: 3}
---- !u!82 &1802669850 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 4624505933397778340, guid: 957fb60e14d1aa44e84a7af1a56ca1c0,
-    type: 3}
-  m_PrefabInstance: {fileID: 1802669849}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1802669851 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1474278901674418, guid: 957fb60e14d1aa44e84a7af1a56ca1c0,
@@ -11261,7 +11159,7 @@ PrefabInstance:
     - target: {fileID: 6818814826971027213, guid: 8861c10a477d76442a838719e59aadcf,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7528516233136545781, guid: 8861c10a477d76442a838719e59aadcf,
         type: 3}

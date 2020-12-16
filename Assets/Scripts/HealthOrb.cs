@@ -15,6 +15,8 @@ public class HealthOrb : MonoBehaviour
     private Slider slider;
     [SerializeField]
     private WaveManager WaveManager;
+    [SerializeField]
+    private AudioSource hurt;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +43,10 @@ public class HealthOrb : MonoBehaviour
         currentHp -= dmg;
         currentHp = currentHp > hpmax ? hpmax : currentHp;
         slider.value = currentHp;
+        if (dmg > 0)
+        {
+            hurt.Play();
+        }
     }
     public void UpdateOrb()
     {

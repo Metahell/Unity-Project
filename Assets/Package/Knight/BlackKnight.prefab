@@ -160,6 +160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 95492813676292648}
+  poisontimer: 0
   maxVelocity: 3
   acceleration: 5
   decceleration: 10
@@ -168,6 +169,10 @@ MonoBehaviour:
   knightSlash2: {fileID: 7400000, guid: 6908e42f0eeb8f04a9b93bf478de1fa3, type: 2}
   health: 10
   is_pushed: 0
+  mat0: {fileID: 2100000, guid: 94dbdbb4c29d1c741946c54f5778da08, type: 2}
+  mat1: {fileID: 2100000, guid: 1651a4f4fad266e4a8fea40160277fba, type: 2}
+  mat2: {fileID: 2100000, guid: cc67fe56c28ab914e9e027978f4be62a, type: 2}
+  mat3: {fileID: 2100000, guid: 94dbdbb4c29d1c741946c54f5778da08, type: 2}
 --- !u!95 &95492813676292648
 Animator:
   serializedVersion: 3

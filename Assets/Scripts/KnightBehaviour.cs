@@ -29,10 +29,20 @@ public class KnightBehaviour : MonoBehaviour
     public AnimationClip knightSlash2;
     [SerializeField]
     public int health;
+    private int hpMax;
     public bool is_pushed;
+    [SerializeField]
+    Material mat0;
+    [SerializeField]
+    Material mat1;
+    [SerializeField]
+    Material mat2;
+    [SerializeField]
+    Material mat3;
     // Start is called before the first frame update
     void Start()
     {
+        hpMax = health;
         is_pushed = false;
         rigi = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Confined;
@@ -149,7 +159,8 @@ public class KnightBehaviour : MonoBehaviour
     public void LooseHealth(int healthLoss)
     {
         health -= healthLoss;
-        StartCoroutine("Red");
+        health = health > hpMax + 5 ? hpMax + 5 : health;
+        if (healthLoss > 0) StartCoroutine("Red"); else StartCoroutine(Green());
     }
 
     IEnumerator Red()
@@ -158,19 +169,32 @@ public class KnightBehaviour : MonoBehaviour
 
         Transform cube = gameObject.transform.Find("Cube.002");
         Material[] materials = cube.GetComponent<Renderer>().materials;
-        Color color0 = materials[0].color;
-        Color color1 = materials[1].color;
-        Color color2 = materials[2].color;
-        Color color3 = materials[3].color;
         materials[0].color = Color.red;
         materials[1].color = Color.red;
         materials[2].color = Color.red;
         materials[3].color = Color.red;
         yield return new WaitForSeconds(0.1f);
-        materials[0].color = color0;
-        materials[1].color = color1;
-        materials[2].color = color2;
-        materials[3].color = color3;
+        materials[0].color = mat0.color;
+        materials[1].color = mat1.color;
+        materials[2].color = mat2.color;
+        materials[3].color = mat3.color;
+    }
+
+    IEnumerator Green()
+    {
+
+
+        Transform cube = gameObject.transform.Find("Cube.002");
+        Material[] materials = cube.GetComponent<Renderer>().materials;
+        materials[0].color = Color.green;
+        materials[1].color = Color.green;
+        materials[2].color = Color.green;
+        materials[3].color = Color.green;
+        yield return new WaitForSeconds(0.1f);
+        materials[0].color = mat0.color;
+        materials[1].color = mat1.color;
+        materials[2].color = mat2.color;
+        materials[3].color = mat3.color;
     }
 
     IEnumerator Death()
