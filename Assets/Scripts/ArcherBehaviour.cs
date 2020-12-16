@@ -58,71 +58,74 @@ public class ArcherBehaviour : MonoBehaviour
         {
             StartCoroutine(Death());
         }
-        if (poisontimer >0)
-        {
-            poisontimer -= Time.deltaTime;
-            if (poisonTick - poisontimer >= 0)
-            {
-                LooseHealth(2);
-                poisonTick -= 1;
-            }
-        }
-        if (poisontimer <= 0 && poisonTick != 3)
-        {
-            poisonTick = 3;
-        }
         else
         {
-            _fireTimer += Time.deltaTime;
-            if (_fireTimer > (1 / _attackSpeed))
-                _canShoot = true;
-
-            playerPosition = GameObject.FindGameObjectsWithTag("Player")[0].transform.position;
-            float distanceToPlayer = Vector3.Distance(playerPosition, transform.position);
-
-            if (((distanceToPlayer < 20f && distanceToPlayer > 6f) || animator.GetCurrentAnimatorStateInfo(1).IsTag("1")) && _visionClear)
+            if (poisontimer > 0)
             {
-                agent.enabled = false;
-                rigi.velocity = Vector3.zero;
-                if (!is_pushed)
+                poisontimer -= Time.deltaTime;
+                if (poisonTick - poisontimer >= 0)
                 {
-                    rigi.isKinematic = true;
+                    LooseHealth(2);
+                    poisonTick -= 1;
                 }
-
-                if (!animator.GetCurrentAnimatorStateInfo(1).IsTag("1") && _canShoot)
-                {
-                    animator.SetTrigger("1st Ability");
-                    Shoot();
-                    _canShoot = false;
-                    _fireTimer = 0;
-                }
-                is_moving = false;
+            }
+            if (poisontimer <= 0 && poisonTick != 3)
+            {
+                poisonTick = 3;
             }
             else
             {
+                _fireTimer += Time.deltaTime;
+                if (_fireTimer > (1 / _attackSpeed))
+                    _canShoot = true;
+
+                playerPosition = GameObject.FindGameObjectsWithTag("Player")[0].transform.position;
+                float distanceToPlayer = Vector3.Distance(playerPosition, transform.position);
+
+                if (((distanceToPlayer < 20f && distanceToPlayer > 6f) || animator.GetCurrentAnimatorStateInfo(1).IsTag("1")) && _visionClear)
+                {
+                    agent.enabled = false;
+                    rigi.velocity = Vector3.zero;
+                    if (!is_pushed)
+                    {
+                        rigi.isKinematic = true;
+                    }
+
+                    if (!animator.GetCurrentAnimatorStateInfo(1).IsTag("1") && _canShoot)
+                    {
+                        animator.SetTrigger("1st Ability");
+                        Shoot();
+                        _canShoot = false;
+                        _fireTimer = 0;
+                    }
+                    is_moving = false;
+                }
+                else
+                {
+                    if (!ThiefPlayerBehavior.isInvisible)
+                    {
+                        rigi.isKinematic = false;
+                        agent.enabled = true;
+                        is_moving = true;
+                        if (!_visionClear)
+                        {
+                            agent.SetDestination(playerPosition);
+                        }
+                        else
+                        {
+                            if (distanceToPlayer > 20f)
+                                agent.SetDestination(playerPosition);
+                            if (distanceToPlayer < 6f)
+                                agent.SetDestination(transform.position + (transform.position - playerPosition).normalized);
+                        }
+                        mouvementVector = (transform.forward).normalized;
+                    }
+                }
                 if (!ThiefPlayerBehavior.isInvisible)
                 {
-                    rigi.isKinematic = false;
-                    agent.enabled = true;
-                    is_moving = true;
-                    if (!_visionClear)
-                    {
-                        agent.SetDestination(playerPosition);
-                    }
-                    else
-                    {
-                        if (distanceToPlayer > 20f)
-                            agent.SetDestination(playerPosition);
-                        if (distanceToPlayer < 6f)
-                            agent.SetDestination(transform.position + (transform.position - playerPosition).normalized);
-                    }
-                    mouvementVector = (transform.forward).normalized;
+                    UpdateAnimator();
+                    DoRotation();
                 }
-            }
-            if (!ThiefPlayerBehavior.isInvisible)
-            {
-                UpdateAnimator();
-                DoRotation();
             }
         }
 
