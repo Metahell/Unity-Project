@@ -1218,7 +1218,7 @@ MonoBehaviour:
   decceleration: 10
   is_moving: 1
   agent: {fileID: -2932784020672230930}
-  swipe: {fileID: 7400000, guid: 14c8b0e6e5003304d8870e282cdbff0c, type: 2}
+  swipe: {fileID: 7400000, guid: 0b4992f801f0b644a8cec839679c4e7a, type: 2}
   is_pushed: 0
 --- !u!136 &2931695600607735566
 CapsuleCollider:
