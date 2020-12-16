@@ -89,8 +89,9 @@ public class KnightPlayerBehaviour : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(castPoint, out hit, Mathf.Infinity) && hit.transform.tag == "Floor")
         {
-            StartCoroutine(Jump());
+
             _ability2Timer = 0;
+            StartCoroutine(Jump());
         }
 
     }
@@ -183,7 +184,6 @@ public class KnightPlayerBehaviour : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        is_jumping = false;
         if ((collision.collider.CompareTag("Floor")|| collision.collider.CompareTag("Enemy")|| collision.collider.CompareTag("Archer")) && is_jumping)
         {
             Instantiate(StarParticle, transform.position,transform.rotation);
@@ -208,5 +208,6 @@ public class KnightPlayerBehaviour : MonoBehaviour
 
             }
         }
+        is_jumping = false;
     }
 }
