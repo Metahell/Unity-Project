@@ -29,6 +29,10 @@ public class Poison : MonoBehaviour
             {
                 other.GetComponent<ArcherBehaviour>().poisontimer = 3;
             }
+            if (other.tag == "Shaman")
+            {
+                other.GetComponent<ShamanBehavior>().poisontimer = 3;
+            }
             if (other.tag == "Boss")
             {
                 other.GetComponent<GolemBehavior>().poisontimer = 3;

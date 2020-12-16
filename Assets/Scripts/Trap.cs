@@ -50,6 +50,10 @@ public class Trap : MonoBehaviour
         {
             trapped.GetComponent<ArcherBehaviour>().LooseHealth(10);
         }
+        else if (trapped.CompareTag("Shaman"))
+        {
+            trapped.GetComponent<ShamanBehavior>().LooseHealth(10);
+        }
         yield return new WaitForSeconds(1);
         Factory.GetInstance().RemoveTrap(this);
     }
