@@ -1816,9 +1816,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 1.4572421
-  m_Height: 6.415526
+  m_Height: 5.828066
   m_Direction: 1
-  m_Center: {x: 0.927573, y: 3.0466223, z: 0.59181887}
+  m_Center: {x: 0.92757297, y: 3.3403523, z: 0.59181887}
 --- !u!114 &6981381849211542443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1848,6 +1848,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b74f99956e481674e92ad06f3a39a8ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  img1: {fileID: 0}
+  img2: {fileID: 0}
+  img3: {fileID: 0}
   spawnPoint: {fileID: 0}
   animator: {fileID: 95308412625735534}
   shootAngle: 0
