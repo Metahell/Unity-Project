@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class Flacon : MonoBehaviour
 {
-    public Transform Target;
     public float firingAngle = 45.0f;
     public float gravity = 9.8f;
-
+    private Vector3 Target;
     private Transform Projectile;
     private Transform start;
-
+    [SerializeField]
+    private ParticleSystem Poison;
+    [SerializeField]
+    private AudioSource Glasssound;
+    private bool broken = false;
     void Awake()
     {
-        start = transform;
-        Projectile = transform;
-        Thrown();
+        StartCoroutine(FindTarget());
     }
 
     void Start()
@@ -23,15 +24,27 @@ public class Flacon : MonoBehaviour
         
     }
 
+    IEnumerator FindTarget()
+    {
+        yield return new WaitForSeconds(.01f);
+        start = transform;
+        Projectile = transform;
+        Vector3 mouse = Input.mousePosition;
+        Ray castPoint = Camera.main.ScreenPointToRay(mouse);
+        RaycastHit hit;
+        Physics.Raycast(castPoint, out hit, Mathf.Infinity);
+        Target = hit.transform.position;
+        StartCoroutine(Thrown());
+    }
 
-    private void Thrown()
+    IEnumerator Thrown()
     {
 
         // Move projectile to the position of throwing object + add some offset if needed.
         Projectile.position = start.position + new Vector3(0, 0.0f, 0);
 
         // Calculate distance to target
-        float target_Distance = Vector3.Distance(Projectile.position, Target.position);
+        float target_Distance = Vector3.Distance(Projectile.position, Target);
 
         // Calculate the velocity needed to throw the object to the target at specified angle.
         float projectile_Velocity = target_Distance / (Mathf.Sin(2 * firingAngle * Mathf.Deg2Rad) / gravity);
@@ -44,7 +57,7 @@ public class Flacon : MonoBehaviour
         float flightDuration = target_Distance / Vx;
 
         // Rotate projectile to face the target.
-        Projectile.rotation = Quaternion.LookRotation(Target.position - Projectile.position);
+        Projectile.rotation = Quaternion.LookRotation(Target - Projectile.position);
 
         float elapse_time = 0;
 
@@ -53,15 +66,23 @@ public class Flacon : MonoBehaviour
             Projectile.Translate(0, (Vy - (gravity * elapse_time)) * Time.deltaTime, Vx * Time.deltaTime);
 
             elapse_time += Time.deltaTime;
-            
+
+            yield return null;
         }
     }
     private void OnCollisionEnter(Collision collision)
     {
-        StartCoroutine("Break");
+        if (!broken)
+        {
+            broken = true;
+            StartCoroutine("Break");
+        }
     }
     private IEnumerator Break()
     {
+        Glasssound.Play();
+        Instantiate(Poison, transform.position,transform.rotation);
         yield return new WaitForSeconds(0.2f);
+        Factory.GetInstance().RemoveFlacon(this);
     }
 }

@@ -8,6 +8,8 @@ public class KnightBehaviour : MonoBehaviour
     [Header("Link")]
     private Rigidbody rigi;
     [SerializeField] private Animator animator;
+    public float poisontimer=0;
+    private float poisonTick=3;
     private Vector3 mouvementVector = Vector3.zero;
     private Vector3 motionVector = Vector3.zero;
     private Vector3 direction;
@@ -44,6 +46,19 @@ public class KnightBehaviour : MonoBehaviour
         if (health <= 0)
         {
             StartCoroutine(Death());
+        }
+        if (poisontimer>0)
+        {
+            poisontimer -= Time.deltaTime;
+            if (poisonTick - poisontimer >= 1)
+            {
+                LooseHealth(2);
+                poisonTick -= 1;
+            }
+        }
+        if (poisontimer <= 0 && poisonTick != 3)
+        {
+            poisonTick = 3;
         }
         else
         {

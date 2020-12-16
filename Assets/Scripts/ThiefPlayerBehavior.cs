@@ -20,8 +20,6 @@ public class ThiefPlayerBehavior : MonoBehaviour
     [SerializeField]
     private Material Invisible;
     [SerializeField]
-    private Flacon flacon;
-    [SerializeField]
     private AudioSource slash;
     private float _ability1Time = 1;
     private float _ability1Timer = 1;
@@ -139,8 +137,7 @@ public class ThiefPlayerBehavior : MonoBehaviour
         if (Physics.Raycast(castPoint, out hit, Mathf.Infinity))
         {
             Vector3 direction = transform.forward;
-            GameObject flask = Instantiate(flacon, transform).gameObject;
-            flask.GetComponent<Flacon>().Target = hit.transform;
+            GameObject flask = Factory.GetInstance().GetFlacon();
             flask.transform.position = spawnPoint.position;
             flask.transform.forward = direction;
         }

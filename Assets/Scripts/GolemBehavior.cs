@@ -39,6 +39,8 @@ public class GolemBehavior : MonoBehaviour
     private bool _canCharge = false;
     private float _chargeTimer = 10;
     public AnimationClip GolemSwipe;
+    public float poisontimer = 0;
+    private int poisonTick = 3;
     [SerializeField]
     private int healthmax;
     private int health;
@@ -66,6 +68,19 @@ public class GolemBehavior : MonoBehaviour
         {
             charging = false;
             StartCoroutine(Death());
+        }
+        if (poisontimer > 0)
+        {
+            poisontimer -= Time.deltaTime;
+            if (poisonTick - poisontimer >= 1)
+            {
+                LooseHealth(2);
+                poisonTick -= 1;
+            }
+        }
+        if (poisontimer <= 0 && poisonTick != 3)
+        {
+            poisonTick = 3;
         }
         else
         {

@@ -28,7 +28,8 @@ public class ArcherBehaviour : MonoBehaviour
     float distanceToPlayer;
     private bool is_moving = true;
     public NavMeshAgent agent;
-
+    public float poisontimer = 0;
+    private int poisonTick = 3;
     [SerializeField]
     private float _attackSpeed = 0.5f;
     private float _fireTimer = 0;
@@ -56,6 +57,19 @@ public class ArcherBehaviour : MonoBehaviour
         if (health <= 0)
         {
             StartCoroutine(Death());
+        }
+        if (poisontimer >0)
+        {
+            poisontimer -= Time.deltaTime;
+            if (poisonTick - poisontimer >= 1)
+            {
+                LooseHealth(2);
+                poisonTick -= 1;
+            }
+        }
+        if (poisontimer <= 0 && poisonTick != 3)
+        {
+            poisonTick = 3;
         }
         else
         {

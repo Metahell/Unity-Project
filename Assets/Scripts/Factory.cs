@@ -12,11 +12,14 @@ public class Factory : MonoBehaviour
     private Trap TrapPrefab;
     [SerializeField]
     private Axe AxePrefab;
+    [SerializeField]
+    private Flacon FlaconPrefab;
     private static Factory instance;
     public static Factory GetInstance()
     {
         return instance;
     }
+    private Queue<Flacon> poolfl = new Queue<Flacon>();
     private Queue<Trap> poolt = new Queue<Trap>();
     private Queue<Arrow> pool = new Queue<Arrow>();
     private Queue<Fireball> poolf = new Queue<Fireball>();
@@ -101,5 +104,25 @@ public class Factory : MonoBehaviour
         GameObject bulletObj = Instantiate(TrapPrefab, transform).gameObject;
         poolt.Enqueue(bulletObj.GetComponent<Trap>());
         return Instantiate(bulletObj, transform).gameObject;
+    }
+    public void RemoveFlacon(Flacon a)
+    {
+        a.gameObject.SetActive(false);
+        poolfl.Enqueue(a);
+    }
+
+    public GameObject GetFlacon()
+    {
+        //On a déjà des balles disponibles
+        if (poola.Count > 0)
+        {
+            GameObject bulletObj = poolfl.Dequeue().gameObject;
+            bulletObj.SetActive(true);
+            return bulletObj;
+        }
+        else
+        {
+            return Instantiate(FlaconPrefab, transform).gameObject;
+        }
     }
 }
