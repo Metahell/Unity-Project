@@ -49,6 +49,10 @@ public class Arrow : MonoBehaviour
             {
                 other.gameObject.GetComponent<GolemBehavior>().LooseHealth(10);
             }
+            else if (other.gameObject.CompareTag("Shaman"))
+            {
+                other.gameObject.GetComponent<ShamanBehavior>().LooseHealth(10);
+            }
         }
 
         Remove();

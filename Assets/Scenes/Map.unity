@@ -2047,7 +2047,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &386161172
 Transform:
   m_ObjectHideFlags: 0
@@ -2722,6 +2722,7 @@ MonoBehaviour:
   EnnemyPool:
   - {fileID: 1009502973115248, guid: 9c65574a42bfe4246aa9f3165f406c90, type: 3}
   - {fileID: 7795033138396288864, guid: 3fa92f4e5016b724b9e3fcbb7fb13558, type: 3}
+  - {fileID: 7112002856112821100, guid: bf5d5974972e331429b7ebb55eca4f71, type: 3}
   Boss: {fileID: 0}
 --- !u!4 &534789417
 Transform:
@@ -3328,7 +3329,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1699323559678470, guid: 715d0c89da61c7c408786a0f2c18cd52, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4060924673150684, guid: 715d0c89da61c7c408786a0f2c18cd52, type: 3}
       propertyPath: m_LocalPosition.x

@@ -124,6 +124,17 @@ public class ThiefPlayerBehavior : MonoBehaviour
                     collider.gameObject.GetComponent<GolemBehavior>().LooseHealth(dmg);
                 }
             }
+            else if (collider.gameObject.CompareTag("Shaman"))
+            {
+                if (Mathf.Abs(Vector3.Angle(transform.forward, collider.gameObject.transform.forward) - 180) >= 90)
+                {
+                    collider.gameObject.GetComponent<ShamanBehavior>().LooseHealth(dmg * 2);
+                }
+                else
+                {
+                    collider.gameObject.GetComponent<ShamanBehavior>().LooseHealth(dmg);
+                }
+            }
         }
     }
     public void Ability2()

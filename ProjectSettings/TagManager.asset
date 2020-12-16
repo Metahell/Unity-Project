@@ -11,6 +11,7 @@ TagManager:
   - Floor
   - Undefined
   - Wolf
+  - Shaman
   layers:
   - Default
   - TransparentFX
