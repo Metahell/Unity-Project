@@ -86,24 +86,30 @@ public class ArcherBehaviour : MonoBehaviour
             }
             else
             {
-                rigi.isKinematic = false;
-                agent.enabled = true;
-                is_moving = true;
-                if (!_visionClear)
+                if (!ThiefPlayerBehavior.isInvisible)
                 {
-                    agent.SetDestination(playerPosition);
-                }
-                else
-                {
-                    if (distanceToPlayer > 20f)
+                    rigi.isKinematic = false;
+                    agent.enabled = true;
+                    is_moving = true;
+                    if (!_visionClear)
+                    {
                         agent.SetDestination(playerPosition);
-                    if (distanceToPlayer < 6f)
-                        agent.SetDestination(transform.position + (transform.position - playerPosition).normalized);
+                    }
+                    else
+                    {
+                        if (distanceToPlayer > 20f)
+                            agent.SetDestination(playerPosition);
+                        if (distanceToPlayer < 6f)
+                            agent.SetDestination(transform.position + (transform.position - playerPosition).normalized);
+                    }
+                    mouvementVector = (transform.forward).normalized;
                 }
-                mouvementVector = (transform.forward).normalized;
             }
-            UpdateAnimator();
-            DoRotation();
+            if (!ThiefPlayerBehavior.isInvisible)
+            {
+                UpdateAnimator();
+                DoRotation();
+            }
         }
 
         //Debug.Log(_visionClear.ToString() +"  "+ distanceToPlayer.ToString());

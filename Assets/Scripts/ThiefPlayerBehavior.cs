@@ -38,9 +38,7 @@ public class ThiefPlayerBehavior : MonoBehaviour
         _ability2Timer += Time.deltaTime;
         _ability3Timer += Time.deltaTime;
         if (invisibleCountdown >= 0)
-        {
-            Debug.Log(isInvisible);
-            Debug.Log(Mat.GetComponent<SkinnedMeshRenderer>().materials[0]);
+        { 
             invisibleCountdown -= Time.deltaTime;
         }
         if(invisibleCountdown <= 0&&isInvisible)
@@ -59,7 +57,7 @@ public class ThiefPlayerBehavior : MonoBehaviour
         if (Input.GetMouseButtonDown(1) && !animator.GetCurrentAnimatorStateInfo(1).IsTag("1") && _ability2Timer >= _ability2Time)
         {
             animator.SetTrigger("2nd Ability");
-            // le reset du timer est dans la fonction d'abilité au cas où la position de la souris n'est pas bonne
+            _ability2Timer = 0;
         }
         if (Input.GetKey(KeyCode.Space) && !animator.GetCurrentAnimatorStateInfo(1).IsTag("1") && _ability3Timer >= _ability3Time)
         {
@@ -88,33 +86,33 @@ public class ThiefPlayerBehavior : MonoBehaviour
                 Debug.Log(Mathf.Abs(Vector3.Angle(transform.forward, collider.gameObject.transform.forward) - 180) >= 90);
                 if (Mathf.Abs(Vector3.Angle(transform.forward, collider.gameObject.transform.forward) - 180) >= 90)
                 {
-                    collider.gameObject.GetComponent<KnightBehaviour>().LooseHealth(10);
+                    collider.gameObject.GetComponent<KnightBehaviour>().LooseHealth(dmg*2);
                 }
                 else
                 {
-                    collider.gameObject.GetComponent<KnightBehaviour>().LooseHealth(5);
+                    collider.gameObject.GetComponent<KnightBehaviour>().LooseHealth(dmg);
                 }
             }
             else if (collider.gameObject.CompareTag("Archer"))
             {
                 if (Mathf.Abs(Vector3.Angle(transform.forward, collider.gameObject.transform.forward) - 180) >= 90)
                 {
-                    collider.gameObject.GetComponent<ArcherBehaviour>().LooseHealth(10);
+                    collider.gameObject.GetComponent<ArcherBehaviour>().LooseHealth(dmg*2);
                 }
                 else
                 {
-                    collider.gameObject.GetComponent<ArcherBehaviour>().LooseHealth(5);
+                    collider.gameObject.GetComponent<ArcherBehaviour>().LooseHealth(dmg);
                 }
             }
             else if (collider.gameObject.CompareTag("Boss"))
             {
                 if (Mathf.Abs(Vector3.Angle(transform.forward, collider.gameObject.transform.forward) - 180) >= 90)
                 {
-                    collider.gameObject.GetComponent<GolemBehavior>().LooseHealth(10);
+                    collider.gameObject.GetComponent<GolemBehavior>().LooseHealth(dmg*2);
                 }
                 else
                 {
-                    collider.gameObject.GetComponent<GolemBehavior>().LooseHealth(5);
+                    collider.gameObject.GetComponent<GolemBehavior>().LooseHealth(dmg);
                 }
             }
         }
