@@ -25,8 +25,8 @@ public class ThiefPlayerBehavior : MonoBehaviour
     private float _ability1Timer = 1;
     private float _ability2Time = 4;
     private float _ability2Timer = 4;
-    private float _ability3Time = 0;
-    private float _ability3Timer = 5;
+    private float _ability3Time = 15;
+    private float _ability3Timer = 15;
     // Start is called before the first frame update
     void Start()
     {
@@ -85,7 +85,6 @@ public class ThiefPlayerBehavior : MonoBehaviour
         {
             if (collider.gameObject.CompareTag("Enemy"))
             {
-                Debug.Log(Mathf.Abs(Vector3.Angle(transform.forward, collider.gameObject.transform.forward) - 180) >= 90);
                 if (Mathf.Abs(Vector3.Angle(transform.forward, collider.gameObject.transform.forward) - 180) >= 90)
                 {
                     collider.gameObject.GetComponent<KnightBehaviour>().LooseHealth(dmg*2);
