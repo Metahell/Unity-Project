@@ -2722,6 +2722,7 @@ MonoBehaviour:
   EnnemyPool:
   - {fileID: 1009502973115248, guid: 9c65574a42bfe4246aa9f3165f406c90, type: 3}
   - {fileID: 7795033138396288864, guid: 3fa92f4e5016b724b9e3fcbb7fb13558, type: 3}
+  - {fileID: 7112002856112821100, guid: bf5d5974972e331429b7ebb55eca4f71, type: 3}
   Boss: {fileID: 0}
 --- !u!4 &534789417
 Transform:

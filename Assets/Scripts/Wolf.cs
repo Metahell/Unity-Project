@@ -150,6 +150,18 @@ public class Wolf : MonoBehaviour
                 return;
             }
         }
+        Targets = GameObject.FindGameObjectsWithTag("Shaman");
+        for (int i = 0; i < Targets.Length; i++)
+        {
+            if (Targets[i].activeInHierarchy)
+            {
+                CurrentTarget = Targets[i];
+                return;
+            }
+        }
+        Targets = GameObject.FindGameObjectsWithTag("Boss");
+        CurrentTarget = Targets[0];
+        return;
     }
     private void Hit()
     {
@@ -166,6 +178,10 @@ public class Wolf : MonoBehaviour
             else if (CurrentTarget.CompareTag("Boss"))
             {
                 CurrentTarget.GetComponent<GolemBehavior>().LooseHealth(5);
+            }
+            else if (CurrentTarget.CompareTag("Shaman"))
+            {
+                CurrentTarget.GetComponent<ShamanBehavior>().LooseHealth(5);
             }
         }
     }

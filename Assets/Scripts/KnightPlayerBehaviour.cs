@@ -85,6 +85,10 @@ public class KnightPlayerBehaviour : MonoBehaviour
             {
                collider.gameObject.GetComponent<GolemBehavior>().LooseHealth(5);
             }
+            else if (collider.gameObject.gameObject.CompareTag("Shaman"))
+            {
+                collider.gameObject.GetComponent<ShamanBehavior>().LooseHealth(5);
+            }
         }
     }
 
@@ -122,6 +126,10 @@ public class KnightPlayerBehaviour : MonoBehaviour
                     else if (collider.gameObject.CompareTag("Boss"))
                     {
                         collider.gameObject.GetComponent<GolemBehavior>().LooseHealth(1);
+                    }
+                    else if (collider.gameObject.CompareTag("Shaman"))
+                    {
+                        collider.gameObject.GetComponent<ShamanBehavior>().LooseHealth(10);
                     }
                 }
                 attacktime = 0f;
@@ -203,6 +211,10 @@ public class KnightPlayerBehaviour : MonoBehaviour
                 else if (collider.gameObject.CompareTag("Boss"))
                 {
                     collider.gameObject.GetComponent<GolemBehavior>().LooseHealth(2);
+                }
+                else if (collider.gameObject.CompareTag("Shaman"))
+                {
+                    collider.gameObject.GetComponent<ShamanBehavior>().LooseHealth(10);
                 }
 
             }

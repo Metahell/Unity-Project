@@ -1536,7 +1536,7 @@ GameObject:
   - component: {fileID: -4497556152404157879}
   m_Layer: 0
   m_Name: Shaman Prefab
-  m_TagString: Untagged
+  m_TagString: Shaman
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1567,10 +1567,10 @@ Animator:
   m_GameObject: {fileID: 7112002856112821100}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 0ef431590e12cf24183cae52b9fdf159, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d826016e8493ba949a1951f775994ebf, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -1588,14 +1588,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 474c4f03f213999468cdcba7eb0ce535, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
+  animator: {fileID: 4546687919190348716}
   maxVelocity: 3
   acceleration: 5
   decceleration: 10
-  agent: {fileID: 0}
+  agent: {fileID: 7871751340858503974}
   poisontimer: 0
-  _attackSpeed: 0.5
-  spawnPoint: {fileID: 0}
+  _healtime: 3
   health: 10
   is_pushed: 0
 --- !u!54 &-3099327071657254706
@@ -1646,10 +1645,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 2.124645
-  m_Height: 8.186577
+  m_Radius: 0.52941144
+  m_Height: 3.0946426
   m_Direction: 1
-  m_Center: {x: 0, y: 3.593288, z: 0.1665052}
+  m_Center: {x: 0.2859366, y: 0.68884945, z: -0.76936483}
 --- !u!114 &-4497556152404157879
 MonoBehaviour:
   m_ObjectHideFlags: 0

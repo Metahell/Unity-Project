@@ -29,12 +29,10 @@ public class ShamanBehavior : MonoBehaviour
     public float poisontimer = 0;
     private int poisonTick = 3;
     [SerializeField]
-    private float _attackSpeed = 0.5f;
+    private float _healtime = 3f;
     private float _HealTimer = 0;
     private bool _canHeal = false;
-
-    [SerializeField]
-    private Transform spawnPoint;
+    
 
     [SerializeField]
     private int health;
@@ -73,7 +71,7 @@ public class ShamanBehavior : MonoBehaviour
             else
             {
                 _HealTimer += Time.deltaTime;
-                if (_HealTimer > (1 / _attackSpeed))
+                if (_HealTimer > 3)
                     _canHeal = true;
 
                 playerPosition = GameObject.FindGameObjectsWithTag("Player")[0].transform.position;
@@ -160,18 +158,12 @@ public class ShamanBehavior : MonoBehaviour
 
     IEnumerator Red()
     {
-        Transform cube = gameObject.transform.Find("Cube.003");
-        Material[] materials = cube.GetComponent<Renderer>().materials;
+        Transform cube = gameObject.transform.Find("NightShade");
+        Material[] materials = cube.GetComponent<SkinnedMeshRenderer>().materials;
         Color color0 = materials[0].color;
-        Color color1 = materials[1].color;
-        Color color2 = materials[2].color;
         materials[0].color = Color.red;
-        materials[1].color = Color.red;
-        materials[2].color = Color.red;
         yield return new WaitForSeconds(0.1f);
         materials[0].color = color0;
-        materials[1].color = color1;
-        materials[2].color = color2;
 
     }
 

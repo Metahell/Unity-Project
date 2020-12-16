@@ -60,6 +60,10 @@ public class Axe : MonoBehaviour
                 {
                     collider.gameObject.GetComponent<GolemBehavior>().LooseHealth(5);
                 }
+                else if (other.gameObject.CompareTag("Shaman"))
+                {
+                    other.gameObject.GetComponent<ShamanBehavior>().LooseHealth(5);
+                }
             }
         }
         if (other.CompareTag("Player"))
