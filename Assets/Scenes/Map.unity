@@ -6842,6 +6842,12 @@ PrefabInstance:
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6037382867561884793, guid: 5ffa83e7add6222478526c88afc7b5e7,
+        type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -491914244274306682, guid: 1ce4f8a737361c44983cb15267461da3,
+        type: 2}
     - target: {fileID: 2288548931295445939, guid: 5ffa83e7add6222478526c88afc7b5e7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8922,6 +8928,12 @@ PrefabInstance:
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4624505933397778340, guid: 957fb60e14d1aa44e84a7af1a56ca1c0,
+        type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -491914244274306682, guid: 1ce4f8a737361c44983cb15267461da3,
+        type: 2}
     - target: {fileID: 5390170862140131394, guid: 957fb60e14d1aa44e84a7af1a56ca1c0,
         type: 3}
       propertyPath: healthOrb
