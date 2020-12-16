@@ -158,8 +158,8 @@ public class ShamanBehavior : MonoBehaviour
 
     IEnumerator Red()
     {
-        Transform cube = gameObject.transform.Find("NightShade");
-        Material[] materials = cube.GetComponent<SkinnedMeshRenderer>().materials;
+        Transform cube = gameObject.transform.Find("Nightshade");
+        Material[] materials = cube.GetComponent<Renderer>().materials;
         Color color0 = materials[0].color;
         materials[0].color = Color.red;
         yield return new WaitForSeconds(0.1f);
