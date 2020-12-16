@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class WaveManager : MonoBehaviour
 {
+    [SerializeField]
+    private AudioSource GameOver;
+    [SerializeField]
+    private AudioSource WinSound;
     private int WaveID = 1;
     private int LastWave = 1;
     private int CurrentWave = 1;
@@ -93,6 +97,7 @@ public class WaveManager : MonoBehaviour
     {
         controller.Death();
         EndgameCanvas.SetActive(true);
+        GameOver.Play();
         EndGameText.text = "GAME OVER\n TIME :"+tm.EndTime();
 
     }
@@ -100,7 +105,8 @@ public class WaveManager : MonoBehaviour
     {
         controller.enabled = false;
         EndgameCanvas.SetActive(true);
-        EndGameText.text = "YOU WON\n TIME :" +tm.EndTime();
+        WinSound.Play();
+        EndGameText.text = "YOU WON\n TIME :" + tm.EndTime();
         PlayerPrefs.SetInt(string.Concat("Medal", ButtonBehavior.CharacterSelection), 1);
         PlayerPrefs.Save();
     }

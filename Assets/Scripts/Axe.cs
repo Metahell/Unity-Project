@@ -39,6 +39,7 @@ public class Axe : MonoBehaviour
         {
             Remove();
         }
+        Debug.Log(life_timer);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -62,6 +63,10 @@ public class Axe : MonoBehaviour
                 }
             }
         }
+        if (other.CompareTag("Player"))
+        {
+
+        }
         else
         {
             Remove();
@@ -70,6 +75,7 @@ public class Axe : MonoBehaviour
 
     public void Remove()
     {
+        life_timer = 0;
         Factory.GetInstance().RemoveAxe(this);
     }
 }
