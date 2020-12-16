@@ -45,8 +45,14 @@ public class KnightPlayerBehaviour : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(1) && !animator.GetCurrentAnimatorStateInfo(1).IsTag("1") && _ability2Timer >= _ability2Time && !is_jumping)
         {
-            animator.SetTrigger("2nd Ability");
-            // le reset du timer est dans la fonction d'abilité au cas où la position de la souris n'est pas bonne
+            Vector3 mouse = Input.mousePosition;
+            Ray castPoint = Camera.main.ScreenPointToRay(mouse);
+            RaycastHit hit;
+            if (Physics.Raycast(castPoint, out hit, Mathf.Infinity) && hit.transform.tag == "Floor")
+            {
+                animator.SetTrigger("2nd Ability");
+                _ability2Timer = 0;
+            }
         }
         if (Input.GetKey(KeyCode.Space) && !animator.GetCurrentAnimatorStateInfo(1).IsTag("1") && _ability3Timer >= _ability3Time)
         {
@@ -84,15 +90,7 @@ public class KnightPlayerBehaviour : MonoBehaviour
 
     public void Ability2()
     {
-        Vector3 mouse = Input.mousePosition;
-        Ray castPoint = Camera.main.ScreenPointToRay(mouse);
-        RaycastHit hit;
-        if (Physics.Raycast(castPoint, out hit, Mathf.Infinity) && hit.transform.tag == "Floor")
-        {
-
-            _ability2Timer = 0;
             StartCoroutine(Jump());
-        }
 
     }
 

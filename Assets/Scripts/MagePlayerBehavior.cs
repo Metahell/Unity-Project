@@ -45,7 +45,15 @@ public class MagePlayerBehavior : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.Space) && !animator.GetCurrentAnimatorStateInfo(1).IsTag("1") && _ability3Timer >= _ability3Time)
         {
-            animator.SetTrigger("3rd Ability");
+            Vector3 mouse = Input.mousePosition;
+            Ray castPoint = Camera.main.ScreenPointToRay(mouse);
+            RaycastHit hit;
+            if (Physics.Raycast(castPoint, out hit, Mathf.Infinity) && (hit.transform.tag == "Enemy" || hit.transform.tag == "Archer"))
+            {
+                animator.SetTrigger("3rd Ability");
+                Ability3(mouse, castPoint, hit);
+                _ability3Timer = 0;
+            }
             // le reset du timer est dans la fonction d'abilité au cas où la position de la souris n'est pas bonnes
         }
     }
@@ -69,25 +77,20 @@ public class MagePlayerBehavior : MonoBehaviour
             Instantiate(wall,spawn,transform.rotation);
         }
     }
-    public void Ability3()
+    public void Ability3(Vector3 mouse, Ray castPoint, RaycastHit hit)
     {
-        Vector3 mouse = Input.mousePosition;
-        Ray castPoint = Camera.main.ScreenPointToRay(mouse);
-        RaycastHit hit;
-        if (Physics.Raycast(castPoint, out hit, Mathf.Infinity) && (hit.transform.tag == "Enemy"|| hit.transform.tag == "Archer"))
-        {
-            Debug.Log("" + hit);
-            Spell.Play();
-            Vector3 temp = hit.transform.position;
-            hit.collider.gameObject.transform.position = transform.position;
-            gameObject.transform.position = temp;
-            _ability3Timer = 0;
-        }
-        else
-        {
-            //display text (?)
-        }
+        StartCoroutine(Teleport(mouse, castPoint, hit));
     }
+
+    IEnumerator Teleport(Vector3 mouse, Ray castPoint, RaycastHit hit)
+    {
+        Spell.Play();
+        yield return new WaitForSeconds(1);
+        Vector3 temp = hit.transform.position;
+        hit.collider.gameObject.transform.position = transform.position;
+        gameObject.transform.position = temp;
+    }
+
     public void UpdateUI()
     {
         img1.fillAmount = _ability1Timer < _ability1Time ? _ability1Timer / _ability1Time : 0;
