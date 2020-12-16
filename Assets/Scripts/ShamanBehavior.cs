@@ -3,16 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class ArcherBehaviour : MonoBehaviour
+public class ShamanBehavior : MonoBehaviour
 {
-    [SerializeField]
-    private Arrow arrow; 
     [Header("Link")]
     private Rigidbody rigi;
 
-    [SerializeField] 
+    [SerializeField]
     private Animator animator;
- 
+
     private Vector3 mouvementVector = Vector3.zero;
     private Vector3 motionVector = Vector3.zero;
     private Vector3 direction;
@@ -32,15 +30,14 @@ public class ArcherBehaviour : MonoBehaviour
     private int poisonTick = 3;
     [SerializeField]
     private float _attackSpeed = 0.5f;
-    private float _fireTimer = 0;
-    private bool _canShoot = false;
-    private bool _visionClear = true;
+    private float _HealTimer = 0;
+    private bool _canHeal = false;
 
     [SerializeField]
     private Transform spawnPoint;
 
     [SerializeField]
-    public int health;
+    private int health;
 
     public bool is_pushed;
     // Start is called before the first frame update
@@ -75,14 +72,14 @@ public class ArcherBehaviour : MonoBehaviour
             }
             else
             {
-                _fireTimer += Time.deltaTime;
-                if (_fireTimer > (1 / _attackSpeed))
-                    _canShoot = true;
+                _HealTimer += Time.deltaTime;
+                if (_HealTimer > (1 / _attackSpeed))
+                    _canHeal = true;
 
                 playerPosition = GameObject.FindGameObjectsWithTag("Player")[0].transform.position;
                 float distanceToPlayer = Vector3.Distance(playerPosition, transform.position);
 
-                if (((distanceToPlayer < 20f && distanceToPlayer > 6f) || animator.GetCurrentAnimatorStateInfo(1).IsTag("1")) && _visionClear)
+                if (((distanceToPlayer < 20f && distanceToPlayer > 6f) || animator.GetCurrentAnimatorStateInfo(1).IsTag("1")))
                 {
                     agent.enabled = false;
                     rigi.velocity = Vector3.zero;
@@ -91,12 +88,12 @@ public class ArcherBehaviour : MonoBehaviour
                         rigi.isKinematic = true;
                     }
 
-                    if (!animator.GetCurrentAnimatorStateInfo(1).IsTag("1") && _canShoot)
+                    if (!animator.GetCurrentAnimatorStateInfo(1).IsTag("1") && _canHeal)
                     {
                         animator.SetTrigger("1st Ability");
-                        Shoot();
-                        _canShoot = false;
-                        _fireTimer = 0;
+                        Heal();
+                        _canHeal = false;
+                        _HealTimer = 0;
                     }
                     is_moving = false;
                 }
@@ -107,17 +104,12 @@ public class ArcherBehaviour : MonoBehaviour
                         rigi.isKinematic = false;
                         agent.enabled = true;
                         is_moving = true;
-                        if (!_visionClear)
-                        {
+                        
+                        if (distanceToPlayer > 20f)
                             agent.SetDestination(playerPosition);
-                        }
-                        else
-                        {
-                            if (distanceToPlayer > 20f)
-                                agent.SetDestination(playerPosition);
-                            if (distanceToPlayer < 6f)
-                                agent.SetDestination(transform.position + (transform.position - playerPosition).normalized);
-                        }
+                        if (distanceToPlayer < 6f)
+                            agent.SetDestination(transform.position + (transform.position - playerPosition).normalized);
+                        
                         mouvementVector = (transform.forward).normalized;
                     }
                 }
@@ -143,14 +135,13 @@ public class ArcherBehaviour : MonoBehaviour
         }
         if (direction.magnitude > 0)
             transform.forward = Vector3.Lerp(transform.forward, direction, .3f);
-
-        _visionClear = canShoot();
+        
     }
 
     private void UpdateAnimator()
     {
-        animator.SetFloat("velocityForward", 15* Vector3.Dot(rigi.velocity, transform.forward));
-        animator.SetFloat("velocityRight", 15* Vector3.Dot(rigi.velocity, transform.right));
+        animator.SetFloat("velocityForward", 15 * Vector3.Dot(rigi.velocity, transform.forward));
+        animator.SetFloat("velocityRight", 15 * Vector3.Dot(rigi.velocity, transform.right));
         animator.SetFloat("velocity", rigi.velocity.magnitude);
     }
 
@@ -186,20 +177,38 @@ public class ArcherBehaviour : MonoBehaviour
 
     }
 
-    private void Shoot()
+    private void Heal()
     {
-        Vector3 direction = transform.forward;
-        GameObject arrow = Factory.GetInstance().GetArrow();
-        arrow.transform.position = spawnPoint.position;
-        arrow.transform.forward = direction;
-        arrow.GetComponent<Arrow>().IsEnemyArrow();
+        GameObject[] Targets = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach(GameObject target in Targets)
+        {
+            if (target.CompareTag("Enemy"))
+            {
+                KnightBehaviour knight = target.GetComponent<KnightBehaviour>();
+                if (knight.health<=10)
+                target.GetComponent<KnightBehaviour>().LooseHealth(-5);
+            }
+            else if (target.CompareTag("Archer"))
+            {
+                ArcherBehaviour archer = target.GetComponent<ArcherBehaviour>();
+                if(archer.health<=5)
+                target.GetComponent<ArcherBehaviour>().LooseHealth(-5);
+            }
+            else if (target.CompareTag("Boss"))
+            {
+               GolemBehavior golem = target.GetComponent<GolemBehavior>();
+                if(golem.health<=golem.healthmax)
+                target.GetComponent<GolemBehavior>().LooseHealth(-5);
+            }
+        }
+
     }
-    private bool canShoot()
+    private bool canHeal()
     {
         RaycastHit hit;
         Vector3 origin = transform.position + new Vector3(0, 2, 0);
         Vector3 dest = playerPosition + new Vector3(0, 2, 0);
-        return !Physics.Raycast(origin,dest-origin, out hit, 40f, LayerMask.GetMask("Obstacle"));
+        return !Physics.Raycast(origin, dest - origin, out hit, 40f, LayerMask.GetMask("Obstacle"));
     }
 
     IEnumerator Death()

@@ -28,7 +28,7 @@ public class KnightBehaviour : MonoBehaviour
     private bool _canHit = false;
     public AnimationClip knightSlash2;
     [SerializeField]
-    private int health;
+    public int health;
     public bool is_pushed;
     // Start is called before the first frame update
     void Start()

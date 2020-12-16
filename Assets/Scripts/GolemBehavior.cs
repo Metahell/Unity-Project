@@ -42,8 +42,8 @@ public class GolemBehavior : MonoBehaviour
     public float poisontimer = 0;
     private int poisonTick = 3;
     [SerializeField]
-    private int healthmax;
-    private int health;
+    public int healthmax;
+    public int health;
     public bool is_pushed;
     // Start is called before the first frame update
     void Start()
