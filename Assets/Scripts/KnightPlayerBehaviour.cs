@@ -68,12 +68,12 @@ public class KnightPlayerBehaviour : MonoBehaviour
             if (collider.gameObject.CompareTag("Enemy"))
             {
                 collider.gameObject.GetComponent<KnightBehaviour>().LooseHealth(5);
-                StartCoroutine(PushKnight(collider.gameObject));
+                StartCoroutine(PushKnight(collider.gameObject, 3000));
             }
             else if (collider.gameObject.CompareTag("Archer"))
             {
                 collider.gameObject.GetComponent<ArcherBehaviour>().LooseHealth(5);
-                StartCoroutine(PushArcher(collider.gameObject));
+                StartCoroutine(PushArcher(collider.gameObject, 6000));
             }
             else if (collider.gameObject.CompareTag("Boss"))
             {
@@ -149,14 +149,14 @@ public class KnightPlayerBehaviour : MonoBehaviour
         
     }
 
-    IEnumerator PushKnight(GameObject knight)
+    IEnumerator PushKnight(GameObject knight,int force)
     {
         Rigidbody rigidKnight = knight.GetComponent<Rigidbody>();
         KnightBehaviour knightB = knight.GetComponent<KnightBehaviour>();
         knightB.is_pushed = true;
         rigidKnight.isKinematic = false;
         rigidKnight.velocity = Vector3.zero;
-        rigidKnight.AddForce(transform.forward*3000);
+        rigidKnight.AddForce(transform.forward*force);
         yield return new WaitForSeconds(0.5f);
         if (knight != null)
         {
@@ -164,13 +164,13 @@ public class KnightPlayerBehaviour : MonoBehaviour
         }
     }
 
-    IEnumerator PushArcher(GameObject archer)
+    IEnumerator PushArcher(GameObject archer,int force)
     {
         ArcherBehaviour archerB = archer.GetComponent<ArcherBehaviour>();
         Rigidbody rigidArcher = archer.GetComponent<Rigidbody>();
         archerB.is_pushed = true;
         rigidArcher.isKinematic = false;
-        rigidArcher.AddForce(transform.forward * 3000);
+        rigidArcher.AddForce(transform.forward * force);
         yield return new WaitForSeconds(0.5f);
         if (archer != null)
         {
@@ -195,12 +195,12 @@ public class KnightPlayerBehaviour : MonoBehaviour
                 if (collider.gameObject.CompareTag("Enemy"))
                 {
                     collider.gameObject.GetComponent<KnightBehaviour>().LooseHealth(2);
-                    StartCoroutine(PushKnight(collider.gameObject));
+                    StartCoroutine(PushKnight(collider.gameObject,6000));
                 }
                 else if (collider.gameObject.CompareTag("Archer"))
                 {
                     collider.gameObject.GetComponent<ArcherBehaviour>().LooseHealth(2);
-                    StartCoroutine(PushArcher(collider.gameObject));
+                    StartCoroutine(PushArcher(collider.gameObject, 6000));
                 }
                 else if (collider.gameObject.CompareTag("Boss"))
                 {
