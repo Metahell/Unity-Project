@@ -190,11 +190,12 @@ public class ShamanBehavior : MonoBehaviour
             }
         }
         GameObject[] Target = GameObject.FindGameObjectsWithTag("Boss");
-        GameObject targetb = Target[0];
-        GolemBehavior golem = targetb.GetComponent<GolemBehavior>();
-        if(golem.health<=golem.healthmax&&!golem.isdead)
-        targetb.GetComponent<GolemBehavior>().LooseHealth(-5);
-
+        foreach(GameObject target in Target)
+        {
+            GolemBehavior golem = target.GetComponent<GolemBehavior>();
+            if (golem.health <= golem.healthmax && !golem.isdead)
+                target.GetComponent<GolemBehavior>().LooseHealth(-5);
+        }
     }
 
 
