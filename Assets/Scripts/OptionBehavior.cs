@@ -12,7 +12,7 @@ public class OptionBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        quality.value = PlayerPrefs.GetInt("Quality", 3);
     }
 
     // Update is called once per frame
@@ -28,6 +28,7 @@ public class OptionBehavior : MonoBehaviour
     }
     public void ChangeGraphics()
     {
-        
+        QualitySettings.SetQualityLevel(quality.value);
+        PlayerPrefs.SetInt("Quality",quality.value);
     }
 }
