@@ -9,7 +9,7 @@ public class ArcherBehaviour : MonoBehaviour
     private Arrow arrow; 
     [Header("Link")]
     private Rigidbody rigi;
-
+    public bool isdead = false;
     [SerializeField] 
     private Animator animator;
  
@@ -69,6 +69,7 @@ public class ArcherBehaviour : MonoBehaviour
         slider.value = health;
         if (health <= 0)
         {
+            isdead = true;
             StartCoroutine(Death());
         }
         else

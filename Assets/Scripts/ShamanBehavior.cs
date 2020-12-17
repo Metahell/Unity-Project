@@ -77,7 +77,7 @@ public class ShamanBehavior : MonoBehaviour
                 playerPosition = GameObject.FindGameObjectsWithTag("Player")[0].transform.position;
                 float distanceToPlayer = Vector3.Distance(playerPosition, transform.position);
 
-                if (((distanceToPlayer > 6f) || animator.GetCurrentAnimatorStateInfo(1).IsTag("1")))
+                if (((distanceToPlayer >= 8f) || animator.GetCurrentAnimatorStateInfo(1).IsTag("1")))
                 {
                     agent.enabled = false;
                     rigi.velocity = Vector3.zero;
@@ -103,7 +103,7 @@ public class ShamanBehavior : MonoBehaviour
                         agent.enabled = true;
                         is_moving = true;
                         
-                        if (distanceToPlayer < 6f)
+                        if (distanceToPlayer < 8f)
                             agent.SetDestination(transform.position + (transform.position - playerPosition).normalized);
                         
                         mouvementVector = (transform.forward).normalized;
@@ -175,19 +175,19 @@ public class ShamanBehavior : MonoBehaviour
             if (target.CompareTag("Enemy"))
             {
                 KnightBehaviour knight = target.GetComponent<KnightBehaviour>();
-                if (knight.health<=10)
+                if (knight.health<=10&&!knight.isdead)
                 target.GetComponent<KnightBehaviour>().LooseHealth(-5);
             }
             else if (target.CompareTag("Archer"))
             {
                 ArcherBehaviour archer = target.GetComponent<ArcherBehaviour>();
-                if(archer.health<=5)
+                if(archer.health<=5&&!archer.isdead)
                 target.GetComponent<ArcherBehaviour>().LooseHealth(-5);
             }
             else if (target.CompareTag("Boss"))
             {
                GolemBehavior golem = target.GetComponent<GolemBehavior>();
-                if(golem.health<=golem.healthmax)
+                if(golem.health<=golem.healthmax&&!golem.isdead)
                 target.GetComponent<GolemBehavior>().LooseHealth(-5);
             }
         }
