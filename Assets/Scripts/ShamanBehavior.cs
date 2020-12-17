@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-
+using UnityEngine.UI;
 public class ShamanBehavior : MonoBehaviour
 {
     [Header("Link")]
@@ -38,9 +38,17 @@ public class ShamanBehavior : MonoBehaviour
     private int health;
 
     public bool is_pushed;
+    private int hpMax;
+    [SerializeField]
+    Material mat0;
+    [SerializeField]
+    private Slider slider;
     // Start is called before the first frame update
     void Start()
     {
+        slider.minValue = 0;
+        hpMax = health;
+        slider.maxValue = hpMax;
         is_pushed = false;
         rigi = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Confined;
@@ -49,6 +57,7 @@ public class ShamanBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        slider.value = health;
         if (health <= 0)
         {
             StartCoroutine(Death());
@@ -153,7 +162,8 @@ public class ShamanBehavior : MonoBehaviour
     public void LooseHealth(int healthLoss)
     {
         health -= healthLoss;
-        StartCoroutine("Red");
+        health = health > hpMax + 5 ? hpMax + 5 : health;
+        if (healthLoss > 0) StartCoroutine("Red"); else StartCoroutine(Green());
     }
 
     IEnumerator Red()
@@ -163,7 +173,17 @@ public class ShamanBehavior : MonoBehaviour
         Color color0 = materials[0].color;
         materials[0].color = Color.red;
         yield return new WaitForSeconds(0.1f);
-        materials[0].color = color0;
+        materials[0].color = mat0.color;
+
+    }
+
+    IEnumerator Green()
+    {
+        Transform cube = gameObject.transform.Find("Nightshade");
+        Material[] materials = cube.GetComponent<Renderer>().materials;
+        materials[0].color = Color.green;
+        yield return new WaitForSeconds(0.1f);
+        materials[0].color = mat0.color;
 
     }
 
