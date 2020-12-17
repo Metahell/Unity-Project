@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.574817, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -11180,6 +11180,12 @@ PrefabInstance:
       propertyPath: healthmax
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 4099245505957589335, guid: 8861c10a477d76442a838719e59aadcf,
+        type: 3}
+      propertyPath: RockPrefab
+      value: 
+      objectReference: {fileID: 4673272201592700334, guid: bf19c343c4075be40a4ea333aeca0406,
+        type: 3}
     - target: {fileID: 6818814826970729261, guid: 8861c10a477d76442a838719e59aadcf,
         type: 3}
       propertyPath: m_LocalPosition.x
