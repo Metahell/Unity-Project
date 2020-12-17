@@ -5764,7 +5764,7 @@ MonoBehaviour:
   - {fileID: 1009502973115248, guid: 9c65574a42bfe4246aa9f3165f406c90, type: 3}
   - {fileID: 7795033138396288864, guid: 3fa92f4e5016b724b9e3fcbb7fb13558, type: 3}
   - {fileID: 7112002856112821100, guid: bf5d5974972e331429b7ebb55eca4f71, type: 3}
-  Boss: {fileID: 0}
+  Boss: {fileID: 2066969261}
 --- !u!4 &534789417
 Transform:
   m_ObjectHideFlags: 0
@@ -12781,6 +12781,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Eyes: {fileID: 0}
   Button: {fileID: 0}
+  MapSelec: {fileID: 0}
   ReturnSound: {fileID: 1195091088}
   SelectSound: {fileID: 0}
 --- !u!4 &1195091087
@@ -21707,6 +21708,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2014964060137175045, guid: c282e35a321319f4ebe614925603202e,
     type: 3}
   m_PrefabInstance: {fileID: 2063320080}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2066969261 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6818814826971027213, guid: 8861c10a477d76442a838719e59aadcf,
+    type: 3}
+  m_PrefabInstance: {fileID: 2571947852679769957}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2069415009
 PrefabInstance:

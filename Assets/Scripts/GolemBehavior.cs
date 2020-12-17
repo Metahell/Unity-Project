@@ -327,6 +327,7 @@ public class GolemBehavior : MonoBehaviour
         rigi.isKinematic = true;
         gameObject.GetComponent<Collider>().enabled = false;
         UpdateAnimator();
+        BossText.SetActive(false);
         yield return new WaitForSeconds(2f);
         Destroy(gameObject);
     }

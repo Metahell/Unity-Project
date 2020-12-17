@@ -25,10 +25,12 @@ public class KnightPlayerBehaviour : MonoBehaviour
     private float _ability2Timer = 5;
     private float _ability3Time = 5;
     private float _ability3Timer = 5;
+    public bool invulnerable;
     // Start is called before the first frame update
     void Start()
     {
         is_jumping = false;
+        invulnerable = false;
     }
 
     // Update is called once per frame
@@ -105,6 +107,7 @@ public class KnightPlayerBehaviour : MonoBehaviour
 
     IEnumerator Spin()
     {
+        invulnerable = true;
         float attacktime = 0f;
         PlayerController player = gameObject.GetComponent<PlayerController>();
         player.maxVelocity *= 1.5f;
@@ -139,6 +142,7 @@ public class KnightPlayerBehaviour : MonoBehaviour
             yield return null;
         }
         player.maxVelocity /= 1.5f;
+        invulnerable = false;
     }
 
     IEnumerator Jump()
