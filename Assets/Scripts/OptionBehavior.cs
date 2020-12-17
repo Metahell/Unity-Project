@@ -7,6 +7,8 @@ public class OptionBehavior : MonoBehaviour
 {
     [SerializeField]
     private Dropdown resolution;
+    [SerializeField]
+    private Dropdown quality;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,5 +25,9 @@ public class OptionBehavior : MonoBehaviour
         string input = resolution.options[resolution.value].text;
         string[] resDim = input.Split('x');
         Screen.SetResolution(int.Parse(resDim[0]), int.Parse(resDim[1]), false, 60);
+    }
+    public void ChangeGraphics()
+    {
+        
     }
 }
