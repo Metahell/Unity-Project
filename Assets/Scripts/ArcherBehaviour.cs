@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-
+using UnityEngine.UI;
 public class ArcherBehaviour : MonoBehaviour
 {
     [SerializeField]
@@ -35,7 +35,7 @@ public class ArcherBehaviour : MonoBehaviour
     private float _fireTimer = 0;
     private bool _canShoot = false;
     private bool _visionClear = true;
-
+    private int hpMax;
     [SerializeField]
     private Transform spawnPoint;
 
@@ -43,9 +43,20 @@ public class ArcherBehaviour : MonoBehaviour
     public int health;
 
     public bool is_pushed;
+    [SerializeField]
+    Material mat0;
+    [SerializeField]
+    Material mat1;
+    [SerializeField]
+    Material mat2;
+    [SerializeField]
+    private Slider slider;
     // Start is called before the first frame update
     void Start()
     {
+        slider.minValue = 0;
+        hpMax = health;
+        slider.maxValue = hpMax;
         is_pushed = false;
         rigi = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Confined;
@@ -54,6 +65,8 @@ public class ArcherBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        slider.value = health;
         if (health <= 0)
         {
             isdead = true;
@@ -167,23 +180,36 @@ public class ArcherBehaviour : MonoBehaviour
     public void LooseHealth(int healthLoss)
     {
         health -= healthLoss;
-        StartCoroutine("Red");
+        health = health > hpMax + 5 ? hpMax + 5 : health;
+        if (healthLoss > 0) StartCoroutine("Red"); else StartCoroutine(Green());
     }
 
     IEnumerator Red()
     {
         Transform cube = gameObject.transform.Find("Cube.003");
         Material[] materials = cube.GetComponent<Renderer>().materials;
-        Color color0 = materials[0].color;
-        Color color1 = materials[1].color;
-        Color color2 = materials[2].color;
+        Debug.Log(materials[0].ToString() + materials[1].ToString() + materials[2].ToString());
         materials[0].color = Color.red;
         materials[1].color = Color.red;
         materials[2].color = Color.red;
         yield return new WaitForSeconds(0.1f);
-        materials[0].color = color0;
-        materials[1].color = color1;
-        materials[2].color = color2;
+        materials[0].color = mat0.color;
+        materials[1].color = mat1.color;
+        materials[2].color = mat2.color;
+
+    }
+
+    IEnumerator Green()
+    {
+        Transform cube = gameObject.transform.Find("Cube.003");
+        Material[] materials = cube.GetComponent<Renderer>().materials;
+        materials[0].color = Color.green;
+        materials[1].color = Color.green;
+        materials[2].color = Color.green;
+        yield return new WaitForSeconds(0.1f);
+        materials[0].color = mat0.color;
+        materials[1].color = mat1.color;
+        materials[2].color = mat2.color;
 
     }
 

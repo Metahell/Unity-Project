@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class KnightBehaviour : MonoBehaviour
 {
@@ -40,10 +41,14 @@ public class KnightBehaviour : MonoBehaviour
     Material mat2;
     [SerializeField]
     Material mat3;
+    [SerializeField]
+    private Slider slider;
     // Start is called before the first frame update
     void Start()
     {
+        slider.minValue = 0;
         hpMax = health;
+        slider.maxValue = hpMax;
         is_pushed = false;
         rigi = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Confined;
@@ -54,6 +59,7 @@ public class KnightBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        slider.value = health;
         if (is_pushed)
         {
             is_moving = false;
