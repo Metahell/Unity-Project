@@ -48,7 +48,7 @@ public class MagePlayerBehavior : MonoBehaviour
             Vector3 mouse = Input.mousePosition;
             Ray castPoint = Camera.main.ScreenPointToRay(mouse);
             RaycastHit hit;
-            if (Physics.Raycast(castPoint, out hit, Mathf.Infinity) && (hit.transform.tag == "Enemy" || hit.transform.tag == "Archer"))
+            if (Physics.Raycast(castPoint, out hit, Mathf.Infinity) && (hit.transform.tag == "Enemy" || hit.transform.tag == "Archer" || hit.transform.tag == "Shaman" || hit.transform.tag == "Boss"))
             {
                 animator.SetTrigger("3rd Ability");
                 Ability3(mouse, castPoint, hit);

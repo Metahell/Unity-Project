@@ -1885,6 +1885,9 @@ MonoBehaviour:
   is_pushed: 0
   mat0: {fileID: 2100000, guid: b2c0c42dee5d72945b789e894afa3519, type: 2}
   slider: {fileID: 718506674987924492}
+  back_slider: {fileID: 3560522987396664560}
+  normal_back: {fileID: 21300000, guid: ffa453bf8a7393e4f92e140144a3b744, type: 3}
+  buff_back: {fileID: 21300000, guid: 1b07b9a4f4eee424581c91c9fffc9bcd, type: 3}
 --- !u!54 &-3099327071657254706
 Rigidbody:
   m_ObjectHideFlags: 0
