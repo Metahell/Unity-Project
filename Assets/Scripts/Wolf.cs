@@ -211,7 +211,9 @@ public class Wolf : MonoBehaviour
     }
     private void Hit()
     {
-        attack.Play();
+        if (!hurt.isPlaying) {
+            attack.Play();
+        }
         if (Vector3.Distance(CurrentTarget.transform.position , transform.position) < 3.5f)
         {
             if (CurrentTarget.CompareTag("Enemy"))
