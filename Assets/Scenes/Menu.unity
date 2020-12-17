@@ -7288,7 +7288,7 @@ PrefabInstance:
     - target: {fileID: 8569551134084483014, guid: 2fe0a328b9a8866439b50e196f4ead55,
         type: 3}
       propertyPath: m_Options.m_Options.Array.size
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8569551134084483014, guid: 2fe0a328b9a8866439b50e196f4ead55,
         type: 3}
@@ -7349,6 +7349,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Options.m_Options.Array.data[5].m_Text
       value: Map 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8569551134084483014, guid: 2fe0a328b9a8866439b50e196f4ead55,
+        type: 3}
+      propertyPath: m_Options.m_Options.Array.data[6].m_Text
+      value: Map 6
       objectReference: {fileID: 0}
     - target: {fileID: 8569551134084483015, guid: 2fe0a328b9a8866439b50e196f4ead55,
         type: 3}
