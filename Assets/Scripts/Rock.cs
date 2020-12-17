@@ -34,7 +34,6 @@ public class Rock : MonoBehaviour
     private IEnumerator DestroyRock()
     {
         StartCoroutine(Fade());
-        Debug.Log(self.material.color);
         yield return new WaitForSeconds(1f);
         Destroy(this.gameObject);
     }
