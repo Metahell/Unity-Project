@@ -13,10 +13,13 @@ public class ButtonBehavior : MonoBehaviour
     [SerializeField]
     private AudioSource Button;
     [SerializeField]
+    private Dropdown MapSelec;
+    [SerializeField]
     private AudioSource ReturnSound;
     [SerializeField]
     private AudioSource SelectSound;
     public static int CharacterSelection; /*0=Knight, 1=Archer, 2=Mage,3=Druid,4=Thief*/
+    public static string MapSelection;
     private void Start()
     {
 
@@ -56,6 +59,10 @@ public class ButtonBehavior : MonoBehaviour
     {
         Button.Play();
         SceneManager.LoadScene(3);
+    }
+    public void SelectMap()
+    {
+        MapSelection = MapSelec.options[MapSelec.value].text;
     }
     public void Select()
     {
