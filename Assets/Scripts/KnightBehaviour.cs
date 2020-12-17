@@ -9,12 +9,12 @@ public class KnightBehaviour : MonoBehaviour
     [Header("Link")]
     private Rigidbody rigi;
     [SerializeField] private Animator animator;
-    public float poisontimer=0;
-    private float poisonTick=3;
+    public float poisontimer = 0;
+    private float poisonTick = 3;
     private Vector3 mouvementVector = Vector3.zero;
     private Vector3 motionVector = Vector3.zero;
     private Vector3 direction;
-    public bool isdead=false;
+    public bool isdead = false;
     [Header("Movement Parameters")]
     [SerializeField]
     private float maxVelocity;
@@ -86,19 +86,19 @@ public class KnightBehaviour : MonoBehaviour
         }
         else
         {
-        if (poisontimer>0)
-        {
-            poisontimer -= Time.deltaTime;
-            if (poisonTick - poisontimer >= 0)
+            if (poisontimer > 0)
             {
-                LooseHealth(2);
-                poisonTick -= 1;
+                poisontimer -= Time.deltaTime;
+                if (poisonTick - poisontimer >= 0)
+                {
+                    LooseHealth(2);
+                    poisonTick -= 1;
+                }
             }
-        }
-        if (poisontimer <= 0 && poisonTick != 3)
-        {
-            poisonTick = 3;
-        }
+            if (poisontimer <= 0 && poisonTick != 3)
+            {
+                poisonTick = 3;
+            }
             _hitTimer += Time.deltaTime;
             if (_hitTimer > _hitTime)
             {
@@ -113,7 +113,7 @@ public class KnightBehaviour : MonoBehaviour
             {
                 wolfPosition = Vector3.positiveInfinity;
             }
-                if (Vector3.Distance(playerPosition, transform.position) < 2.5f || animator.GetCurrentAnimatorStateInfo(1).IsTag("1") || Vector3.Distance(wolfPosition, transform.position) < 2.5f)
+            if (Vector3.Distance(playerPosition, transform.position) < 2.5f || animator.GetCurrentAnimatorStateInfo(1).IsTag("1") || Vector3.Distance(wolfPosition, transform.position) < 2.5f)
             {
                 agent.enabled = false;
                 rigi.velocity = Vector3.zero;
@@ -136,7 +136,7 @@ public class KnightBehaviour : MonoBehaviour
                     rigi.isKinematic = false;
                     agent.enabled = true;
                     is_moving = true;
-                    agent.SetDestination(Vector3.Distance(playerPosition,transform.position) < Vector3.Distance(wolfPosition,transform.position) ? playerPosition : wolfPosition);
+                    agent.SetDestination(Vector3.Distance(playerPosition, transform.position) < Vector3.Distance(wolfPosition, transform.position) ? playerPosition : wolfPosition);
                     mouvementVector = (transform.forward).normalized;
                 }
             }
@@ -150,15 +150,15 @@ public class KnightBehaviour : MonoBehaviour
 
     private void FixedUpdate()
     {
-            if (!animator.GetCurrentAnimatorStateInfo(1).IsTag("1") && is_moving)
-            {
+        if (!animator.GetCurrentAnimatorStateInfo(1).IsTag("1") && is_moving)
+        {
             motionVector = new Vector3(mouvementVector.x * maxVelocity, rigi.velocity.y, mouvementVector.z * maxVelocity);
             float lerpSmooth = rigi.velocity.magnitude < motionVector.magnitude ? acceleration : decceleration;
             rigi.velocity = Vector3.Lerp(rigi.velocity, motionVector, lerpSmooth / 20);
 
         }
-            if (direction.magnitude > 0)
-                transform.forward = Vector3.Lerp(transform.forward, direction, .3f);
+        if (direction.magnitude > 0)
+            transform.forward = Vector3.Lerp(transform.forward, direction, .3f);
     }
 
     private void UpdateAnimator()
@@ -171,7 +171,7 @@ public class KnightBehaviour : MonoBehaviour
     private void DoRotation()
     {
         playerPosition.y = transform.position.y;
-        direction = Vector3.Distance(playerPosition, transform.position) < Vector3.Distance(wolfPosition, transform.position) ? playerPosition -transform.position : wolfPosition - transform.position;
+        direction = Vector3.Distance(playerPosition, transform.position) < Vector3.Distance(wolfPosition, transform.position) ? playerPosition - transform.position : wolfPosition - transform.position;
         direction.y = 0;
         direction = direction.normalized;
 
@@ -188,7 +188,7 @@ public class KnightBehaviour : MonoBehaviour
         if (GameObject.FindGameObjectsWithTag("Wolf").Length > 0)
         {
             wolfPosition = GameObject.FindGameObjectsWithTag("Wolf")[0].transform.position;
-            if (Vector3.Distance(wolfPosition,transform.position) < 2.5f)
+            if (Vector3.Distance(wolfPosition, transform.position) < 2.5f)
             {
                 Debug.Log("vie luop avant :" + GameObject.FindGameObjectsWithTag("Wolf")[0].GetComponent<Wolf>().health);
                 GameObject.FindGameObjectsWithTag("Wolf")[0].GetComponent<Wolf>().LooseHealth(5);

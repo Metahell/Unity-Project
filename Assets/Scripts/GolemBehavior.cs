@@ -39,7 +39,7 @@ public class GolemBehavior : MonoBehaviour
     private float _hitTime = 1;
     private float _hitTimer = 0;
     private bool _canHit = false;
-    private float _chargeTime= 20;
+    private float _chargeTime = 20;
     private bool _canCharge = false;
     private float _chargeTimer = 10;
     private float _rockTime = 10;
@@ -92,7 +92,7 @@ public class GolemBehavior : MonoBehaviour
         }
         else
         {
-            if(health >=0&&!charging)
+            if (health >= 0 && !charging)
             {
                 Physics.IgnoreCollision(this.GetComponent<Collider>(), GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<Collider>(), false);
                 _hitTimer += Time.deltaTime;
@@ -111,7 +111,7 @@ public class GolemBehavior : MonoBehaviour
                     _canrock = true;
                 }
                 playerPosition = GameObject.FindGameObjectsWithTag("Player")[0].transform.position;
-                if ((Vector3.Distance(playerPosition, transform.position) < 10f)&&_canCharge||animator.GetCurrentAnimatorStateInfo(1).IsTag("1")&&_canCharge)
+                if ((Vector3.Distance(playerPosition, transform.position) < 10f) && _canCharge || animator.GetCurrentAnimatorStateInfo(1).IsTag("1") && _canCharge)
                 {
                     agent.enabled = false;
                     rigi.velocity = Vector3.zero;
@@ -144,8 +144,8 @@ public class GolemBehavior : MonoBehaviour
                     }
                     is_moving = false;
                 }
-                
-                if (state>=2&&_canrock)
+
+                if (state >= 2 && _canrock)
                 {
                     agent.enabled = false;
                     rigi.velocity = Vector3.zero;
@@ -153,7 +153,7 @@ public class GolemBehavior : MonoBehaviour
                     {
                         rigi.isKinematic = true;
                     }
-                    if (!animator.GetCurrentAnimatorStateInfo(1).IsTag("1")&&_canrock)
+                    if (!animator.GetCurrentAnimatorStateInfo(1).IsTag("1") && _canrock)
                     {
                         animator.SetTrigger("Rock");
                         _canrock = false;
@@ -183,13 +183,13 @@ public class GolemBehavior : MonoBehaviour
     }
     private void CheckLife()
     {
-        if (health <= healthmax /2&&state==1)
+        if (health <= healthmax / 2 && state == 1)
         {
             chargespeed *= 1.5f;
             _chargeTime /= 2;
             state += 1;
         }
-        else if(health <= healthmax / 4 && state == 2)
+        else if (health <= healthmax / 4 && state == 2)
         {
             chargespeed *= 1.5f;
             _chargeTime /= 2;
@@ -200,7 +200,7 @@ public class GolemBehavior : MonoBehaviour
     {
         if (charging)
         {
-            rigi.MovePosition(rigi.position + transform.forward *chargespeed/40);
+            rigi.MovePosition(rigi.position + transform.forward * chargespeed / 40);
         }
         else
         {
@@ -276,10 +276,10 @@ public class GolemBehavior : MonoBehaviour
         StartCoroutine("Red");
     }
     private void OnCollisionEnter(Collision collision)
-    { 
+    {
         if (collision.collider.CompareTag("Archer"))
         {
-            Physics.IgnoreCollision(collision.collider, this.GetComponent<Collider>(),true);
+            Physics.IgnoreCollision(collision.collider, this.GetComponent<Collider>(), true);
         }
         if (collision.collider.CompareTag("Enemy"))
         {
@@ -332,7 +332,7 @@ public class GolemBehavior : MonoBehaviour
         if (state >= 2)
         {
             Vector3 target = GameObject.FindGameObjectsWithTag("Player")[0].transform.position;
-            GameObject rock=Instantiate(RockPrefab, new Vector3(target.x, 10, target.z),transform.rotation).gameObject;
+            GameObject rock = Instantiate(RockPrefab, new Vector3(target.x, 10, target.z), transform.rotation).gameObject;
         }
     }
 

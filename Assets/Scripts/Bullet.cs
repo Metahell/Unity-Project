@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class Bullet : MonoBehaviour {
+public class Bullet : MonoBehaviour
+{
 
     private Rigidbody rigi;
     private Renderer renderer;
@@ -11,13 +12,13 @@ public class Bullet : MonoBehaviour {
 
     [SerializeField]
     private float speed;
-	// Use this for initialization
-	void Awake ()
+    // Use this for initialization
+    void Awake()
     {
         rigi = GetComponent<Rigidbody>();
         renderer = GetComponent<Renderer>();
         renderer.material.color = Random.ColorHSV();
-	}
+    }
 
     private void FixedUpdate()
     {
@@ -45,7 +46,7 @@ public class Bullet : MonoBehaviour {
 
     private void OnDisable()
     {
-        
+
     }
 
 }

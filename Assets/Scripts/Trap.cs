@@ -13,15 +13,15 @@ public class Trap : MonoBehaviour
     [SerializeField]
     void Start()
     {
-        
+
     }
     private void Awake()
     {
-        
+
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.collider.CompareTag("Enemy")|| collision.collider.CompareTag("Archer"))
+        if (collision.collider.CompareTag("Enemy") || collision.collider.CompareTag("Archer"))
         {
             if (!triggered)
             {

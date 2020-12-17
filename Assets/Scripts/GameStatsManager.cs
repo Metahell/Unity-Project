@@ -14,11 +14,11 @@ public class GameStatsManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     private void SaveStats()
     {
-        PlayerPrefs.SetInt(string.Concat("WaveSaved",ButtonBehavior.CharacterSelection),WaveReached);
+        PlayerPrefs.SetInt(string.Concat("WaveSaved", ButtonBehavior.CharacterSelection), WaveReached);
         PlayerPrefs.Save();
     }
 }

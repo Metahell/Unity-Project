@@ -13,7 +13,7 @@ public class WaveManager : MonoBehaviour
     private int WaveID = 1;
     private int LastWave = 1;
     private int CurrentWave = 1;
-    private bool end=false;
+    private bool end = false;
     [SerializeField]
     private GameObject EndgameCanvas;
     private PlayerController controller;
@@ -26,7 +26,7 @@ public class WaveManager : MonoBehaviour
     [SerializeField]
     private List<GameObject> SpawnPoints = new List<GameObject>();
     [SerializeField]
-    private List<GameObject> EnnemyPool= new List<GameObject>();
+    private List<GameObject> EnnemyPool = new List<GameObject>();
     [SerializeField]
     private NavMeshAgent test;
     [SerializeField]
@@ -72,17 +72,17 @@ public class WaveManager : MonoBehaviour
     }
     private IEnumerator Spawn()
     {
-        for(int i = 0; i < CurrentWave; i++)
+        for (int i = 0; i < CurrentWave; i++)
         {
-            int end = WaveID > 1 ? (WaveID > 2 ? EnnemyPool.Count : EnnemyPool.Count-1) : EnnemyPool.Count-2; //pas de shaman avant wave 3, pas d'archer avant wave 2
-            GameObject mob=Instantiate(EnnemyPool[Random.Range(0,end)]);
+            int end = WaveID > 1 ? (WaveID > 2 ? EnnemyPool.Count : EnnemyPool.Count - 1) : EnnemyPool.Count - 2; //pas de shaman avant wave 3, pas d'archer avant wave 2
+            GameObject mob = Instantiate(EnnemyPool[Random.Range(0, end)]);
             mob.transform.position = SpawnPoints[Random.Range(0, SpawnPoints.Count)].transform.position; //i % SpawnPoints.Count
 
             yield return new WaitForSeconds(1);
         }
         NewWave();
         WaveID++;
-        PlayerPrefs.SetInt(string.Concat("WaveSaved", ButtonBehavior.CharacterSelection),WaveID);
+        PlayerPrefs.SetInt(string.Concat("WaveSaved", ButtonBehavior.CharacterSelection), WaveID);
     }
     private IEnumerator SpawnBoss()
     {
@@ -102,7 +102,7 @@ public class WaveManager : MonoBehaviour
         controller.Death();
         EndgameCanvas.SetActive(true);
         GameOver.Play();
-        EndGameText.text = "GAME OVER\n TIME :"+tm.EndTime();
+        EndGameText.text = "GAME OVER\n TIME :" + tm.EndTime();
 
     }
     private void Win()
@@ -115,4 +115,3 @@ public class WaveManager : MonoBehaviour
         PlayerPrefs.Save();
     }
 }
-                                      

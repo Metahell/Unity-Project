@@ -13,7 +13,7 @@ public class MApGenerator : MonoBehaviour
     public GameObject Wall;
     void Start()
     {
-        Material[] mat=maptile.GetComponent<MeshRenderer>().sharedMaterials;
+        Material[] mat = maptile.GetComponent<MeshRenderer>().sharedMaterials;
         mat[0].color = color;
         maptile.GetComponent<MeshRenderer>().sharedMaterials[0] = mat[0];
         int count = 0;
@@ -21,7 +21,7 @@ public class MApGenerator : MonoBehaviour
         {
             for (int z = -radius; z <= radius; z++)
             {
-                GameObject temp = Instantiate(maptile, new Vector3(x * _width+startingpoint.position.x, 0, z * _length+startingpoint.position.z), Quaternion.identity) as GameObject;
+                GameObject temp = Instantiate(maptile, new Vector3(x * _width + startingpoint.position.x, 0, z * _length + startingpoint.position.z), Quaternion.identity) as GameObject;
                 temp.transform.parent = startingpoint.transform;
                 temp.name = count.ToString();
                 count++;
@@ -32,6 +32,6 @@ public class MApGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

@@ -24,8 +24,8 @@ public class ArcherPlayerBehavior : MonoBehaviour
     private float _ability2Timer = 3;
     private float _ability3Time = 10;
     private float _ability3Timer = 10;
-    private float Boost=0;
-    private bool boosted=false;
+    private float Boost = 0;
+    private bool boosted = false;
     void Update()
     {
 
@@ -37,7 +37,7 @@ public class ArcherPlayerBehavior : MonoBehaviour
         {
             Boost -= Time.deltaTime;
         }
-        if (Boost <= 0&&boosted)
+        if (Boost <= 0 && boosted)
         {
             _ability1Time *= 2;
             this.GetComponent<PlayerController>().maxVelocity /= 2;
@@ -84,11 +84,11 @@ public class ArcherPlayerBehavior : MonoBehaviour
         _ability1Time /= 2;
         Boost = 3;
         this.GetComponent<PlayerController>().maxVelocity *= 2;
-        boosted=true;
+        boosted = true;
     }
     public void UpdateUI()
     {
-        img1.fillAmount = _ability1Timer < _ability1Time ? _ability1Timer / _ability1Time :0;
+        img1.fillAmount = _ability1Timer < _ability1Time ? _ability1Timer / _ability1Time : 0;
         img2.fillAmount = _ability2Timer < _ability2Time ? _ability2Timer / _ability2Time : 0;
         img3.fillAmount = _ability3Timer < _ability3Time ? _ability3Timer / _ability3Time : 0;
     }

@@ -6,13 +6,13 @@ using UnityEngine.UI;
 public class ArcherBehaviour : MonoBehaviour
 {
     [SerializeField]
-    private Arrow arrow; 
+    private Arrow arrow;
     [Header("Link")]
     private Rigidbody rigi;
     public bool isdead = false;
-    [SerializeField] 
+    [SerializeField]
     private Animator animator;
- 
+
     private Vector3 mouvementVector = Vector3.zero;
     private Vector3 motionVector = Vector3.zero;
     private Vector3 direction;
@@ -101,76 +101,76 @@ public class ArcherBehaviour : MonoBehaviour
             {
                 poisonTick = 3;
             }
-                _fireTimer += Time.deltaTime;
-                if (_fireTimer > (1 / _attackSpeed))
-                    _canShoot = true;
+            _fireTimer += Time.deltaTime;
+            if (_fireTimer > (1 / _attackSpeed))
+                _canShoot = true;
 
-                playerPosition = GameObject.FindGameObjectsWithTag("Player")[0].transform.position;
-                float distanceToPlayer = Vector3.Distance(playerPosition, transform.position);
+            playerPosition = GameObject.FindGameObjectsWithTag("Player")[0].transform.position;
+            float distanceToPlayer = Vector3.Distance(playerPosition, transform.position);
 
-                if (((distanceToPlayer < 20f && distanceToPlayer > 6f) || animator.GetCurrentAnimatorStateInfo(1).IsTag("1")) && _visionClear)
+            if (((distanceToPlayer < 20f && distanceToPlayer > 6f) || animator.GetCurrentAnimatorStateInfo(1).IsTag("1")) && _visionClear)
+            {
+                agent.enabled = false;
+                rigi.velocity = Vector3.zero;
+                if (!is_pushed)
                 {
-                    agent.enabled = false;
-                    rigi.velocity = Vector3.zero;
-                    if (!is_pushed)
-                    {
-                        rigi.isKinematic = true;
-                    }
-
-                    if (!animator.GetCurrentAnimatorStateInfo(1).IsTag("1") && _canShoot)
-                    {
-                        animator.SetTrigger("1st Ability");
-                        Shoot();
-                        _canShoot = false;
-                        _fireTimer = 0;
-                    }
-                    is_moving = false;
+                    rigi.isKinematic = true;
                 }
-                else
+
+                if (!animator.GetCurrentAnimatorStateInfo(1).IsTag("1") && _canShoot)
                 {
-                    if (!ThiefPlayerBehavior.isInvisible)
+                    animator.SetTrigger("1st Ability");
+                    Shoot();
+                    _canShoot = false;
+                    _fireTimer = 0;
+                }
+                is_moving = false;
+            }
+            else
+            {
+                if (!ThiefPlayerBehavior.isInvisible)
+                {
+                    rigi.isKinematic = false;
+                    agent.enabled = true;
+                    is_moving = true;
+                    if (!_visionClear)
                     {
-                        rigi.isKinematic = false;
-                        agent.enabled = true;
-                        is_moving = true;
-                        if (!_visionClear)
-                        {
+                        agent.SetDestination(playerPosition);
+                    }
+                    else
+                    {
+                        if (distanceToPlayer > 20f)
                             agent.SetDestination(playerPosition);
-                        }
-                        else
+                        if (distanceToPlayer < 6f)
                         {
-                            if (distanceToPlayer > 20f)
-                                agent.SetDestination(playerPosition);
-                            if (distanceToPlayer < 6f)
+                            NavMeshHit hit;
+                            Vector3 fuite = (transform.position - playerPosition).normalized;
+                            if (NavMesh.SamplePosition(playerPosition + fuite * 7, out hit, 6.0f, NavMesh.AllAreas)) // fuite intelligente
                             {
-                                NavMeshHit hit;
-                                Vector3 fuite =  (transform.position - playerPosition).normalized;
-                                if (NavMesh.SamplePosition(playerPosition + fuite * 7, out hit,6.0f, NavMesh.AllAreas)) // fuite intelligente
+                                if (Vector3.Distance(hit.position, playerPosition) > 6.0f)
                                 {
-                                    if (Vector3.Distance(hit.position, playerPosition) > 6.0f)
-                                    {
-                                        agent.SetDestination(hit.position);
-                                    }
-                                    else
-                                    {
-                                        agent.SetDestination(transform.position + fuite);
-                                    }
+                                    agent.SetDestination(hit.position);
                                 }
                                 else
                                 {
                                     agent.SetDestination(transform.position + fuite);
                                 }
                             }
+                            else
+                            {
+                                agent.SetDestination(transform.position + fuite);
+                            }
                         }
-                        mouvementVector = (transform.forward).normalized;
                     }
+                    mouvementVector = (transform.forward).normalized;
                 }
-                if (!ThiefPlayerBehavior.isInvisible)
-                {
-                    UpdateAnimator();
-                    DoRotation();
-                }
-            
+            }
+            if (!ThiefPlayerBehavior.isInvisible)
+            {
+                UpdateAnimator();
+                DoRotation();
+            }
+
         }
 
         //Debug.Log(_visionClear.ToString() +"  "+ distanceToPlayer.ToString());
@@ -193,8 +193,8 @@ public class ArcherBehaviour : MonoBehaviour
 
     private void UpdateAnimator()
     {
-        animator.SetFloat("velocityForward", 15* Vector3.Dot(rigi.velocity, transform.forward));
-        animator.SetFloat("velocityRight", 15* Vector3.Dot(rigi.velocity, transform.right));
+        animator.SetFloat("velocityForward", 15 * Vector3.Dot(rigi.velocity, transform.forward));
+        animator.SetFloat("velocityRight", 15 * Vector3.Dot(rigi.velocity, transform.right));
         animator.SetFloat("velocity", rigi.velocity.magnitude);
     }
 
@@ -256,7 +256,7 @@ public class ArcherBehaviour : MonoBehaviour
         RaycastHit hit;
         Vector3 origin = transform.position + new Vector3(0, 2, 0);
         Vector3 dest = playerPosition + new Vector3(0, 2, 0);
-        return !Physics.Raycast(origin,dest-origin, out hit, 40f, LayerMask.GetMask("Obstacle"));
+        return !Physics.Raycast(origin, dest - origin, out hit, 40f, LayerMask.GetMask("Obstacle"));
     }
 
     IEnumerator Death()

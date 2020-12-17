@@ -6,17 +6,17 @@ public class TimeManager : MonoBehaviour
 {
     [SerializeField]
     private Text TextTime;
-    private bool end=false;
+    private bool end = false;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(!end)
+        if (!end)
         {
             TextTime.text = "TIME :" + Time.time.ToString("F1");
         }

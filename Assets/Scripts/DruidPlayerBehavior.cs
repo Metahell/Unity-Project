@@ -26,7 +26,7 @@ public class DruidPlayerBehavior : MonoBehaviour
     private float _ability3Timer = 20;
     private void Start()
     {
-        radius =wolf.GetComponent<CapsuleCollider>().radius;
+        radius = wolf.GetComponent<CapsuleCollider>().radius;
     }
     void Update()
     {
@@ -60,8 +60,8 @@ public class DruidPlayerBehavior : MonoBehaviour
         axe.GetComponent<Axe>().setDirection(transform.forward);
         axe.transform.right = direction;
 
-    } 
-    
+    }
+
     public void Ability2()
     {
         gameObject.GetComponent<HealthOrb>().Damage(-10);
@@ -69,23 +69,23 @@ public class DruidPlayerBehavior : MonoBehaviour
         {
             GameObject.FindGameObjectsWithTag("Wolf")[0].GetComponent<Wolf>().LooseHealth(-10);
         }
-        
+
     }
 
     public void Ability3()
     {
         Vector3 DruidPos = transform.position;
-        Vector3 Spawn = new Vector3(Random.Range(DruidPos.x - 4,DruidPos.x + 4), 0.017f, Random.Range(DruidPos.z - 4, DruidPos.z + 4));
-        while (!CheckSpawn(Spawn,radius))
+        Vector3 Spawn = new Vector3(Random.Range(DruidPos.x - 4, DruidPos.x + 4), 0.017f, Random.Range(DruidPos.z - 4, DruidPos.z + 4));
+        while (!CheckSpawn(Spawn, radius))
         {
             Spawn = new Vector3(Random.Range(DruidPos.x - 4, DruidPos.x + 4), 0.017f, Random.Range(DruidPos.z - 4, DruidPos.z + 4));
         }
-        Instantiate(wolf, Spawn,transform.rotation);
+        Instantiate(wolf, Spawn, transform.rotation);
     }
-   
-    private bool CheckSpawn(Vector3 center,float radius)
+
+    private bool CheckSpawn(Vector3 center, float radius)
     {
-        return Physics.CheckSphere(center,radius);
+        return Physics.CheckSphere(center, radius);
     }
     public void UpdateUI()
     {

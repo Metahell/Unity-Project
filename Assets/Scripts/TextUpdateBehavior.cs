@@ -52,7 +52,7 @@ public class TextUpdateBehavior : MonoBehaviour
             {
                 switch (i)
                 {
-                    case 0: Medal0.SetActive(true);break;
+                    case 0: Medal0.SetActive(true); break;
                     case 1: Medal1.SetActive(true); break;
                     case 2: Medal2.SetActive(true); break;
                     case 3: Medal3.SetActive(true); break;
@@ -65,4 +65,3 @@ public class TextUpdateBehavior : MonoBehaviour
     }
 
 }
-          

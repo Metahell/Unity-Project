@@ -23,7 +23,7 @@ public class ButtonBehavior : MonoBehaviour
     private void Start()
     {
 
-        
+
     }
     public void Play()
     {
@@ -67,11 +67,11 @@ public class ButtonBehavior : MonoBehaviour
     public void Select()
     {
         SelectSound.Play();
-        if(EventSystem.current.currentSelectedGameObject.name == "Select Knight")
+        if (EventSystem.current.currentSelectedGameObject.name == "Select Knight")
         {
             CharacterSelection = 0;
         }
-        if(EventSystem.current.currentSelectedGameObject.name == "Select Archer")
+        if (EventSystem.current.currentSelectedGameObject.name == "Select Archer")
         {
             CharacterSelection = 1;
         }
@@ -99,11 +99,11 @@ public class ButtonBehavior : MonoBehaviour
             for (int i = 1; i < nbFrame + 1; i++)
             {
                 t = i / nbFrame;
-                Door.transform.position = Vector3.Lerp(Door.transform.position, Door.transform.position -new Vector3(0,0.5f,0), t);
+                Door.transform.position = Vector3.Lerp(Door.transform.position, Door.transform.position - new Vector3(0, 0.5f, 0), t);
                 yield return new WaitForEndOfFrame();
             }
             yield return new WaitForSeconds(2);
-            var op =SceneManager.LoadSceneAsync(1);
+            var op = SceneManager.LoadSceneAsync(1);
         }
     }
 }

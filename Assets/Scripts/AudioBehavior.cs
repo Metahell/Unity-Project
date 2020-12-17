@@ -21,7 +21,7 @@ public class AudioBehavior : MonoBehaviour
 
     private void Start()
     {
-        MusicSlider.value = PlayerPrefs.GetFloat("Music",0.75f);
+        MusicSlider.value = PlayerPrefs.GetFloat("Music", 0.75f);
         MasterSlider.value = PlayerPrefs.GetFloat("Master", 0.75f);
         SoundSlider.value = PlayerPrefs.GetFloat("Sound", 0.75f);
     }
@@ -35,11 +35,11 @@ public class AudioBehavior : MonoBehaviour
     {
         musicvalue = MusicSlider.value;
         Mastermixer.SetFloat("Music", Mathf.Log10(musicvalue) * 20);
-        PlayerPrefs.SetFloat("Music",musicvalue);
+        PlayerPrefs.SetFloat("Music", musicvalue);
     }
     public void SetSoundLevel()
     {
-        soundvalue= SoundSlider.value;
+        soundvalue = SoundSlider.value;
         Mastermixer.SetFloat("Sound", Mathf.Log10(soundvalue) * 20);
         PlayerPrefs.SetFloat("Sound", soundvalue);
     }

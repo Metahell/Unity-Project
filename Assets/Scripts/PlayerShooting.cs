@@ -15,14 +15,14 @@ public class PlayerShooting : MonoBehaviour
 
     [SerializeField]
     private Animator animator;
-	
-	void Update ()
+
+    void Update()
     {
-		if(Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
             Shoot();
         }
-	}
+    }
 
     /// <summary>
     /// Shoot bullets in a cône
@@ -31,8 +31,8 @@ public class PlayerShooting : MonoBehaviour
     {
         animator.SetTrigger("Shoot");
         Vector3 direction = Quaternion.Euler(0, -shootAngle / 2, 0) * spawnPoint.forward;
-        float iteration = shootAngle/bulletNumber;
-        for(int i = 0; i < bulletNumber;i ++)
+        float iteration = shootAngle / bulletNumber;
+        for (int i = 0; i < bulletNumber; i++)
         {
             GameObject bullet = BulletFactory.GetInstance().GetBullet();
             bullet.transform.position = spawnPoint.position;

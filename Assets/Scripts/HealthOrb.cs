@@ -32,7 +32,7 @@ public class HealthOrb : MonoBehaviour
         {
             if (!end)
             {
-                end= true;
+                end = true;
                 WaveManager.Lose();
             }
         }
@@ -50,7 +50,7 @@ public class HealthOrb : MonoBehaviour
     }
     public void UpdateOrb()
     {
-        healthOrb.transform.position = new Vector3(healthOrb.transform.position.x,-(slider.maxValue-slider.value)*133f/slider.maxValue+78.37385f,healthOrb.transform.position.z);
+        healthOrb.transform.position = new Vector3(healthOrb.transform.position.x, -(slider.maxValue - slider.value) * 133f / slider.maxValue + 78.37385f, healthOrb.transform.position.z);
     }
 
     public int getHealth()

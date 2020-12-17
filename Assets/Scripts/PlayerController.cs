@@ -66,7 +66,7 @@ public class PlayerController : MonoBehaviour
     private void DoRotation()
     {
         var camera = Camera.main;
-        
+
         var mousePosition = Input.mousePosition;
         mousePosition.z = 1;
         Vector3 targetPosition = Vector3.zero;

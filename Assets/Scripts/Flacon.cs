@@ -21,7 +21,7 @@ public class Flacon : MonoBehaviour
 
     void Start()
     {
-        
+
     }
 
     IEnumerator FindTarget()
@@ -81,7 +81,7 @@ public class Flacon : MonoBehaviour
     private IEnumerator Break()
     {
         Glasssound.Play();
-        Instantiate(Poison, transform.position,transform.rotation);
+        Instantiate(Poison, transform.position, transform.rotation);
         yield return new WaitForSeconds(0.2f);
         Factory.GetInstance().RemoveFlacon(this);
     }

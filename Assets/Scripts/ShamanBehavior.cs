@@ -32,7 +32,7 @@ public class ShamanBehavior : MonoBehaviour
     private float _healtime = 3f;
     private float _HealTimer = 0;
     private bool _canHeal = false;
-    
+
 
     [SerializeField]
     public int health;
@@ -125,7 +125,7 @@ public class ShamanBehavior : MonoBehaviour
                         rigi.isKinematic = false;
                         agent.enabled = true;
                         is_moving = true;
-                        
+
                         if (distanceToPlayer < 6f)
                         {
                             NavMeshHit hit;
@@ -172,7 +172,7 @@ public class ShamanBehavior : MonoBehaviour
         }
         if (direction.magnitude > 0)
             transform.forward = Vector3.Lerp(transform.forward, direction, .3f);
-        
+
     }
 
     private void UpdateAnimator()
@@ -224,31 +224,25 @@ public class ShamanBehavior : MonoBehaviour
         GameObject[] Targetsk = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject target in Targetsk)
         {
-            if (target.CompareTag("Enemy"))
+            KnightBehaviour knight = target.GetComponent<KnightBehaviour>();
+            if (knight.health <= 10 && !knight.isdead)
             {
-                KnightBehaviour knight = target.GetComponent<KnightBehaviour>();
-                if (knight.health <= 10 && !knight.isdead)
-                {
-                    target.GetComponent<KnightBehaviour>().LooseHealth(-5);
-                    return;
-                }
+                target.GetComponent<KnightBehaviour>().LooseHealth(-5);
+                return;
             }
         }
         GameObject[] Targetsa = GameObject.FindGameObjectsWithTag("Archer");
         foreach (GameObject target in Targetsa)
         {
-            if (target.CompareTag("Archer"))
+            ArcherBehaviour archer = target.GetComponent<ArcherBehaviour>();
+            if (archer.health <= 5 && !archer.isdead)
             {
-                ArcherBehaviour archer = target.GetComponent<ArcherBehaviour>();
-                if (archer.health <= 5 && !archer.isdead)
-                {
-                    target.GetComponent<ArcherBehaviour>().LooseHealth(-5);
-                    return;
-                }
+                target.GetComponent<ArcherBehaviour>().LooseHealth(-5);
+                return;
             }
         }
         GameObject[] Target = GameObject.FindGameObjectsWithTag("Boss");
-        foreach(GameObject target in Target)
+        foreach (GameObject target in Target)
         {
             GolemBehavior golem = target.GetComponent<GolemBehavior>();
             if (golem.health <= golem.healthmax && !golem.isdead)

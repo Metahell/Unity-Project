@@ -83,7 +83,7 @@ public class KnightPlayerBehaviour : MonoBehaviour
             }
             else if (collider.gameObject.CompareTag("Boss"))
             {
-               collider.gameObject.GetComponent<GolemBehavior>().LooseHealth(5);
+                collider.gameObject.GetComponent<GolemBehavior>().LooseHealth(5);
             }
             else if (collider.gameObject.gameObject.CompareTag("Shaman"))
             {
@@ -94,7 +94,7 @@ public class KnightPlayerBehaviour : MonoBehaviour
 
     public void Ability2()
     {
-            StartCoroutine(Jump());
+        StartCoroutine(Jump());
 
     }
 
@@ -103,11 +103,12 @@ public class KnightPlayerBehaviour : MonoBehaviour
         StartCoroutine(Spin());
     }
 
-    IEnumerator Spin()    {
+    IEnumerator Spin()
+    {
         float attacktime = 0f;
         PlayerController player = gameObject.GetComponent<PlayerController>();
         player.maxVelocity *= 1.5f;
-        for (float i = 0; i < 3; i+= Time.deltaTime)
+        for (float i = 0; i < 3; i += Time.deltaTime)
         {
             if (attacktime > 0.5f)
             {
@@ -152,17 +153,17 @@ public class KnightPlayerBehaviour : MonoBehaviour
         gameObject.GetComponent<Rigidbody>().velocity = transform.forward * 10 + transform.up * 10;
         yield return new WaitForSeconds(0.1f);
         is_jumping = true;
-        
+
     }
 
-    IEnumerator PushKnight(GameObject knight,int force)
+    IEnumerator PushKnight(GameObject knight, int force)
     {
         Rigidbody rigidKnight = knight.GetComponent<Rigidbody>();
         KnightBehaviour knightB = knight.GetComponent<KnightBehaviour>();
         knightB.is_pushed = true;
         rigidKnight.isKinematic = false;
         rigidKnight.velocity = Vector3.zero;
-        rigidKnight.AddForce(-knight.transform.forward*force);
+        rigidKnight.AddForce(-knight.transform.forward * force);
         yield return new WaitForSeconds(0.5f);
         if (knight != null)
         {
@@ -170,7 +171,7 @@ public class KnightPlayerBehaviour : MonoBehaviour
         }
     }
 
-    IEnumerator PushArcher(GameObject archer,int force)
+    IEnumerator PushArcher(GameObject archer, int force)
     {
         ArcherBehaviour archerB = archer.GetComponent<ArcherBehaviour>();
         Rigidbody rigidArcher = archer.GetComponent<Rigidbody>();
@@ -191,9 +192,9 @@ public class KnightPlayerBehaviour : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if ((collision.collider.CompareTag("Floor")|| collision.collider.CompareTag("Enemy")|| collision.collider.CompareTag("Archer")) && is_jumping)
+        if ((collision.collider.CompareTag("Floor") || collision.collider.CompareTag("Enemy") || collision.collider.CompareTag("Archer")) && is_jumping)
         {
-            Instantiate(StarParticle, transform.position,transform.rotation);
+            Instantiate(StarParticle, transform.position, transform.rotation);
             Vector3 attackCenter = transform.position;
             Collider[] colliders = Physics.OverlapSphere(attackCenter, 4f);
             foreach (Collider collider in colliders)
@@ -201,7 +202,7 @@ public class KnightPlayerBehaviour : MonoBehaviour
                 if (collider.gameObject.CompareTag("Enemy"))
                 {
                     collider.gameObject.GetComponent<KnightBehaviour>().LooseHealth(2);
-                    StartCoroutine(PushKnight(collider.gameObject,6000));
+                    StartCoroutine(PushKnight(collider.gameObject, 6000));
                 }
                 else if (collider.gameObject.CompareTag("Archer"))
                 {

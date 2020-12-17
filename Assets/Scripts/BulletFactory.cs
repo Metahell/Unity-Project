@@ -18,7 +18,7 @@ public class BulletFactory : MonoBehaviour
 
     public void Awake()
     {
-        if(instance != null)
+        if (instance != null)
         {
             Debug.LogError("Il y a déjà une instance de la classe BulletFactory " + name);
             Destroy(this);
@@ -35,7 +35,7 @@ public class BulletFactory : MonoBehaviour
     public GameObject GetBullet()
     {
         //On a déjà des balles disponibles
-        if(pool.Count > 0)
+        if (pool.Count > 0)
         {
             GameObject bulletObj = pool.Dequeue().gameObject;
             bulletObj.SetActive(true);
@@ -43,7 +43,7 @@ public class BulletFactory : MonoBehaviour
         }
         else
         {
-            return Instantiate(bulletPrefab,transform).gameObject;
+            return Instantiate(bulletPrefab, transform).gameObject;
         }
     }
 }

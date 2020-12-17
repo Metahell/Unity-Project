@@ -9,17 +9,17 @@ public class Poison : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     void OnParticleCollision(GameObject other)
     {
-        if (other.tag == "Enemy"|| other.tag == "Archer"|| other.tag == "Boss")
+        if (other.tag == "Enemy" || other.tag == "Archer" || other.tag == "Boss")
         {
             if (other.tag == "Enemy")
             {

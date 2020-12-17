@@ -37,7 +37,7 @@ public class ThiefPlayerBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
+
     }
 
     // Update is called once per frame
@@ -48,10 +48,10 @@ public class ThiefPlayerBehavior : MonoBehaviour
         _ability3Timer += Time.deltaTime;
         UpdateUI();
         if (invisibleCountdown >= 0)
-        { 
+        {
             invisibleCountdown -= Time.deltaTime;
         }
-        if(invisibleCountdown <= 0&&isInvisible)
+        if (invisibleCountdown <= 0 && isInvisible)
         {
             isInvisible = false;
             Material[] mats = Mat.GetComponent<SkinnedMeshRenderer>().materials;
@@ -95,7 +95,7 @@ public class ThiefPlayerBehavior : MonoBehaviour
             {
                 if (Mathf.Abs(Vector3.Angle(transform.forward, collider.gameObject.transform.forward) - 180) >= 90)
                 {
-                    collider.gameObject.GetComponent<KnightBehaviour>().LooseHealth(dmg*2);
+                    collider.gameObject.GetComponent<KnightBehaviour>().LooseHealth(dmg * 2);
                 }
                 else
                 {
@@ -106,7 +106,7 @@ public class ThiefPlayerBehavior : MonoBehaviour
             {
                 if (Mathf.Abs(Vector3.Angle(transform.forward, collider.gameObject.transform.forward) - 180) >= 90)
                 {
-                    collider.gameObject.GetComponent<ArcherBehaviour>().LooseHealth(dmg*2);
+                    collider.gameObject.GetComponent<ArcherBehaviour>().LooseHealth(dmg * 2);
                 }
                 else
                 {
@@ -117,7 +117,7 @@ public class ThiefPlayerBehavior : MonoBehaviour
             {
                 if (Mathf.Abs(Vector3.Angle(transform.forward, collider.gameObject.transform.forward) - 180) >= 90)
                 {
-                    collider.gameObject.GetComponent<GolemBehavior>().LooseHealth(dmg*2);
+                    collider.gameObject.GetComponent<GolemBehavior>().LooseHealth(dmg * 2);
                 }
                 else
                 {
@@ -139,7 +139,7 @@ public class ThiefPlayerBehavior : MonoBehaviour
     }
     public void Ability2()
     {
-        isInvisible=true;
+        isInvisible = true;
         invisibleCountdown = 2;
         Material[] mats = Mat.GetComponent<SkinnedMeshRenderer>().materials;
         mats[0] = Invisible;

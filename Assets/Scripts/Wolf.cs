@@ -26,7 +26,7 @@ public class Wolf : MonoBehaviour
     private float _hitTimer = 0;
     private bool _canHit = false;
     private Quaternion FixQuaternion;
-    private Vector3 FixRotation = new Vector3(0,-180,0);
+    private Vector3 FixRotation = new Vector3(0, -180, 0);
     public AnimationClip swipe;
     private GameObject CurrentTarget;
     [SerializeField]
@@ -91,7 +91,7 @@ public class Wolf : MonoBehaviour
         {
             FindEnemy();
         }
-        
+
         if (health <= 0)
         {
             StartCoroutine(Death());
@@ -103,7 +103,7 @@ public class Wolf : MonoBehaviour
             {
                 _canHit = true;
             }
-            if (CurrentTarget==null)
+            if (CurrentTarget == null)
             {
                 FindEnemy();
             }
@@ -168,22 +168,22 @@ public class Wolf : MonoBehaviour
         direction = EnemyPosition - transform.position;
         direction.y = 0;
         direction = -direction.normalized;
-        
+
     }
     private void FindEnemy()
     {
         GameObject temp = new GameObject("temp");
         CurrentTarget = temp;
-        CurrentTarget.transform.position = transform.position + new Vector3(1e32f,1e32f,1e32f);
+        CurrentTarget.transform.position = transform.position + new Vector3(1e32f, 1e32f, 1e32f);
         GameObject[] Targets = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (var target in Targets)
         {
-            if (target.activeInHierarchy && Vector3.Distance(target.transform.position,transform.position) <= Vector3.Distance(CurrentTarget.transform.position,transform.position))
+            if (target.activeInHierarchy && Vector3.Distance(target.transform.position, transform.position) <= Vector3.Distance(CurrentTarget.transform.position, transform.position))
             {
                 CurrentTarget = target;
             }
         }
-        Targets= GameObject.FindGameObjectsWithTag("Archer");
+        Targets = GameObject.FindGameObjectsWithTag("Archer");
         foreach (var target in Targets)
         {
             if (target.activeInHierarchy && Vector3.Distance(target.transform.position, transform.position) <= Vector3.Distance(CurrentTarget.transform.position, transform.position))
@@ -211,10 +211,11 @@ public class Wolf : MonoBehaviour
     }
     private void Hit()
     {
-        if (!hurt.isPlaying) {
+        if (!hurt.isPlaying)
+        {
             attack.Play();
         }
-        if (Vector3.Distance(CurrentTarget.transform.position , transform.position) < 3.5f)
+        if (Vector3.Distance(CurrentTarget.transform.position, transform.position) < 3.5f)
         {
             if (CurrentTarget.CompareTag("Enemy"))
             {

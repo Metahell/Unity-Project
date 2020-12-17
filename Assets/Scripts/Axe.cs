@@ -23,13 +23,13 @@ public class Axe : MonoBehaviour
     }
     public void setDirection(Vector3 transf)
     {
-        direction=transf;
+        direction = transf;
     }
     private void FixedUpdate()
     {
         rigi.velocity = direction * speed;
         Quaternion deltaRotation = Quaternion.Euler(rotateVelocity * Time.deltaTime);
-        rigi.MoveRotation(rigi.rotation*deltaRotation);
+        rigi.MoveRotation(rigi.rotation * deltaRotation);
     }
 
     private void Update()
@@ -43,7 +43,7 @@ public class Axe : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy")|| other.CompareTag("Archer")|| other.CompareTag("Boss") || other.CompareTag("Shaman"))
+        if (other.CompareTag("Enemy") || other.CompareTag("Archer") || other.CompareTag("Boss") || other.CompareTag("Shaman"))
         {
             Collider[] colliders = Physics.OverlapSphere(this.transform.position, 1.5f);
             foreach (Collider collider in colliders)

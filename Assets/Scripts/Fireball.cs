@@ -25,9 +25,9 @@ public class Fireball : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-            Collider[] colliders = Physics.OverlapSphere(this.transform.position, 1.5f);
-            foreach (Collider collider in colliders)
-            {
+        Collider[] colliders = Physics.OverlapSphere(this.transform.position, 1.5f);
+        foreach (Collider collider in colliders)
+        {
             if (collider.gameObject.CompareTag("Enemy"))
             {
                 collider.gameObject.GetComponent<KnightBehaviour>().LooseHealth(5);
@@ -46,7 +46,7 @@ public class Fireball : MonoBehaviour
                 other.gameObject.GetComponent<ShamanBehavior>().LooseHealth(5);
             }
         }
-          Remove();
+        Remove();
     }
 
     public void Remove()
