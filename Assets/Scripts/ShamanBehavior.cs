@@ -189,29 +189,33 @@ public class ShamanBehavior : MonoBehaviour
 
     private void Heal()
     {
-        GameObject[] Targets = GameObject.FindGameObjectsWithTag("Enemy");
-        foreach(GameObject target in Targets)
+        GameObject[] Targetsk = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject target in Targetsk)
         {
             if (target.CompareTag("Enemy"))
             {
                 KnightBehaviour knight = target.GetComponent<KnightBehaviour>();
-                if (knight.health<=10&&!knight.isdead)
-                target.GetComponent<KnightBehaviour>().LooseHealth(-5);
-            }
-            else if (target.CompareTag("Archer"))
-            {
-                ArcherBehaviour archer = target.GetComponent<ArcherBehaviour>();
-                if(archer.health<=5&&!archer.isdead)
-                target.GetComponent<ArcherBehaviour>().LooseHealth(-5);
-            }
-            else if (target.CompareTag("Boss"))
-            {
-               GolemBehavior golem = target.GetComponent<GolemBehavior>();
-                if(golem.health<=golem.healthmax&&!golem.isdead)
-                target.GetComponent<GolemBehavior>().LooseHealth(-5);
+                if (knight.health <= 10 && !knight.isdead)
+                    target.GetComponent<KnightBehaviour>().LooseHealth(-5);
             }
         }
-
+        GameObject[] Targetsa = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject target in Targetsa)
+        {
+            if (target.CompareTag("Archer"))
+            {
+                ArcherBehaviour archer = target.GetComponent<ArcherBehaviour>();
+                if (archer.health <= 5 && !archer.isdead)
+                    target.GetComponent<ArcherBehaviour>().LooseHealth(-5);
+            }
+        }
+        GameObject[] Target = GameObject.FindGameObjectsWithTag("Boss");
+        foreach(GameObject target in Target)
+        {
+            GolemBehavior golem = target.GetComponent<GolemBehavior>();
+            if (golem.health <= golem.healthmax && !golem.isdead)
+                target.GetComponent<GolemBehavior>().LooseHealth(-5);
+        }
     }
 
 
