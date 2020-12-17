@@ -19,7 +19,7 @@ public class Poison : MonoBehaviour
     }
     void OnParticleCollision(GameObject other)
     {
-        if (other.tag == "Enemy" || other.tag == "Archer" || other.tag == "Boss")
+        if (other.tag == "Enemy" || other.tag == "Archer" || other.tag == "Boss" || other.tag == "Shaman")
         {
             if (other.tag == "Enemy")
             {

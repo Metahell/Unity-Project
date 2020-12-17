@@ -192,7 +192,7 @@ public class KnightPlayerBehaviour : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if ((collision.collider.CompareTag("Floor") || collision.collider.CompareTag("Enemy") || collision.collider.CompareTag("Archer")) && is_jumping)
+        if ((collision.collider.CompareTag("Floor") || collision.collider.CompareTag("Enemy") || collision.collider.CompareTag("Archer") || collision.collider.CompareTag("Shaman") || collision.collider.CompareTag("Boss")) && is_jumping)
         {
             Instantiate(StarParticle, transform.position, transform.rotation);
             Vector3 attackCenter = transform.position;
