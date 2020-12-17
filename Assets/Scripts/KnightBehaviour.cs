@@ -23,7 +23,6 @@ public class KnightBehaviour : MonoBehaviour
     [SerializeField]
     private float decceleration;
     private Vector3 playerPosition;
-    private Vector3 wolfPosition;
     public bool is_moving = true;
     public NavMeshAgent agent;
     private float _hitTime = 1;
@@ -70,8 +69,6 @@ public class KnightBehaviour : MonoBehaviour
             isdead = true;
             StartCoroutine(Death());
         }
-        else
-        {
         if (poisontimer>0)
         {
             poisontimer -= Time.deltaTime;
@@ -85,21 +82,15 @@ public class KnightBehaviour : MonoBehaviour
         {
             poisonTick = 3;
         }
+        else
+        {
             _hitTimer += Time.deltaTime;
             if (_hitTimer > _hitTime)
             {
                 _canHit = true;
             }
             playerPosition = GameObject.FindGameObjectsWithTag("Player")[0].transform.position;
-            if (GameObject.FindGameObjectsWithTag("Wolf").Length > 0)
-            {
-                wolfPosition = GameObject.FindGameObjectsWithTag("Wolf")[0].transform.position;
-            }
-            else
-            {
-                wolfPosition = Vector3.positiveInfinity;
-            }
-                if (Vector3.Distance(playerPosition, transform.position) < 2.5f || animator.GetCurrentAnimatorStateInfo(1).IsTag("1") || Vector3.Distance(wolfPosition, transform.position) < 2.5f)
+            if (Vector3.Distance(playerPosition, transform.position) < 2.5f || animator.GetCurrentAnimatorStateInfo(1).IsTag("1"))
             {
                 agent.enabled = false;
                 rigi.velocity = Vector3.zero;
@@ -122,7 +113,7 @@ public class KnightBehaviour : MonoBehaviour
                     rigi.isKinematic = false;
                     agent.enabled = true;
                     is_moving = true;
-                    agent.SetDestination(Vector3.Distance(playerPosition,transform.position) < Vector3.Distance(wolfPosition,transform.position) ? playerPosition : wolfPosition);
+                    agent.SetDestination(playerPosition);
                     mouvementVector = (transform.forward).normalized;
                 }
             }
@@ -157,7 +148,7 @@ public class KnightBehaviour : MonoBehaviour
     private void DoRotation()
     {
         playerPosition.y = transform.position.y;
-        direction = Vector3.Distance(playerPosition, transform.position) < Vector3.Distance(wolfPosition, transform.position) ? playerPosition -transform.position : wolfPosition - transform.position;
+        direction = playerPosition - transform.position;
         direction.y = 0;
         direction = direction.normalized;
 
@@ -170,16 +161,6 @@ public class KnightBehaviour : MonoBehaviour
         {
             //Debug.Log("Touché");
             GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<HealthOrb>().Damage(5);
-        }
-        if (GameObject.FindGameObjectsWithTag("Wolf").Length > 0)
-        {
-            wolfPosition = GameObject.FindGameObjectsWithTag("Wolf")[0].transform.position;
-            if (Vector3.Distance(wolfPosition,transform.position) < 2.5f)
-            {
-                Debug.Log("vie luop avant :" + GameObject.FindGameObjectsWithTag("Wolf")[0].GetComponent<Wolf>().health);
-                GameObject.FindGameObjectsWithTag("Wolf")[0].GetComponent<Wolf>().LooseHealth(5);
-                Debug.Log("loup touché  " + GameObject.FindGameObjectsWithTag("Wolf")[0].GetComponent<Wolf>().health);
-            }
         }
     }
 

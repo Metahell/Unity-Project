@@ -87,6 +87,8 @@ public class ArcherBehaviour : MonoBehaviour
             {
                 poisonTick = 3;
             }
+            else
+            {
                 _fireTimer += Time.deltaTime;
                 if (_fireTimer > (1 / _attackSpeed))
                     _canShoot = true;
@@ -156,7 +158,7 @@ public class ArcherBehaviour : MonoBehaviour
                     UpdateAnimator();
                     DoRotation();
                 }
-            
+            }
         }
 
         //Debug.Log(_visionClear.ToString() +"  "+ distanceToPlayer.ToString());

@@ -32,10 +32,6 @@ public class Arrow : MonoBehaviour
             {
                 GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<HealthOrb>().Damage(5);
             }
-            if (other.CompareTag("Wolf"))
-            {
-                GameObject.FindGameObjectsWithTag("Wolf")[0].GetComponent<Wolf>().LooseHealth(5);
-            }
             if (other.CompareTag("Enemy") || other.CompareTag("Archer"))
                 return;
         }

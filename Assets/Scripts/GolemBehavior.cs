@@ -19,7 +19,6 @@ public class GolemBehavior : MonoBehaviour
     private Vector3 motionVector = Vector3.zero;
     private Vector3 direction;
     private Vector3 chargedirection;
-    private Vector3 wolfPosition;
     private bool charging = false;
     private bool chargehit = false;
     [SerializeField]
@@ -248,16 +247,6 @@ public class GolemBehavior : MonoBehaviour
         {
             //Debug.Log("Touché");
             GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<HealthOrb>().Damage(10);
-        }
-        if (GameObject.FindGameObjectsWithTag("Wolf").Length > 0)
-        {
-            wolfPosition = GameObject.FindGameObjectsWithTag("Wolf")[0].transform.position;
-            if (Vector3.Distance(wolfPosition, transform.position) < 2.5f)
-            {
-                Debug.Log("vie luop avant :" + GameObject.FindGameObjectsWithTag("Wolf")[0].GetComponent<Wolf>().health);
-                GameObject.FindGameObjectsWithTag("Wolf")[0].GetComponent<Wolf>().LooseHealth(5);
-                Debug.Log("loup touché  " + GameObject.FindGameObjectsWithTag("Wolf")[0].GetComponent<Wolf>().health);
-            }
         }
     }
     private void Charge()

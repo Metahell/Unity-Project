@@ -35,7 +35,7 @@ public class ShamanBehavior : MonoBehaviour
     
 
     [SerializeField]
-    public int health;
+    private int health;
 
     public bool is_pushed;
     private int hpMax;
