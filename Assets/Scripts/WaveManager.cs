@@ -41,7 +41,7 @@ public class WaveManager : MonoBehaviour
     {
         if (CheckEnemyCount() == 0)
         {
-            if (WaveID == 10 || WaveID == 2)
+            if (WaveID == 10 )
             {
                 WaveNumber.text = "Wave " + WaveID;
                 StartCoroutine("Spawn");

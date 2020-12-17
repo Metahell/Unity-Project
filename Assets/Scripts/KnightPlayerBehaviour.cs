@@ -121,19 +121,19 @@ public class KnightPlayerBehaviour : MonoBehaviour
                 {
                     if (collider.gameObject.CompareTag("Enemy"))
                     {
-                        collider.gameObject.GetComponent<KnightBehaviour>().LooseHealth(1);
+                        collider.gameObject.GetComponent<KnightBehaviour>().LooseHealth(2);
                     }
                     else if (collider.gameObject.CompareTag("Archer"))
                     {
-                        collider.gameObject.GetComponent<ArcherBehaviour>().LooseHealth(1);
+                        collider.gameObject.GetComponent<ArcherBehaviour>().LooseHealth(2);
                     }
                     else if (collider.gameObject.CompareTag("Boss"))
                     {
-                        collider.gameObject.GetComponent<GolemBehavior>().LooseHealth(1);
+                        collider.gameObject.GetComponent<GolemBehavior>().LooseHealth(2);
                     }
                     else if (collider.gameObject.CompareTag("Shaman"))
                     {
-                        collider.gameObject.GetComponent<ShamanBehavior>().LooseHealth(10);
+                        collider.gameObject.GetComponent<ShamanBehavior>().LooseHealth(2);
                     }
                 }
                 attacktime = 0f;
@@ -205,21 +205,21 @@ public class KnightPlayerBehaviour : MonoBehaviour
             {
                 if (collider.gameObject.CompareTag("Enemy"))
                 {
-                    collider.gameObject.GetComponent<KnightBehaviour>().LooseHealth(2);
+                    collider.gameObject.GetComponent<KnightBehaviour>().LooseHealth(5);
                     StartCoroutine(PushKnight(collider.gameObject, 6000));
                 }
                 else if (collider.gameObject.CompareTag("Archer"))
                 {
-                    collider.gameObject.GetComponent<ArcherBehaviour>().LooseHealth(2);
+                    collider.gameObject.GetComponent<ArcherBehaviour>().LooseHealth(5);
                     StartCoroutine(PushArcher(collider.gameObject, 6000));
                 }
                 else if (collider.gameObject.CompareTag("Boss"))
                 {
-                    collider.gameObject.GetComponent<GolemBehavior>().LooseHealth(2);
+                    collider.gameObject.GetComponent<GolemBehavior>().LooseHealth(5);
                 }
                 else if (collider.gameObject.CompareTag("Shaman"))
                 {
-                    collider.gameObject.GetComponent<ShamanBehavior>().LooseHealth(10);
+                    collider.gameObject.GetComponent<ShamanBehavior>().LooseHealth(5);
                 }
 
             }
