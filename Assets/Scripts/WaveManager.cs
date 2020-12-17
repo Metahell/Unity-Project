@@ -41,11 +41,15 @@ public class WaveManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (!paused)
             {
                 PauseGame();
+            }
+            else if (paused)
+            {
+                ResumeGame();
             }
         }
         if (CheckEnemyCount() == 0)
@@ -75,6 +79,7 @@ public class WaveManager : MonoBehaviour
     {
         if (!end)
         {
+            paused = true;
             Time.timeScale = 0;
             PauseCanvas.SetActive(true);
         }
@@ -82,6 +87,7 @@ public class WaveManager : MonoBehaviour
 
     public void ResumeGame()
     {
+        paused = false;
         Time.timeScale = 1;
         PauseCanvas.SetActive(false);
     }
