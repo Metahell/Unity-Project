@@ -103,6 +103,7 @@ public class GolemBehavior : MonoBehaviour
             {
                 chargingtime = 0;
                 charging = false;
+                rigi.freezeRotation = false;
             }
             if (health >= 0 && !charging)
             {
@@ -133,7 +134,6 @@ public class GolemBehavior : MonoBehaviour
                     }
                     if (!animator.GetCurrentAnimatorStateInfo(1).IsTag("1") && _canCharge)
                     {
-                        Debug.Log("Start");
                         animator.SetTrigger("Attack2");
                         _canCharge = false;
                         _chargeTimer = 0;
@@ -279,6 +279,7 @@ public class GolemBehavior : MonoBehaviour
         chargehit = false;
         Physics.IgnoreCollision(this.GetComponent<Collider>(), GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<Collider>(), false);
         transform.LookAt(chargedirection);
+        rigi.freezeRotation = true;
     }
 
     public void LooseHealth(int healthLoss)
@@ -308,16 +309,17 @@ public class GolemBehavior : MonoBehaviour
         if (collision.collider.CompareTag("Player"))
         {
             GameObject player = GameObject.FindGameObjectsWithTag("Player")[0];
+            if (!charging) Physics.IgnoreCollision(this.GetComponent<Collider>(), player.GetComponent<Collider>(), true);
             if (!chargehit)
             {
                 player.GetComponent<HealthOrb>().Damage(10);
                 chargehit = true;
             }
-            Physics.IgnoreCollision(this.GetComponent<Collider>(), player.GetComponent<Collider>());
         }
         if (collision.collider.CompareTag("Wall"))
         {
             charging = false;
+            rigi.freezeRotation = false;
         }
     }
     IEnumerator Red()

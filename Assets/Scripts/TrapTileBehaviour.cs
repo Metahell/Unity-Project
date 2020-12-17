@@ -23,9 +23,5 @@ public class TrapTileBehaviour : MonoBehaviour
         {
             collision.gameObject.GetComponent<ShamanBehavior>().LooseHealth(100);
         }
-        if (collision.gameObject.CompareTag("Boss"))
-        {
-            collision.gameObject.GetComponent<ShamanBehavior>().LooseHealth(100);
-        }
     }
 }
