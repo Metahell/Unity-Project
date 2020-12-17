@@ -130,7 +130,25 @@ public class ArcherBehaviour : MonoBehaviour
                             if (distanceToPlayer > 20f)
                                 agent.SetDestination(playerPosition);
                             if (distanceToPlayer < 6f)
-                                agent.SetDestination(transform.position + (transform.position - playerPosition).normalized);
+                            {
+                                NavMeshHit hit;
+                                Vector3 fuite =  (transform.position - playerPosition).normalized;
+                                if (NavMesh.SamplePosition(playerPosition + fuite * 7, out hit,6.0f, NavMesh.AllAreas)) // fuite intelligente
+                                {
+                                    if (Vector3.Distance(hit.position, playerPosition) > 6.0f)
+                                    {
+                                        agent.SetDestination(hit.position);
+                                    }
+                                    else
+                                    {
+                                        agent.SetDestination(transform.position + fuite);
+                                    }
+                                }
+                                else
+                                {
+                                    agent.SetDestination(transform.position + fuite);
+                                }
+                            }
                         }
                         mouvementVector = (transform.forward).normalized;
                     }

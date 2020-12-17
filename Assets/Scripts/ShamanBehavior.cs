@@ -112,9 +112,27 @@ public class ShamanBehavior : MonoBehaviour
                         agent.enabled = true;
                         is_moving = true;
                         
-                        if (distanceToPlayer < 8f)
-                            agent.SetDestination(transform.position + (transform.position - playerPosition).normalized);
-                        
+                        if (distanceToPlayer < 6f)
+                        {
+                            NavMeshHit hit;
+                            Vector3 fuite = (transform.position - playerPosition).normalized;
+                            if (NavMesh.SamplePosition(playerPosition + fuite * 7, out hit, 6.0f, NavMesh.AllAreas)) // fuite intelligente
+                            {
+                                if (Vector3.Distance(hit.position, playerPosition) >= Vector3.Distance(transform.position, playerPosition))
+                                {
+                                    agent.SetDestination(hit.position);
+                                }
+                                else
+                                {
+                                    agent.SetDestination(transform.position + fuite);
+                                }
+                            }
+                            else
+                            {
+                                agent.SetDestination(transform.position + fuite);
+                            }
+                        }
+
                         mouvementVector = (transform.forward).normalized;
                     }
                 }
