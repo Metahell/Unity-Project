@@ -19,7 +19,7 @@ public class ButtonBehavior : MonoBehaviour
     [SerializeField]
     private AudioSource SelectSound;
     public static int CharacterSelection; /*0=Knight, 1=Archer, 2=Mage,3=Druid,4=Thief*/
-    public static string MapSelection;
+    public static int MapSelection=0; /*0 Random Sinon Map 1 2 3 4*/
     private void Start()
     {
 
@@ -62,7 +62,7 @@ public class ButtonBehavior : MonoBehaviour
     }
     public void SelectMap()
     {
-        MapSelection = MapSelec.options[MapSelec.value].text;
+        MapSelection = MapSelec.value;
     }
     public void Select()
     {
