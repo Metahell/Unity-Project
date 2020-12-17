@@ -77,7 +77,7 @@ public class ShamanBehavior : MonoBehaviour
                 playerPosition = GameObject.FindGameObjectsWithTag("Player")[0].transform.position;
                 float distanceToPlayer = Vector3.Distance(playerPosition, transform.position);
 
-                if (((distanceToPlayer > 6f) || animator.GetCurrentAnimatorStateInfo(1).IsTag("1")))
+                if (((distanceToPlayer >= 8f) || animator.GetCurrentAnimatorStateInfo(1).IsTag("1")))
                 {
                     agent.enabled = false;
                     rigi.velocity = Vector3.zero;
@@ -103,7 +103,7 @@ public class ShamanBehavior : MonoBehaviour
                         agent.enabled = true;
                         is_moving = true;
                         
-                        if (distanceToPlayer < 6f)
+                        if (distanceToPlayer < 8f)
                             agent.SetDestination(transform.position + (transform.position - playerPosition).normalized);
                         
                         mouvementVector = (transform.forward).normalized;
