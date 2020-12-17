@@ -44,6 +44,12 @@ public class KnightBehaviour : MonoBehaviour
     Material mat3;
     [SerializeField]
     private Slider slider;
+    [SerializeField]
+    private Image back_slider;
+    [SerializeField]
+    private Sprite normal_back;
+    [SerializeField]
+    private Sprite buff_back;
     // Start is called before the first frame update
     void Start()
     {
@@ -61,6 +67,14 @@ public class KnightBehaviour : MonoBehaviour
     void Update()
     {
         slider.value = health;
+        if (health > slider.maxValue)
+        {
+            back_slider.sprite = buff_back;
+        }
+        else
+        {
+            back_slider.sprite = normal_back;
+        }
         if (is_pushed)
         {
             is_moving = false;

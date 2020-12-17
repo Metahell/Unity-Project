@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.574817, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3596,6 +3596,7 @@ Transform:
   - {fileID: 1362662692}
   - {fileID: 148804500}
   - {fileID: 2063320081}
+  - {fileID: 326787643}
   - {fileID: 476191898}
   - {fileID: 1450928021}
   - {fileID: 180536959}
@@ -3611,25 +3612,24 @@ Transform:
   - {fileID: 387955836}
   - {fileID: 1814617999}
   - {fileID: 1410242100}
-  - {fileID: 326787643}
   - {fileID: 1732936219}
   - {fileID: 174010031}
+  - {fileID: 399341998}
   - {fileID: 523686994}
   - {fileID: 822823039}
   - {fileID: 1883016959}
   - {fileID: 500462572}
   - {fileID: 29436846}
+  - {fileID: 1177343264}
   - {fileID: 71611690}
   - {fileID: 1301482559}
-  - {fileID: 399341998}
-  - {fileID: 1177343264}
+  - {fileID: 1443886941}
+  - {fileID: 326118223}
+  - {fileID: 1531010048}
+  - {fileID: 997856454}
+  - {fileID: 1231218649}
   - {fileID: 310205051}
   - {fileID: 1585803442}
-  - {fileID: 326118223}
-  - {fileID: 997856454}
-  - {fileID: 1443886941}
-  - {fileID: 1231218649}
-  - {fileID: 1531010048}
   - {fileID: 1123109290}
   m_Father: {fileID: 895700310}
   m_RootOrder: 3
@@ -5421,7 +5421,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &506218178
 Transform:
   m_ObjectHideFlags: 0
@@ -10213,47 +10213,47 @@ Transform:
   - {fileID: 2131238345}
   - {fileID: 1052156859}
   - {fileID: 1032649285}
+  - {fileID: 615867018}
   - {fileID: 923409286}
   - {fileID: 945984211}
   - {fileID: 790004192}
   - {fileID: 1223398278}
   - {fileID: 2112805071}
+  - {fileID: 795293465}
   - {fileID: 769380674}
+  - {fileID: 1352157315}
   - {fileID: 1395623405}
+  - {fileID: 1176125214}
   - {fileID: 158805925}
   - {fileID: 1808316160}
+  - {fileID: 58184041}
+  - {fileID: 1101094538}
   - {fileID: 2083680653}
+  - {fileID: 550407763}
   - {fileID: 442831847}
   - {fileID: 1978884339}
-  - {fileID: 1352157315}
-  - {fileID: 430083225}
-  - {fileID: 1176125214}
-  - {fileID: 2145196939}
-  - {fileID: 795293465}
-  - {fileID: 1101094538}
-  - {fileID: 159912294}
-  - {fileID: 1161575480}
-  - {fileID: 551771174}
-  - {fileID: 1031498487}
+  - {fileID: 1413212027}
   - {fileID: 118347659}
-  - {fileID: 615867018}
+  - {fileID: 430083225}
+  - {fileID: 1161575480}
   - {fileID: 750691813}
+  - {fileID: 2145196939}
   - {fileID: 89988762}
+  - {fileID: 1638664659}
   - {fileID: 1153216953}
+  - {fileID: 1582630824}
   - {fileID: 385151064}
   - {fileID: 537910271}
-  - {fileID: 1587173369}
-  - {fileID: 1413212027}
-  - {fileID: 58184041}
-  - {fileID: 1908696674}
-  - {fileID: 1797038664}
-  - {fileID: 2059833188}
   - {fileID: 1708960335}
-  - {fileID: 1638664659}
-  - {fileID: 550407763}
+  - {fileID: 1587173369}
+  - {fileID: 1908696674}
+  - {fileID: 159912294}
+  - {fileID: 2059833188}
   - {fileID: 13389354}
-  - {fileID: 1582630824}
+  - {fileID: 1797038664}
+  - {fileID: 551771174}
   - {fileID: 2124865996}
+  - {fileID: 1031498487}
   m_Father: {fileID: 895700310}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -162,6 +162,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 95492813676292648}
   poisontimer: 0
+  isdead: 0
   maxVelocity: 3
   acceleration: 5
   decceleration: 10
@@ -175,6 +176,9 @@ MonoBehaviour:
   mat2: {fileID: 2100000, guid: cc67fe56c28ab914e9e027978f4be62a, type: 2}
   mat3: {fileID: 2100000, guid: 94dbdbb4c29d1c741946c54f5778da08, type: 2}
   slider: {fileID: 311243693177616407}
+  back_slider: {fileID: 3602833060075400811}
+  normal_back: {fileID: 21300000, guid: ffa453bf8a7393e4f92e140144a3b744, type: 3}
+  buff_back: {fileID: 21300000, guid: 1b07b9a4f4eee424581c91c9fffc9bcd, type: 3}
 --- !u!95 &95492813676292648
 Animator:
   serializedVersion: 3
