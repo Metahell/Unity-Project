@@ -13,15 +13,19 @@ public class TrapTileBehaviour : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            collision.gameObject.GetComponent<KnightBehaviour>().LooseHealth(20);
+            collision.gameObject.GetComponent<KnightBehaviour>().LooseHealth(100);
         }
         if (collision.gameObject.CompareTag("Archer"))
         {
-            collision.gameObject.GetComponent<ArcherBehaviour>().LooseHealth(20);
+            collision.gameObject.GetComponent<ArcherBehaviour>().LooseHealth(100);
         }
         if (collision.gameObject.CompareTag("Shaman"))
         {
-            collision.gameObject.GetComponent<ShamanBehavior>().LooseHealth(10);
+            collision.gameObject.GetComponent<ShamanBehavior>().LooseHealth(100);
+        }
+        if (collision.gameObject.CompareTag("Boss"))
+        {
+            collision.gameObject.GetComponent<ShamanBehavior>().LooseHealth(100);
         }
     }
 }

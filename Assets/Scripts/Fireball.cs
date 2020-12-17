@@ -25,7 +25,7 @@ public class Fireball : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Collider[] colliders = Physics.OverlapSphere(this.transform.position, 1.5f);
+        Collider[] colliders = Physics.OverlapSphere(this.transform.position, 2.5f);
         foreach (Collider collider in colliders)
         {
             if (collider.gameObject.CompareTag("Enemy"))

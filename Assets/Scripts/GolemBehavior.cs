@@ -285,6 +285,14 @@ public class GolemBehavior : MonoBehaviour
         {
             Physics.IgnoreCollision(collision.collider, this.GetComponent<Collider>(), true);
         }
+        if (collision.collider.CompareTag("Shaman"))
+        {
+            Physics.IgnoreCollision(collision.collider, this.GetComponent<Collider>(), true);
+        }
+        if (collision.collider.CompareTag("Boss"))
+        {
+            Physics.IgnoreCollision(collision.collider, this.GetComponent<Collider>(), true);
+        }
         if (collision.collider.CompareTag("Player"))
         {
             GameObject player = GameObject.FindGameObjectsWithTag("Player")[0];

@@ -21,7 +21,7 @@ public class Trap : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.CompareTag("Enemy") || collision.collider.CompareTag("Archer"))
+        if (collision.collider.CompareTag("Enemy") || collision.collider.CompareTag("Archer") || collision.collider.CompareTag("Shaman") || collision.collider.CompareTag("Boss"))
         {
             if (!triggered)
             {
@@ -53,6 +53,10 @@ public class Trap : MonoBehaviour
         else if (trapped.CompareTag("Shaman"))
         {
             trapped.GetComponent<ShamanBehavior>().LooseHealth(10);
+        }
+        else if (trapped.CompareTag("Boss"))
+        {
+            trapped.GetComponent<GolemBehavior>().LooseHealth(10);
         }
         yield return new WaitForSeconds(1);
         Factory.GetInstance().RemoveTrap(this);
