@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.574817, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8326,28 +8326,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &668929231 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5203124807753493337, guid: 3a892777c46c6c34688f86c271c19822,
-    type: 3}
-  m_PrefabInstance: {fileID: 603938218}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &668929236
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 668929231}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d07ce676d7afda4dabb3b0f7dd5e654, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 1
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
 --- !u!4 &672229954 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3266223812707895701, guid: 07a69a0f48a00624ba7f9ce6720dd9f3,
@@ -8973,28 +8951,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 738264068}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &741068583 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9007920724027221102, guid: 3a892777c46c6c34688f86c271c19822,
-    type: 3}
-  m_PrefabInstance: {fileID: 603938218}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &741068588
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 741068583}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d07ce676d7afda4dabb3b0f7dd5e654, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 1
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
 --- !u!1001 &750691812
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13288,28 +13244,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1048711181}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1049467945 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7810672171267565780, guid: 3a892777c46c6c34688f86c271c19822,
-    type: 3}
-  m_PrefabInstance: {fileID: 603938218}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1049467950
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1049467945}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d07ce676d7afda4dabb3b0f7dd5e654, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 1
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
 --- !u!1001 &1052156858
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13747,15 +13681,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1099166560}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.000000058674}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.0000028565}
+  m_LocalScale: {x: 1.3464361, y: 1.3464361, z: 1.3464361}
   m_Children: []
   m_Father: {fileID: 1841426593}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000002861, y: -1.125}
+  m_AnchoredPosition: {x: 0.5, y: -1.125}
   m_SizeDelta: {x: 75.87558, y: 97.75018}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1099166562
@@ -13771,18 +13705,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.49803925, g: 0.49803925, b: 0.49803925, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.6666667}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 4fd6a2e650627d549ab9043ae0f3ab12, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 0
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 2
   m_UseSpriteMesh: 0
@@ -23711,7 +23645,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 21838bc7401422f41a4bd4bb94c972a3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 68ea0638fa3a3a34ab63ce9a0f91662b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
