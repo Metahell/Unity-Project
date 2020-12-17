@@ -79,6 +79,7 @@ public class GolemBehavior : MonoBehaviour
             charging = false;
             StartCoroutine(Death());
         }
+        CheckLife();
         if (poisontimer > 0)
         {
             poisontimer -= Time.deltaTime;
