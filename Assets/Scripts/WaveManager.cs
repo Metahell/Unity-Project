@@ -71,7 +71,8 @@ public class WaveManager : MonoBehaviour
     {
         for(int i = 0; i < CurrentWave; i++)
         {
-            GameObject mob=Instantiate(EnnemyPool[Random.Range(0,EnnemyPool.Count)]);
+            int end = WaveID > 1 ? (WaveID > 2 ? EnnemyPool.Count : EnnemyPool.Count-1) : EnnemyPool.Count-2; //pas de shaman avant wave 3, pas d'archer avant wave 2
+            GameObject mob=Instantiate(EnnemyPool[Random.Range(0,end)]);
             mob.transform.position = SpawnPoints[Random.Range(0, SpawnPoints.Count)].transform.position; //i % SpawnPoints.Count
 
             yield return new WaitForSeconds(1);
