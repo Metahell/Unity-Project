@@ -14,9 +14,12 @@ public class WaveManager : MonoBehaviour
     private int LastWave = 1;
     private int CurrentWave = 1;
     private bool end = false;
+    private bool paused = false;
     [SerializeField]
     private GameObject EndgameCanvas;
     private PlayerController controller;
+    [SerializeField]
+    private GameObject PauseCanvas;
     [SerializeField]
     private Text EndGameText;
     [SerializeField]
@@ -36,9 +39,19 @@ public class WaveManager : MonoBehaviour
         StartCoroutine("Spawn");
     }
 
-    // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (!paused)
+            {
+                PauseGame();
+            }
+            else if (paused)
+            {
+                ResumeGame();
+            }
+        }
         if (CheckEnemyCount() == 0)
         {
             if (WaveID == 10 )
@@ -61,6 +74,22 @@ public class WaveManager : MonoBehaviour
                 StartCoroutine("Spawn");
             }
         }
+    }
+    public void PauseGame()
+    {
+        if (!end)
+        {
+            paused = true;
+            Time.timeScale = 0;
+            PauseCanvas.SetActive(true);
+        }
+    }
+
+    public void ResumeGame()
+    {
+        paused = false;
+        Time.timeScale = 1;
+        PauseCanvas.SetActive(false);
     }
     private void NewWave()
     {
