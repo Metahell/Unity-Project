@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class Wolf : MonoBehaviour
 {
@@ -28,12 +29,38 @@ public class Wolf : MonoBehaviour
     private Vector3 FixRotation = new Vector3(0,-180,0);
     public AnimationClip swipe;
     private GameObject CurrentTarget;
-    private int health = 50;
-    private int hpMax = 50;
+    [SerializeField]
+    public int health;
+    private int hpMax;
     public bool is_pushed;
+    [SerializeField]
+    private Renderer GLTFNode_61;
+    [SerializeField]
+    private Renderer GLTFNode_62;
+    [SerializeField]
+    private Renderer GLTFNode_63;
+    [SerializeField]
+    private Renderer GLTFNode_64;
+    [SerializeField]
+    private Renderer GLTFNode_65;
+    [SerializeField]
+    private Material GLTFNode_61_color;
+    [SerializeField]
+    private Material GLTFNode_62_color;
+    [SerializeField]
+    private Material GLTFNode_63_color;
+    [SerializeField]
+    private Material GLTFNode_64_color;
+    [SerializeField]
+    private Material GLTFNode_65_color;
+    [SerializeField]
+    private Slider slider;
     // Start is called before the first frame update
     void Start()
     {
+        slider.minValue = 0;
+        hpMax = health;
+        slider.maxValue = hpMax;
         is_pushed = false;
         rigi = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Confined;
@@ -43,15 +70,21 @@ public class Wolf : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        slider.value = health;/*
         if (transform.position.y <= -1)
         {
             transform.position = new Vector3(0f, 17f, 0f);
-        }
+        }*/
         FixQuaternion = Quaternion.Euler(FixRotation * Time.deltaTime);
         if (CurrentTarget == null)
         {
             FindEnemy();
         }
+        else if (CheckHealth(CurrentTarget) <= 0)
+        {
+            FindEnemy();
+        }
+        
         if (health <= 0)
         {
             StartCoroutine(Death());
@@ -132,36 +165,42 @@ public class Wolf : MonoBehaviour
     }
     private void FindEnemy()
     {
+        GameObject temp = new GameObject("temp");
+        CurrentTarget = temp;
+        CurrentTarget.transform.position = transform.position + new Vector3(1e32f,1e32f,1e32f);
         GameObject[] Targets = GameObject.FindGameObjectsWithTag("Enemy");
-        for(int i = 0; i < Targets.Length; i++)
+        foreach (var target in Targets)
         {
-            if (Targets[i].activeInHierarchy)
+            if (target.activeInHierarchy && Vector3.Distance(target.transform.position,transform.position) <= Vector3.Distance(CurrentTarget.transform.position,transform.position))
             {
-                CurrentTarget = Targets[i];
-                return;
+                CurrentTarget = target;
             }
         }
         Targets= GameObject.FindGameObjectsWithTag("Archer");
-        for (int i = 0; i < Targets.Length; i++)
+        foreach (var target in Targets)
         {
-            if (Targets[i].activeInHierarchy)
+            if (target.activeInHierarchy && Vector3.Distance(target.transform.position, transform.position) <= Vector3.Distance(CurrentTarget.transform.position, transform.position))
             {
-                CurrentTarget = Targets[i];
-                return;
+                CurrentTarget = target;
             }
         }
         Targets = GameObject.FindGameObjectsWithTag("Shaman");
-        for (int i = 0; i < Targets.Length; i++)
+        foreach (var target in Targets)
         {
-            if (Targets[i].activeInHierarchy)
+            if (target.activeInHierarchy && Vector3.Distance(target.transform.position, transform.position) <= Vector3.Distance(CurrentTarget.transform.position, transform.position))
             {
-                CurrentTarget = Targets[i];
-                return;
+                CurrentTarget = target;
             }
         }
         Targets = GameObject.FindGameObjectsWithTag("Boss");
-        CurrentTarget = Targets[0];
-        return;
+        foreach (var target in Targets)
+        {
+            if (target.activeInHierarchy && Vector3.Distance(target.transform.position, transform.position) <= Vector3.Distance(CurrentTarget.transform.position, transform.position))
+            {
+                CurrentTarget = target;
+            }
+        }
+        Destroy(temp);
     }
     private void Hit()
     {
@@ -190,22 +229,42 @@ public class Wolf : MonoBehaviour
     {
         health -= healthLoss;
         health = health > hpMax ? hpMax : health;
-        //StartCoroutine("Red");
+        if (healthLoss > 0) StartCoroutine("Red"); else StartCoroutine(Green());
     }
 
-    /*IEnumerator Red()
+    IEnumerator Red()
     {
-        
-        WIP
-
-        Transform cube = gameObject.transform.Find();
-        Material[] materials = cube.GetComponent<Renderer>().materials;
-       
+        GLTFNode_61.material.color = Color.red;
+        GLTFNode_62.material.color = Color.red;
+        GLTFNode_63.material.color = Color.red;
+        GLTFNode_64.material.color = Color.red;
+        GLTFNode_65.material.color = Color.red;
         yield return new WaitForSeconds(0.1f);
-        
-}*/
+        GLTFNode_61.material.color = GLTFNode_61_color.color;
+        GLTFNode_62.material.color = GLTFNode_62_color.color;
+        GLTFNode_63.material.color = GLTFNode_63_color.color;
+        GLTFNode_64.material.color = GLTFNode_64_color.color;
+        GLTFNode_65.material.color = GLTFNode_65_color.color;
 
-IEnumerator Death()
+    }
+
+    IEnumerator Green()
+    {
+        GLTFNode_61.material.color = Color.green;
+        GLTFNode_62.material.color = Color.green;
+        GLTFNode_63.material.color = Color.green;
+        GLTFNode_64.material.color = Color.green;
+        GLTFNode_65.material.color = Color.green;
+        yield return new WaitForSeconds(0.1f);
+        GLTFNode_61.material.color = GLTFNode_61_color.color;
+        GLTFNode_62.material.color = GLTFNode_62_color.color;
+        GLTFNode_63.material.color = GLTFNode_63_color.color;
+        GLTFNode_64.material.color = GLTFNode_64_color.color;
+        GLTFNode_65.material.color = GLTFNode_65_color.color;
+
+    }
+
+    IEnumerator Death()
     {
         animator.SetBool("IsDead", true);
         agent.enabled = false;
@@ -216,4 +275,28 @@ IEnumerator Death()
         Destroy(gameObject);
     }
 
+    private int CheckHealth(GameObject ennemy)
+    {
+        if (ennemy.CompareTag("Enemy"))
+        {
+            return ennemy.GetComponent<KnightBehaviour>().health;
+        }
+        else if (ennemy.CompareTag("Archer"))
+        {
+            return ennemy.GetComponent<ArcherBehaviour>().health;
+        }
+        else if (ennemy.CompareTag("Shaman"))
+        {
+            return ennemy.GetComponent<ShamanBehavior>().health;
+        }
+        else if (ennemy.CompareTag("Boss"))
+        {
+            return ennemy.GetComponent<GolemBehavior>().health;
+        }
+        else
+        {
+            return 0;
+        }
+    }
 }
+
