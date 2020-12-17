@@ -1946,7 +1946,7 @@ GameObject:
   - component: {fileID: 4393952284804030}
   - component: {fileID: 95116026481897300}
   m_Layer: 0
-  m_Name: DarkArcher
+  m_Name: DarkArcher brut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
