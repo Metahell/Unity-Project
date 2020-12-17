@@ -27,6 +27,7 @@ public class ButtonBehavior : MonoBehaviour
     }
     public void Play()
     {
+
         if (SceneManager.GetActiveScene().name == "Menu")
         {
             Button.Play();
@@ -34,6 +35,7 @@ public class ButtonBehavior : MonoBehaviour
         }
         else
         {
+            Time.timeScale = 1;
             SceneManager.LoadScene(1);
             PlayerPrefs.SetInt(string.Concat("NbGames", CharacterSelection), PlayerPrefs.GetInt(string.Concat("NbGames", CharacterSelection)) + 1);
             Debug.Log("" + PlayerPrefs.GetInt(string.Concat("NbGames", CharacterSelection)));
@@ -46,6 +48,7 @@ public class ButtonBehavior : MonoBehaviour
     }
     public void Return()
     {
+        Time.timeScale = 1;
         ReturnSound.Play();
         SceneManager.LoadScene(0);
         Debug.Log("" + CharacterSelection);
