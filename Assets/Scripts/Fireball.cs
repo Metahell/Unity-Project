@@ -6,8 +6,6 @@ public class Fireball : MonoBehaviour
 {
     private Rigidbody rigi;
     private Renderer renderer;
-    private KnightBehaviour Health;
-    private KnightBehaviour KnightBehaviour;
 
     [SerializeField]
     private float speed;
@@ -32,21 +30,30 @@ public class Fireball : MonoBehaviour
             {
                 collider.gameObject.GetComponent<KnightBehaviour>().LooseHealth(5);
                 StartCoroutine(PushKnight(collider.gameObject));
+                Remove();
             }
             else if (collider.gameObject.CompareTag("Archer"))
             {
                 collider.gameObject.GetComponent<ArcherBehaviour>().LooseHealth(5);
+                StartCoroutine(PushArcher(collider.gameObject));
+                Remove();
             }
             else if (collider.gameObject.CompareTag("Boss"))
             {
                 collider.gameObject.GetComponent<GolemBehavior>().LooseHealth(5);
+                Remove();
             }
             else if (other.gameObject.CompareTag("Shaman"))
             {
                 other.gameObject.GetComponent<ShamanBehavior>().LooseHealth(5);
+                StartCoroutine(PushShaman(collider.gameObject));
+                Remove();
+            }
+            else if (other.CompareTag("Wall"))
+            {
+                Remove();
             }
         }
-        Remove();
     }
 
     public void Remove()
@@ -58,11 +65,34 @@ public class Fireball : MonoBehaviour
     {
         knight.GetComponent<KnightBehaviour>().is_pushed = true;
         knight.GetComponent<Rigidbody>().isKinematic = false;
-        knight.GetComponent<Rigidbody>().AddForce(transform.forward * 4000);
+        knight.GetComponent<Rigidbody>().AddForce(transform.forward * 5000);
         yield return new WaitForSeconds(0.5f);
         if (knight != null)
         {
             knight.GetComponent<KnightBehaviour>().is_pushed = false;
+        }
+    }
+
+    IEnumerator PushArcher(GameObject archer)
+    {
+        archer.GetComponent<ArcherBehaviour>().is_pushed = true;
+        archer.GetComponent<Rigidbody>().isKinematic = false;
+        archer.GetComponent<Rigidbody>().AddForce(transform.forward * 5000);
+        yield return new WaitForSeconds(0.5f);
+        if (archer != null)
+        {
+            archer.GetComponent<ArcherBehaviour>().is_pushed = false;
+        }
+    }
+    IEnumerator PushShaman(GameObject shaman)
+    {
+        shaman.GetComponent<ShamanBehavior>().is_pushed = true;
+        shaman.GetComponent<Rigidbody>().isKinematic = false;
+        shaman.GetComponent<Rigidbody>().AddForce(transform.forward * 5000);
+        yield return new WaitForSeconds(0.5f);
+        if (shaman != null)
+        {
+            shaman.GetComponent<ShamanBehavior>().is_pushed = false;
         }
     }
 }
