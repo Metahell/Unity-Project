@@ -42,6 +42,8 @@ public class GolemBehavior : MonoBehaviour
     private float _chargeTime = 20;
     private bool _canCharge = false;
     private float _chargeTimer = 10;
+    private float chargingtime;
+    private float endcharge=3;
     private float _rockTime = 10;
     private float _rockTimer = 10;
     private bool _canrock = false;
@@ -92,6 +94,15 @@ public class GolemBehavior : MonoBehaviour
         }
         else
         {
+            if (charging&&chargingtime<=endcharge)
+            {
+                chargingtime += Time.deltaTime;
+            }
+            if(charging&&chargingtime >= endcharge)
+            {
+                chargingtime = 0;
+                charging = false;
+            }
             if (health >= 0 && !charging)
             {
                 Physics.IgnoreCollision(this.GetComponent<Collider>(), GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<Collider>(), false);

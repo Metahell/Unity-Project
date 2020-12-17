@@ -47,7 +47,7 @@ public class WaveManager : MonoBehaviour
                 StartCoroutine("Spawn");
                 StartCoroutine("SpawnBoss");
             }
-            if (WaveID == 11)
+            else if (WaveID == 11)
             {
                 if (!end)
                 {
