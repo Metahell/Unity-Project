@@ -44,11 +44,9 @@ public class DruidPlayerBehavior : MonoBehaviour
             animator.SetTrigger("2nd Ability");
             _ability2Timer = 0;
         }
-        if (Input.GetKey(KeyCode.Space) && !animator.GetCurrentAnimatorStateInfo(1).IsTag("1") && _ability3Timer >= _ability3Time && GameObject.FindGameObjectsWithTag("Wolf").Length == 0)
+        if (Input.GetKey(KeyCode.Space) && !animator.GetCurrentAnimatorStateInfo(1).IsTag("1") && _ability3Timer >= _ability3Time)
         {
             animator.SetTrigger("3rd Ability");
-            Ability3();
-            _ability3Timer = 0;
         }
     }
 
