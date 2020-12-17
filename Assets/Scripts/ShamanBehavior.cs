@@ -197,6 +197,7 @@ public class ShamanBehavior : MonoBehaviour
                 KnightBehaviour knight = target.GetComponent<KnightBehaviour>();
                 if (knight.health <= 10 && !knight.isdead)
                     target.GetComponent<KnightBehaviour>().LooseHealth(-5);
+                return;
             }
         }
         GameObject[] Targetsa = GameObject.FindGameObjectsWithTag("Enemy");
@@ -207,6 +208,7 @@ public class ShamanBehavior : MonoBehaviour
                 ArcherBehaviour archer = target.GetComponent<ArcherBehaviour>();
                 if (archer.health <= 5 && !archer.isdead)
                     target.GetComponent<ArcherBehaviour>().LooseHealth(-5);
+                return;
             }
         }
         GameObject[] Target = GameObject.FindGameObjectsWithTag("Boss");
@@ -215,6 +217,7 @@ public class ShamanBehavior : MonoBehaviour
             GolemBehavior golem = target.GetComponent<GolemBehavior>();
             if (golem.health <= golem.healthmax && !golem.isdead)
                 target.GetComponent<GolemBehavior>().LooseHealth(-5);
+            return;
         }
     }
 
