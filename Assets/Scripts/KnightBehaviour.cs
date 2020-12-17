@@ -13,6 +13,7 @@ public class KnightBehaviour : MonoBehaviour
     private Vector3 mouvementVector = Vector3.zero;
     private Vector3 motionVector = Vector3.zero;
     private Vector3 direction;
+    public bool isdead=false;
     [Header("Movement Parameters")]
     [SerializeField]
     private float maxVelocity;
@@ -59,6 +60,7 @@ public class KnightBehaviour : MonoBehaviour
         }
         if (health <= 0)
         {
+            isdead = true;
             StartCoroutine(Death());
         }
         if (poisontimer>0)

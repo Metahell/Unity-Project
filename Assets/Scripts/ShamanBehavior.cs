@@ -175,19 +175,19 @@ public class ShamanBehavior : MonoBehaviour
             if (target.CompareTag("Enemy"))
             {
                 KnightBehaviour knight = target.GetComponent<KnightBehaviour>();
-                if (knight.health<=10)
+                if (knight.health<=10&&!knight.isdead)
                 target.GetComponent<KnightBehaviour>().LooseHealth(-5);
             }
             else if (target.CompareTag("Archer"))
             {
                 ArcherBehaviour archer = target.GetComponent<ArcherBehaviour>();
-                if(archer.health<=5)
+                if(archer.health<=5&&!archer.isdead)
                 target.GetComponent<ArcherBehaviour>().LooseHealth(-5);
             }
             else if (target.CompareTag("Boss"))
             {
                GolemBehavior golem = target.GetComponent<GolemBehavior>();
-                if(golem.health<=golem.healthmax)
+                if(golem.health<=golem.healthmax&&!golem.isdead)
                 target.GetComponent<GolemBehavior>().LooseHealth(-5);
             }
         }

@@ -9,6 +9,7 @@ public class GolemBehavior : MonoBehaviour
     [Header("Link")]
     private Rigidbody rigi;
     [SerializeField] private Animator animator;
+    public bool isdead = false;
     private int state = 1;
     [SerializeField]
     private GameObject BossText;
@@ -66,6 +67,7 @@ public class GolemBehavior : MonoBehaviour
     {
         if (health <= 0)
         {
+            isdead = true;
             charging = false;
             StartCoroutine(Death());
         }
