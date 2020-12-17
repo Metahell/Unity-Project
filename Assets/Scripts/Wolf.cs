@@ -55,9 +55,16 @@ public class Wolf : MonoBehaviour
     private Material GLTFNode_65_color;
     [SerializeField]
     private Slider slider;
+    [SerializeField]
+    private AudioSource spawn;
+    [SerializeField]
+    private AudioSource attack;
+    [SerializeField]
+    private AudioSource hurt;
     // Start is called before the first frame update
     void Start()
     {
+        spawn.Play();
         slider.minValue = 0;
         hpMax = health;
         slider.maxValue = hpMax;
@@ -204,6 +211,7 @@ public class Wolf : MonoBehaviour
     }
     private void Hit()
     {
+        attack.Play();
         if (Vector3.Distance(CurrentTarget.transform.position , transform.position) < 3.5f)
         {
             if (CurrentTarget.CompareTag("Enemy"))
@@ -229,7 +237,13 @@ public class Wolf : MonoBehaviour
     {
         health -= healthLoss;
         health = health > hpMax ? hpMax : health;
-        if (healthLoss > 0) StartCoroutine("Red"); else StartCoroutine(Green());
+        if (healthLoss > 0)
+        {
+            StartCoroutine("Red");
+            hurt.Play();
+
+        }
+        else StartCoroutine(Green());
     }
 
     IEnumerator Red()
