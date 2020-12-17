@@ -126,6 +126,7 @@ public class WaveManager : MonoBehaviour
     }
     public void Lose()
     {
+        end = true;
         controller.Death();
         EndgameCanvas.SetActive(true);
         GameOver.Play();
