@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AI;
 
 public class WaveManager : MonoBehaviour
 {
@@ -26,6 +27,8 @@ public class WaveManager : MonoBehaviour
     private List<GameObject> SpawnPoints = new List<GameObject>();
     [SerializeField]
     private List<GameObject> EnnemyPool= new List<GameObject>();
+    [SerializeField]
+    private NavMeshAgent test;
     [SerializeField]
     private GameObject Boss;
     // Start is called before the first frame update
