@@ -96,6 +96,7 @@ public class KnightBehaviour : MonoBehaviour
                     poisonTick -= 1;
                 }
             }
+
             if (poisontimer <= 0 && poisonTick != 3)
             {
                 poisonTick = 3;
@@ -134,7 +135,6 @@ public class KnightBehaviour : MonoBehaviour
             {
                 if (!ThiefPlayerBehavior.isInvisible&&!trapped)
                 {
-                    Debug.Log(trapped);
                     rigi.isKinematic = false;
                     agent.enabled = true;
                     is_moving = true;
