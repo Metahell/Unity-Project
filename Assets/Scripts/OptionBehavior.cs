@@ -9,10 +9,14 @@ public class OptionBehavior : MonoBehaviour
     private Dropdown resolution;
     [SerializeField]
     private Dropdown quality;
+    public static bool godmode;
+    [SerializeField]
+    private Button godmodeButton;
     // Start is called before the first frame update
     void Start()
     {
         quality.value = PlayerPrefs.GetInt("Quality", 3);
+        godmode = false;
     }
 
     // Update is called once per frame
@@ -30,5 +34,11 @@ public class OptionBehavior : MonoBehaviour
     {
         QualitySettings.SetQualityLevel(quality.value);
         PlayerPrefs.SetInt("Quality",quality.value);
+    }
+
+    public void ToglleGodmode()
+    {
+        godmode = !godmode;
+        godmodeButton.GetComponentInChildren<Text>().text = godmode ? "Godmode on" : "Godmode off";
     }
 }

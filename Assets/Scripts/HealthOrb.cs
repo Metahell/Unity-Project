@@ -17,12 +17,14 @@ public class HealthOrb : MonoBehaviour
     private WaveManager WaveManager;
     [SerializeField]
     private AudioSource hurt;
+    private bool godmode;
     // Start is called before the first frame update
     void Start()
     {
         slider.maxValue = hpmax;
         currentHp = hpmax;
-
+        godmode = OptionBehavior.godmode;
+        Debug.Log("Godmode : " + godmode);
     }
 
     // Update is called once per frame
@@ -44,7 +46,10 @@ public class HealthOrb : MonoBehaviour
         {
             return;
         }
-        currentHp -= dmg;
+        if (!godmode)
+        {
+            currentHp -= dmg;
+        }
         currentHp = currentHp > hpmax ? hpmax : currentHp;
         slider.value = currentHp;
         if (dmg > 0)
