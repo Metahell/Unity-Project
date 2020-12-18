@@ -133,6 +133,7 @@ public class KnightBehaviour : MonoBehaviour
             }
             else
             {
+                Debug.Log(trapped);
                 if (!ThiefPlayerBehavior.isInvisible&&!trapped)
                 {
                     rigi.isKinematic = false;
@@ -146,6 +147,11 @@ public class KnightBehaviour : MonoBehaviour
             {
                 UpdateAnimator();
                 DoRotation();
+            }
+            if (trapped)
+            {
+                agent.enabled = false;
+                rigi.velocity = Vector3.zero;
             }
         }
     }

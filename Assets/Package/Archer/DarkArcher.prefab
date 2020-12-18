@@ -1276,9 +1276,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 2.323631
-  m_Height: 7.3994055
+  m_Height: 7.659822
   m_Direction: 1
-  m_Center: {x: 0.21271685, y: 4.0401907, z: 0.5220683}
+  m_Center: {x: 0.21271685, y: 3.9099824, z: 0.5220683}
 --- !u!114 &7794333626156877005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1294,6 +1294,7 @@ MonoBehaviour:
   arrow: {fileID: 947271983905220889, guid: a531ebaeb0a655249a8dba102c1ec427, type: 3}
   isdead: 0
   animator: {fileID: 7888866902616438698}
+  trapped: 0
   maxVelocity: 0.2
   acceleration: 1
   decceleration: 10

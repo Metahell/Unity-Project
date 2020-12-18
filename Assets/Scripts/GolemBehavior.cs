@@ -192,6 +192,11 @@ public class GolemBehavior : MonoBehaviour
                 UpdateAnimator();
                 DoRotation();
             }
+            if (trapped)
+            {
+                agent.enabled = false;
+                rigi.velocity = Vector3.zero;
+            }
         }
     }
     private void CheckLife()

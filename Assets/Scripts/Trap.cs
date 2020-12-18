@@ -40,7 +40,7 @@ public class Trap : MonoBehaviour
 
     private IEnumerator Disappear(GameObject trapped)
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(.3f);
         TrapSound.Play();
         if (trapped.CompareTag("Enemy"))
         {

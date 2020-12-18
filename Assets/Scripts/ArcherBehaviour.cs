@@ -170,6 +170,11 @@ public class ArcherBehaviour : MonoBehaviour
                 UpdateAnimator();
                 DoRotation();
             }
+            if (trapped)
+            {
+                agent.enabled = false;
+                rigi.velocity = Vector3.zero;
+            }
 
         }
 
