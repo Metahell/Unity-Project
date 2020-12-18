@@ -10,7 +10,7 @@ public class OptionBehavior : MonoBehaviour
     private Dropdown resolution;
     [SerializeField]
     private Dropdown quality;
-    public static bool godmode;
+    public static bool godmode = false;
     [SerializeField]
     private Button godmodeButton;
     // Start is called before the first frame update
@@ -20,9 +20,19 @@ public class OptionBehavior : MonoBehaviour
         {
             quality.value = PlayerPrefs.GetInt("Quality", 3);
         }
-        godmode = false;
-    }
 
+        if (SceneManager.GetActiveScene().name == "Map")
+        {
+            godmodeButton.GetComponentInChildren<Text>().text = godmode ? "Godmode on" : "Godmode off";
+        }
+    }
+    private void Awake()
+    {
+        if (SceneManager.GetActiveScene().name == "Map")
+        {
+            godmodeButton.GetComponentInChildren<Text>().text = godmode ? "Godmode on" : "Godmode off";
+        }
+    }
     // Update is called once per frame
     void Update()
     {

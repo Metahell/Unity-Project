@@ -133,7 +133,6 @@ public class KnightBehaviour : MonoBehaviour
             }
             else
             {
-                Debug.Log(trapped);
                 if (!ThiefPlayerBehavior.isInvisible&&!trapped)
                 {
                     rigi.isKinematic = false;
