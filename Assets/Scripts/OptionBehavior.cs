@@ -24,7 +24,7 @@ public class OptionBehavior : MonoBehaviour
     {
         string input = resolution.options[resolution.value].text;
         string[] resDim = input.Split('x');
-        Screen.SetResolution(int.Parse(resDim[0]), int.Parse(resDim[1]), false, 60);
+        Screen.SetResolution(int.Parse(resDim[0]), int.Parse(resDim[1]), Screen.fullScreen, 60);
     }
     public void ChangeGraphics()
     {

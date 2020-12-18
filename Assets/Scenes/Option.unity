@@ -7891,6 +7891,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8569551134084483014, guid: 2fe0a328b9a8866439b50e196f4ead55,
         type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8569551134084483014, guid: 2fe0a328b9a8866439b50e196f4ead55,
+        type: 3}
       propertyPath: m_Options.m_Options.Array.data[0].m_Text
       value: 1920x1080
       objectReference: {fileID: 0}
@@ -7903,6 +7908,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Options.m_Options.Array.data[2].m_Text
       value: 1440x900
+      objectReference: {fileID: 0}
+    - target: {fileID: 8569551134084483014, guid: 2fe0a328b9a8866439b50e196f4ead55,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8569551134084483014, guid: 2fe0a328b9a8866439b50e196f4ead55,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8569551134084483014, guid: 2fe0a328b9a8866439b50e196f4ead55,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1562631705}
+    - target: {fileID: 8569551134084483014, guid: 2fe0a328b9a8866439b50e196f4ead55,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeResolution
+      objectReference: {fileID: 0}
+    - target: {fileID: 8569551134084483014, guid: 2fe0a328b9a8866439b50e196f4ead55,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8569551134084483015, guid: 2fe0a328b9a8866439b50e196f4ead55,
         type: 3}
