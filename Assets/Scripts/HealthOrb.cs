@@ -23,7 +23,6 @@ public class HealthOrb : MonoBehaviour
     {
         slider.maxValue = hpmax;
         currentHp = hpmax;
-        godmode = OptionBehavior.godmode;
         Debug.Log("Godmode : " + godmode);
     }
 
@@ -42,6 +41,8 @@ public class HealthOrb : MonoBehaviour
 
     public void Damage(int dmg)
     {
+
+        godmode = OptionBehavior.godmode;
         if (gameObject.GetComponent<KnightPlayerBehaviour>() != null &&  gameObject.GetComponent<KnightPlayerBehaviour>().invulnerable)
         {
             return;

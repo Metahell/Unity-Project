@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Text;
+using UnityEngine.SceneManagement;
 public class OptionBehavior : MonoBehaviour
 {
     [SerializeField]
@@ -15,7 +16,10 @@ public class OptionBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        quality.value = PlayerPrefs.GetInt("Quality", 3);
+        if (SceneManager.GetActiveScene().name != "Map")
+        {
+            quality.value = PlayerPrefs.GetInt("Quality", 3);
+        }
         godmode = false;
     }
 
