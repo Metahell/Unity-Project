@@ -9,6 +9,7 @@ public class KnightBehaviour : MonoBehaviour
     [Header("Link")]
     private Rigidbody rigi;
     [SerializeField] private Animator animator;
+    public bool trapped=false;
     public float poisontimer = 0;
     private float poisonTick = 3;
     private Vector3 mouvementVector = Vector3.zero;
@@ -131,8 +132,9 @@ public class KnightBehaviour : MonoBehaviour
             }
             else
             {
-                if (!ThiefPlayerBehavior.isInvisible)
+                if (!ThiefPlayerBehavior.isInvisible&&!trapped)
                 {
+                    Debug.Log(trapped);
                     rigi.isKinematic = false;
                     agent.enabled = true;
                     is_moving = true;
@@ -140,7 +142,7 @@ public class KnightBehaviour : MonoBehaviour
                     mouvementVector = (transform.forward).normalized;
                 }
             }
-            if (!ThiefPlayerBehavior.isInvisible)
+            if (!ThiefPlayerBehavior.isInvisible&&!trapped)
             {
                 UpdateAnimator();
                 DoRotation();

@@ -12,6 +12,7 @@ public class GolemBehavior : MonoBehaviour
     [SerializeField]
     private Rock RockPrefab;
     public bool isdead = false;
+    public bool trapped = false;
     private int state = 1;
     [SerializeField]
     private GameObject BossText;
@@ -175,7 +176,7 @@ public class GolemBehavior : MonoBehaviour
                 }
                 else
                 {
-                    if (!ThiefPlayerBehavior.isInvisible)
+                    if (!ThiefPlayerBehavior.isInvisible&&!trapped)
                     {
                         rigi.isKinematic = false;
                         agent.enabled = true;
@@ -185,7 +186,7 @@ public class GolemBehavior : MonoBehaviour
                     }
                 }
             }
-            if (!ThiefPlayerBehavior.isInvisible)
+            if (!ThiefPlayerBehavior.isInvisible&&!trapped)
             {
                 rigi.isKinematic = false;
                 UpdateAnimator();
