@@ -18,12 +18,12 @@ public class TimeManager : MonoBehaviour
     {
         if (!end)
         {
-            TextTime.text = "TIME :" + Time.time.ToString("F1");
+            TextTime.text = "TIME :" + Time.timeSinceLevelLoad.ToString("F1");
         }
     }
     public string EndTime()
     {
         end = true;
-        return Time.time.ToString("f2");
+        return Time.timeSinceLevelLoad.ToString("f2");
     }
 }
