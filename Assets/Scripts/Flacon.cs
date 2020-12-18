@@ -33,7 +33,7 @@ public class Flacon : MonoBehaviour
         Ray castPoint = Camera.main.ScreenPointToRay(mouse);
         RaycastHit hit;
         Physics.Raycast(castPoint, out hit, Mathf.Infinity);
-        Target = hit.transform.position;
+        Target = hit.point;
         StartCoroutine(Thrown());
     }
 

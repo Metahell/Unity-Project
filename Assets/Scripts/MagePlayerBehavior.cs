@@ -73,7 +73,7 @@ public class MagePlayerBehavior : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(castPoint, out hit, Mathf.Infinity))
         {
-            Vector3 spawn = new Vector3(hit.transform.position.x, 0.017f, hit.transform.position.z);
+            Vector3 spawn = new Vector3(hit.point.x, 0.017f, hit.point.z);
             Instantiate(wall, spawn, transform.rotation);
         }
     }

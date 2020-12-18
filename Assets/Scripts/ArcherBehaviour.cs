@@ -16,7 +16,7 @@ public class ArcherBehaviour : MonoBehaviour
     private Vector3 mouvementVector = Vector3.zero;
     private Vector3 motionVector = Vector3.zero;
     private Vector3 direction;
-
+    public bool trapped = false;
     [Header("Movement Parameters")]
     [SerializeField]
     private float maxVelocity;
@@ -128,7 +128,7 @@ public class ArcherBehaviour : MonoBehaviour
             }
             else
             {
-                if (!ThiefPlayerBehavior.isInvisible)
+                if (!ThiefPlayerBehavior.isInvisible&&!trapped)
                 {
                     rigi.isKinematic = false;
                     agent.enabled = true;
@@ -165,7 +165,7 @@ public class ArcherBehaviour : MonoBehaviour
                     mouvementVector = (transform.forward).normalized;
                 }
             }
-            if (!ThiefPlayerBehavior.isInvisible)
+            if (!ThiefPlayerBehavior.isInvisible&&!trapped)
             {
                 UpdateAnimator();
                 DoRotation();

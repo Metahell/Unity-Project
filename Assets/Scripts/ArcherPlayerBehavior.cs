@@ -74,7 +74,8 @@ public class ArcherPlayerBehavior : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(castPoint, out hit, Mathf.Infinity))
         {
-            Vector3 spawn = new Vector3(hit.transform.position.x, 0.017f, hit.transform.position.z);
+            Vector3 spawn = hit.point;
+            spawn.y = 0.017f;
             GameObject trap = Factory.GetInstance().GetTrap();
             trap.transform.position = spawn;
         }
